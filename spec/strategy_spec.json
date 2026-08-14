@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "specification_version": "0.1.0",
+  "specification_version": "0.2.0",
   "strategy_name": "Scriv-inspired 50% retracement research baseline",
   "status": "RESEARCH_AND_PAPER_ONLY",
   "replication_claim": false,
@@ -21,6 +21,7 @@
   "market": {
     "asset_class": "CME equity-index futures",
     "instrument": "NQ",
+    "execution_variants": ["NQ", "MNQ"],
     "benchmark_for_optional_smt": "ES",
     "contract_selection": "continuous input accepted only if the user documents rollover construction",
     "runtime_reference": "instrument"
@@ -192,5 +193,8 @@
       "conservative same-bar fills"
     ]
   },
-  "runtime_config": "../config/baseline.json"
+  "runtime_configs": {
+    "NQ": "../config/baseline.json",
+    "MNQ": "../config/mnq.json"
+  }
 }

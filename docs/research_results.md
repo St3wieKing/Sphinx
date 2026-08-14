@@ -6,7 +6,7 @@
 |---|---|---|
 | Source extraction | Complete for the requested public video | See `research_report.md`. |
 | Mechanical baseline | Implemented | See runtime config, machine spec, and tests. |
-| Historical baseline result | **Not run / no claim** | No licensed, point-in-time 2-minute NQ contract dataset was supplied or committed. |
+| Historical baseline result | **Not run / no claim** | No licensed, point-in-time 2-minute NQ or MNQ contract dataset was supplied or committed. |
 | Development experiments | **Not run** | Running synthetic data would not answer the trading hypothesis. |
 | Validation result | **Untouched** | Intentionally unavailable until development hypothesis exists. |
 | Final holdout | **Locked and untouched** | Config remains `strategy_frozen=false`. |
@@ -25,14 +25,14 @@ The answer to “does this demonstrate robust performance after costs?” is cur
 
 On 2026-08-14:
 
-- all **24** standard-library unit/integration tests passed;
+- all **28** standard-library unit/integration tests passed;
 - strict config and all JSON deliverables parsed;
 - editable installation and console entry point were exercised in an isolated virtual environment;
 - deterministic synthetic replay exercised signal, risk, fill, trade, metric, paper artifact, and hash-chain paths;
 - the development-partition demo produced multiple executed paths, but its P&L is deliberately not promoted here because those patterns were inserted by the generator;
 - audit-chain verification passed after replay, and its tamper test correctly failed after record alteration.
 
-These checks establish internal behavior and causal safeguards. They do not validate market expectancy, queue fills, or live reliability.
+The subsequent NQ/MNQ extension also exercises external one-minute normalization, the locked deep-research suite, website payloads, packaged Pine-source parity, and public-data provenance controls. These checks establish internal behavior and causal safeguards. They do not validate market expectancy, queue fills, TradingView feed parity, or live reliability.
 
 ## Baseline hypothesis
 

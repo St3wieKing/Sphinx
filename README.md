@@ -16,7 +16,10 @@ See:
 4. [Software architecture](docs/architecture.md)
 5. [Validation protocol](docs/validation_protocol.md)
 6. [Current research results / no-claim boundary](docs/research_results.md)
-7. [Machine-readable strategy spec](spec/strategy_spec.json)
+7. [NQ/MNQ deep-backtest runbook](docs/nq_mnq_deep_backtesting.md)
+8. [Signal Desk website](docs/dashboard.md)
+9. [TradingView Pine v6 indicator](docs/tradingview.md)
+10. [Machine-readable strategy spec](spec/strategy_spec.json)
 
 ## Features
 
@@ -28,6 +31,10 @@ See:
 - conservative OHLC execution with spread, slippage, fees, gap stops, and adverse same-bar rules;
 - equity-risk sizing, daily/session limits, cooldowns, maximum drawdown, and kill switches;
 - locked 60/20/20 split, walk-forward utilities, execution scenarios, Monte Carlo, and experiment ledger;
+- bounded NQ/MNQ deep suite with walk-forward, one-factor sensitivity, bootstrap, risk and execution scenarios;
+- polished paper Signal Desk website with contract switch, setup chart, checklist, levels, metrics, ledger, and research view;
+- Pine Script® v6 TradingView overlay with state, swings, FVG context, long/short, stop, TP1/TP2, dashboard, and alerts;
+- public-data downloader plus strict one-minute-to-two-minute normalization and provenance manifests;
 - hash-chained audit JSONL and explanatory paper-trading daily reports;
 - zero runtime dependencies beyond Python 3.11.
 
@@ -43,6 +50,15 @@ sphinx inspect-data --data /path/to/nq_2m.csv
 sphinx backtest --data /path/to/nq_2m.csv --partition development \
   --output artifacts/development.json
 sphinx paper --data /path/to/nq_2m.csv --output-directory artifacts
+
+# NQ + MNQ bounded deep research; final holdout remains locked
+sphinx deep-backtest --nq-data /path/to/nq_2m.csv --mnq-data /path/to/mnq_2m.csv \
+  --output artifacts/deep_research.json
+
+# Paper signal website
+sphinx dashboard --host 0.0.0.0 --port 8000 \
+  --nq-data /path/to/nq_2m.csv --mnq-data /path/to/mnq_2m.csv \
+  --deep-report artifacts/deep_research.json
 ```
 
 Without installation:

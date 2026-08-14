@@ -9,14 +9,21 @@ from pathlib import Path
 
 from .config import load_config
 from .data.csv_feed import inspect_data, read_bars
+from .data.importers import (
+    PUBLIC_DATASETS,
+    download_public_dataset,
+    normalize_external_data,
+)
 from .data.split import chronological_split
 from .execution.paper_trader import PaperTrader
 from .monitoring.audit import AuditLogger, json_safe, verify_chain
 from .research.backtest import BacktestEngine
+from .research.deep import DeepResearchSuite, paired_instrument_summary
 from .research.experiments import ExperimentLedger
 from .research.monte_carlo import MonteCarloConfig, run_monte_carlo
 from .research.stress import run_execution_scenarios
 from .research.synthetic import generate_synthetic_bars, write_bars_csv
+from .web.server import serve_dashboard
 
 
 def _write_json(path: str | Path, value: object) -> Path:
@@ -203,6 +210,80 @@ def command_experiment(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_download_data(args: argparse.Namespace) -> int:
+    manifest = download_public_dataset(args.dataset, args.destination)
+    print(json.dumps(json_safe(manifest), indent=2, sort_keys=True))
+    return 0
+
+
+def command_normalize_data(args: argparse.Namespace) -> int:
+    manifest = normalize_external_data(
+        args.source,
+        args.output,
+        symbol=args.symbol,
+        source_timezone=args.source_timezone,
+        source_interval_seconds=args.source_interval_seconds,
+        target_interval_seconds=120,
+        provenance={"operator_note": args.provenance_note},
+    )
+    print(json.dumps(json_safe(manifest), indent=2, sort_keys=True))
+    return 0
+
+
+def command_deep_backtest(args: argparse.Namespace) -> int:
+    inputs = {"NQ": args.nq_data, "MNQ": args.mnq_data}
+    if not any(inputs.values()):
+        raise ValueError("provide --nq-data and/or --mnq-data")
+    config_paths = {
+        "NQ": Path(args.nq_config),
+        "MNQ": Path(args.mnq_config),
+    }
+    reports: dict[str, dict[str, object]] = {}
+    for symbol, data_path in inputs.items():
+        if not data_path:
+            continue
+        config = load_config(config_paths[symbol])
+        bars = read_bars(
+            data_path,
+            symbol=symbol,
+            interval_seconds=config.timeframes.execution_seconds,
+        )
+        reports[symbol] = DeepResearchSuite(
+            config,
+            bootstrap_simulations=args.bootstrap_simulations,
+        ).run(bars)
+    payload = {
+        "status": "RESEARCH_ONLY_NO_PROFITABILITY_CLAIM",
+        "reports": reports,
+        "paired_summary": paired_instrument_summary(reports),
+        "holdout_opened": False,
+    }
+    _write_json(args.output, payload)
+    print(
+        json.dumps(
+            {
+                "output": args.output,
+                "instruments": list(reports),
+                "holdout_opened": False,
+                "warning": "Review validation, sensitivity and stress evidence; no automatic winner is selected.",
+            },
+            indent=2,
+        )
+    )
+    return 0
+
+
+def command_dashboard(args: argparse.Namespace) -> int:
+    serve_dashboard(
+        host=args.host,
+        port=args.port,
+        nq_data=args.nq_data,
+        mnq_data=args.mnq_data,
+        deep_report=args.deep_report,
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="sphinx",
@@ -274,6 +355,37 @@ def build_parser() -> argparse.ArgumentParser:
     experiment.add_argument("--decision", default="pending")
     experiment.add_argument("--notes", default="")
     experiment.set_defaults(function=command_experiment)
+
+    download = subparsers.add_parser("download-research-data")
+    download.add_argument("--dataset", choices=tuple(PUBLIC_DATASETS), required=True)
+    download.add_argument("--destination", default="artifacts/external-data")
+    download.set_defaults(function=command_download_data)
+
+    normalize = subparsers.add_parser("normalize-data")
+    normalize.add_argument("--source", required=True)
+    normalize.add_argument("--output", required=True)
+    normalize.add_argument("--symbol", choices=("NQ", "MNQ"), required=True)
+    normalize.add_argument("--source-timezone", default="America/New_York")
+    normalize.add_argument("--source-interval-seconds", type=int, default=60)
+    normalize.add_argument("--provenance-note", default="")
+    normalize.set_defaults(function=command_normalize_data)
+
+    deep = subparsers.add_parser("deep-backtest")
+    deep.add_argument("--nq-data")
+    deep.add_argument("--mnq-data")
+    deep.add_argument("--nq-config", default="config/baseline.json")
+    deep.add_argument("--mnq-config", default="config/mnq.json")
+    deep.add_argument("--bootstrap-simulations", type=int, default=2000)
+    deep.add_argument("--output", default="artifacts/deep_research.json")
+    deep.set_defaults(function=command_deep_backtest)
+
+    dashboard = subparsers.add_parser("dashboard")
+    dashboard.add_argument("--host", default="0.0.0.0")
+    dashboard.add_argument("--port", type=int, default=8000)
+    dashboard.add_argument("--nq-data")
+    dashboard.add_argument("--mnq-data")
+    dashboard.add_argument("--deep-report")
+    dashboard.set_defaults(function=command_dashboard)
     return parser
 
 
@@ -282,6 +394,6 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         return int(args.function(args))
-    except (ValueError, TypeError, PermissionError, FileNotFoundError) as exc:
+    except (ValueError, TypeError, PermissionError, FileNotFoundError, ConnectionError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2

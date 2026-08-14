@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sphinx evidence-labelled NQ and MNQ paper signal dashboard">
+  <title>Sphinx Signal Desk</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Sphinx Signal Desk home">
+      <svg viewBox="0 0 36 36" role="img" aria-hidden="true"><path d="M6 25 11 8l7-4 7 4 5 17-7 7H13Z"/><path d="m11 8 7 9 7-9M9 18h18M13 32l5-15 5 15"/></svg>
+      <span>SPHINX</span><small>SIGNAL DESK</small>
+    </a>
+    <nav class="nav-tabs" aria-label="Primary">
+      <button class="nav-tab active" data-view="desk">Signal desk</button>
+      <button class="nav-tab" data-view="research">Research</button>
+      <button class="nav-tab" data-view="tradingview">TradingView</button>
+    </nav>
+    <div class="top-status"><span class="pulse"></span><span>Paper engine</span><strong id="clock">--:--:-- ET</strong></div>
+  </header>
+
+  <main>
+    <section class="warning-strip">
+      <span>RESEARCH SYSTEM</span>
+      Mechanical signals are not recommendations. No live orders are routed. Final holdout remains locked.
+    </section>
+
+    <section id="desk-view" class="view active">
+      <div class="desk-heading">
+        <div>
+          <p class="eyebrow">Overnight Nasdaq futures · completed 2-minute bars</p>
+          <h1>Location first. <em>Execution second.</em></h1>
+          <p class="subhead">Consolidation displacement → evolving range → 50% retracement. Every setup carries its own invalidation and objective.</p>
+        </div>
+        <div class="instrument-switch" role="group" aria-label="Instrument">
+          <button class="instrument active" data-symbol="NQ"><span>NQ</span><small>E-mini · $20/pt</small></button>
+          <button class="instrument" data-symbol="MNQ"><span>MNQ</span><small>Micro · $2/pt</small></button>
+        </div>
+      </div>
+
+      <div class="status-line">
+        <div><span class="status-label">DATA</span><strong id="data-mode">Loading…</strong></div>
+        <div><span class="status-label">AS OF</span><strong id="as-of">—</strong></div>
+        <div><span class="status-label">SESSION</span><strong id="session">—</strong></div>
+        <div><span class="status-label">MODEL</span><strong>50% RETEST · v0.2</strong></div>
+      </div>
+
+      <div class="desk-grid">
+        <article class="panel signal-panel">
+          <div class="panel-kicker"><span>Current mechanical state</span><span class="tag" id="freshness">REPLAY</span></div>
+          <div class="signal-core">
+            <div class="signal-orb wait" id="signal-orb"><span id="action">WAIT</span><small id="action-copy">No fresh trigger</small></div>
+            <div class="score-block"><span>SETUP SCORE</span><strong id="score">—</strong><div class="score-track"><i id="score-fill"></i></div></div>
+          </div>
+          <dl class="level-grid">
+            <div><dt>Entry trigger</dt><dd id="entry">—</dd></div>
+            <div class="danger"><dt>Invalidation / stop</dt><dd id="stop">—</dd></div>
+            <div class="positive"><dt>Target 01</dt><dd id="tp1">—</dd></div>
+            <div class="positive"><dt>Target 02</dt><dd id="tp2">—</dd></div>
+            <div><dt>Expected R</dt><dd id="rr">—</dd></div>
+            <div><dt>Regime</dt><dd id="regime">—</dd></div>
+          </dl>
+          <div class="signal-note" id="signal-note">Waiting for replay data.</div>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="panel-head">
+            <div><span class="panel-title" id="chart-title">NQ · setup replay</span><small>Entry, invalidation and objectives</small></div>
+            <div class="legend"><span class="long-dot">Long</span><span class="short-dot">Short</span><span class="level-dot">Levels</span></div>
+          </div>
+          <svg id="price-chart" viewBox="0 0 900 390" preserveAspectRatio="none" aria-label="Price setup chart"></svg>
+          <div class="chart-foot"><span id="chart-range">—</span><span>Conservative OHLC sequencing</span></div>
+        </article>
+
+        <article class="panel checklist-panel">
+          <div class="panel-head"><div><span class="panel-title">Decision ledger</span><small>Why the setup exists</small></div><span class="tag outline">AUDITABLE</span></div>
+          <div id="checklist" class="checklist"><div class="empty-row">No signal selected.</div></div>
+        </article>
+
+        <article class="panel metrics-panel">
+          <div class="panel-head"><div><span class="panel-title">Replay evidence</span><small id="metric-context">Not a profitability claim</small></div><span class="tag amber">AFTER COSTS</span></div>
+          <div class="metric-cards">
+            <div><span>Trades</span><strong id="m-trades">—</strong></div>
+            <div><span>Win rate</span><strong id="m-win">—</strong></div>
+            <div><span>Profit factor</span><strong id="m-pf">—</strong></div>
+            <div><span>Expectancy</span><strong id="m-exp">—</strong></div>
+            <div><span>Max drawdown</span><strong id="m-dd">—</strong></div>
+            <div><span>Modeled costs</span><strong id="m-cost">—</strong></div>
+          </div>
+          <svg id="equity-chart" viewBox="0 0 900 155" preserveAspectRatio="none" aria-label="Paper equity curve"></svg>
+        </article>
+      </div>
+
+      <section class="signals-section">
+        <div class="section-head"><div><p class="eyebrow">Completed setup events</p><h2>Recent signal ledger</h2></div><p>Signals are generated at a causally known midpoint. Hover a row for its exact risk map.</p></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Time</th><th>Side</th><th>Entry</th><th>Stop</th><th>TP1</th><th>TP2</th><th>R:R</th><th>Score</th><th>Evidence</th></tr></thead>
+            <tbody id="signals-table"><tr><td colspan="9">Loading signal ledger…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="research-view" class="view">
+      <div class="page-title"><p class="eyebrow">Anti-overfit protocol</p><h1>Research, without the victory lap.</h1><p>Development and validation are visible. The last 20% stays sealed until code, parameters, costs and exclusions are frozen.</p></div>
+      <div class="research-grid">
+        <article class="panel holdout-card"><span class="lock-icon">20%</span><div><p class="eyebrow">FINAL HOLDOUT</p><h2>Locked by design</h2><p>The deep suite cannot open this partition. A separate explicit freeze and operator consent are required.</p></div><span class="tag red">UNTOUCHED</span></article>
+        <article class="panel protocol-card"><p class="eyebrow">EVIDENCE STACK</p><ol><li><span>01</span><div><strong>Development</strong><small>Bounded one-factor sensitivity</small></div></li><li><span>02</span><div><strong>Validation</strong><small>Costs, risk and bootstrap diagnostics</small></div></li><li><span>03</span><div><strong>Walk-forward</strong><small>Successive unseen windows</small></div></li><li><span>04</span><div><strong>Stress</strong><small>Delay, spread, slippage, missed trades</small></div></li></ol></article>
+        <article class="panel research-status"><div class="panel-head"><div><span class="panel-title">Loaded research artifact</span><small id="research-source">Dashboard demo only</small></div></div><div id="research-content" class="research-content"></div></article>
+        <article class="panel instrument-note"><p class="eyebrow">NQ ≠ INDEPENDENT FROM MNQ</p><h2>One index, two execution profiles.</h2><p>NQ and MNQ track the same Nasdaq-100 exposure. Agreement is useful for feed and execution checks—not independent confirmation of an edge.</p><div class="contract-grid"><div><strong>NQ</strong><span>$20 / point</span><small>Larger fee-efficient contract</small></div><div><strong>MNQ</strong><span>$2 / point</span><small>Finer risk granularity, higher fee drag</small></div></div></article>
+      </div>
+    </section>
+
+    <section id="tradingview-view" class="view">
+      <div class="page-title split-title"><div><p class="eyebrow">Pine Script® v6 · overlay indicator</p><h1>Carry the model onto your chart.</h1><p>Run it on a 2-minute NQ or MNQ chart. Signals wait for completed bars and expose entry, stop, TP1, TP2, state and alerts.</p></div><div class="tv-actions"><button id="copy-pine" class="primary-button">Copy indicator</button><button id="download-pine" class="secondary-button">Download .pine</button></div></div>
+      <div class="tv-grid">
+        <article class="panel code-panel"><div class="code-head"><span><i></i><i></i><i></i></span><strong>sphinx_signal_indicator.pine</strong><small id="copy-status">Ready</small></div><pre><code id="pine-code">Loading Pine source…</code></pre></article>
+        <aside class="tv-side">
+          <article class="panel install-card"><p class="eyebrow">INSTALL</p><ol><li>Open TradingView Pine Editor.</li><li>Paste the complete v6 source.</li><li>Save and add to a 2-minute NQ/MNQ chart.</li><li>Create separate Long and Short alerts.</li><li>Keep alerts “once per bar close.”</li></ol></article>
+          <article class="panel alert-card"><p class="eyebrow">ALERT PAYLOAD</p><pre>{
+  "system": "sphinx",
+  "mode": "paper",
+  "side": "LONG|SHORT",
+  "entry": 0,
+  "stop": 0,
+  "tp1": 0,
+  "tp2": 0
+}</pre><p>Dynamic alerts are informational. They do not authorize order routing.</p></article>
+          <article class="panel parity-card"><p class="eyebrow">PARITY NOTE</p><p>TradingView and Python can differ because of vendor candles, continuous-contract rolls and Pine's broker emulator. Compare signal timestamps before comparing P&amp;L.</p></article>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>SPHINX / SYSTEMATIC FUTURES RESEARCH</span><span>Paper only · No guarantees · Operator review required</span><span id="config-fingerprint">CONFIG —</span></footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

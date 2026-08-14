@@ -34,3 +34,9 @@ Store alongside private/vendor data, not in Git if licensing prohibits it:
 ```
 
 For optional SMT, ES must use the same interval, timestamp semantics, trading calendar, and completed timestamps. Missing ES timestamps are left missing; no future/backfilled comparison is permitted.
+
+## NQ/MNQ tooling
+
+`download-research-data` knows about a public CC0 NQ one-minute starter dataset, but its continuous-series rollover must be verified. `normalize-data` converts external one-minute exports into the strict two-minute contract, drops incomplete buckets, and emits a provenance/hash manifest. See [`docs/nq_mnq_deep_backtesting.md`](../docs/nq_mnq_deep_backtesting.md).
+
+NQ and MNQ need separate instrument costs and point values. They follow the same underlying index and are not independent evidence of an edge.

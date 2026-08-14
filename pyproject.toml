@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sphinx-trading"
-version = "0.1.0"
+version = "0.2.0"
 description = "Evidence-labelled, Scriv-inspired NQ research and paper-trading system"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -23,6 +23,9 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"sphinx_bot.web" = ["static/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

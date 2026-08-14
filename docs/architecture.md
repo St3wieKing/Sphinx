@@ -34,6 +34,7 @@ Sphinx/
 │   ├── cli.py                      # operator commands
 │   ├── data/
 │   │   ├── csv_feed.py             # ingestion, OHLC/order validation, hash
+│   │   ├── importers.py            # public download, external normalization/manifests
 │   │   ├── resample.py             # causal completed HTF aggregation
 │   │   └── split.py                # 60/20/20 lock and walk-forward folds
 │   ├── strategy/
@@ -53,7 +54,11 @@ Sphinx/
 │   │   ├── stress.py               # optimistic/base/pessimistic fills
 │   │   ├── monte_carlo.py          # order/miss/slippage/cost randomization
 │   │   ├── experiments.py          # append-only hypothesis ledger
-│   │   └── synthetic.py            # engineering fixture, never evidence
+│   │   ├── synthetic.py            # engineering fixture, never evidence
+│   │   └── deep.py                 # locked NQ/MNQ research suite
+│   ├── web/
+│   │   ├── server.py               # paper dashboard + read-only JSON API
+│   │   └── static/                 # responsive Signal Desk and Pine copy
 │   └── monitoring/
 │       ├── audit.py                # SHA-256 chained JSONL
 │       └── report.py               # explanatory daily paper reports

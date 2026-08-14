@@ -1,0 +1,329 @@
+//@version=6
+indicator("Sphinx 50% Retest Signal Desk [Research]", "Sphinx 50%", overlay = true, max_labels_count = 500, max_lines_count = 100)
+
+// PAPER / RESEARCH ONLY. This is a transparent mechanical proxy inspired by a
+// public Matthew Scriv walkthrough; it is not an exact replication or promise.
+// Designed for a 2-minute NQ or MNQ chart. Decisions use completed bars only.
+
+// ── Inputs ────────────────────────────────────────────────────────────────────
+string groupSession = "Session & safety"
+string sessionInput = input.session("0000-0400:23456", "Entry session", group = groupSession)
+string timezoneInput = input.string("America/New_York", "Session timezone", group = groupSession)
+bool requireTwoMinute = input.bool(true, "Require 2-minute chart", group = groupSession)
+int cooldownBars = input.int(3, "Cooldown bars", minval = 0, group = groupSession)
+
+string groupLocation = "Location & displacement"
+int consolidationBars = input.int(12, "Consolidation lookback", minval = 3, group = groupLocation)
+int atrLength = input.int(14, "ATR length", minval = 2, group = groupLocation)
+float consolidationMaxATR = input.float(2.0, "Maximum range / ATR", minval = 0.1, step = 0.1, group = groupLocation)
+float displacementMinATR = input.float(0.8, "Minimum body / ATR", minval = 0.1, step = 0.1, group = groupLocation)
+float breakoutBufferTicks = input.float(1.0, "Breakout buffer (ticks)", minval = 0, step = 0.5, group = groupLocation)
+int maximumRetraceBars = input.int(12, "Maximum bars to midpoint", minval = 1, group = groupLocation)
+float retestToleranceTicks = input.float(1.0, "Midpoint tolerance (ticks)", minval = 0, step = 0.5, group = groupLocation)
+
+string groupRisk = "Entry, stop & objectives"
+float fixedStopTicks = input.float(40.0, "Fixed stop cap (ticks)", minval = 1, step = 1, group = groupRisk)
+float pivotalBufferTicks = input.float(1.0, "Origin buffer (ticks)", minval = 0, step = 0.5, group = groupRisk)
+float extensionMultiple = input.float(1.66, "Runner range extension", minval = 1.01, step = 0.01, group = groupRisk)
+float minimumRR = input.float(1.0, "Minimum target-two R:R", minval = 0.1, step = 0.1, group = groupRisk)
+
+string groupStructure = "Structure, liquidity & context"
+int pivotLeft = input.int(3, "Pivot left bars", minval = 1, group = groupStructure)
+int pivotRight = input.int(3, "Pivot confirmation bars", minval = 1, group = groupStructure)
+float liquidityToleranceTicks = input.float(4.0, "Equal-liquidity tolerance", minval = 0, step = 1, group = groupStructure)
+float minimumFVGTicks = input.float(2.0, "Minimum FVG width (ticks)", minval = 0, step = 0.5, group = groupStructure)
+bool showFVG = input.bool(true, "Show latest execution FVG", group = groupStructure)
+bool showSwings = input.bool(true, "Show confirmed swing liquidity", group = groupStructure)
+bool showHTFContext = input.bool(true, "Show completed 1H / 4H FVG context", group = groupStructure)
+
+string groupDisplay = "Display"
+bool showDashboard = input.bool(true, "Show state table", group = groupDisplay)
+bool shadeSession = input.bool(true, "Shade approved session", group = groupDisplay)
+bool showHistoricalLabels = input.bool(true, "Show signal / exit labels", group = groupDisplay)
+
+// ── Causal context ────────────────────────────────────────────────────────────
+float tick = syminfo.mintick
+bool isTwoMinute = timeframe.in_seconds() == 120
+bool timeframeApproved = not requireTwoMinute or isTwoMinute
+bool inSession = not na(time(timeframe.period, sessionInput, timezoneInput))
+bool sessionStarted = inSession and not inSession[1]
+bool sessionEnded = not inSession and inSession[1]
+float atr = ta.atr(atrLength)
+float atrPrior = atr[1]
+float rangeHighPrior = ta.highest(high[1], consolidationBars)
+float rangeLowPrior = ta.lowest(low[1], consolidationBars)
+float rangeWidthPrior = rangeHighPrior - rangeLowPrior
+bool enoughHistory = not na(atrPrior) and not na(rangeHighPrior) and not na(rangeLowPrior)
+bool consolidationValid = enoughHistory and rangeWidthPrior <= atrPrior * consolidationMaxATR
+bool displacementValid = enoughHistory and math.abs(close - open) >= atrPrior * displacementMinATR
+bool bullishBreak = consolidationValid and displacementValid and close > rangeHighPrior + breakoutBufferTicks * tick
+bool bearishBreak = consolidationValid and displacementValid and close < rangeLowPrior - breakoutBufferTicks * tick
+
+float confirmedSwingHigh = ta.pivothigh(high, pivotLeft, pivotRight)
+float confirmedSwingLow = ta.pivotlow(low, pivotLeft, pivotRight)
+var float latestSwingHigh = na
+var float priorSwingHigh = na
+var float latestSwingLow = na
+var float priorSwingLow = na
+if barstate.isconfirmed and not na(confirmedSwingHigh)
+    priorSwingHigh := latestSwingHigh
+    latestSwingHigh := confirmedSwingHigh
+if barstate.isconfirmed and not na(confirmedSwingLow)
+    priorSwingLow := latestSwingLow
+    latestSwingLow := confirmedSwingLow
+bool equalHighs = not na(latestSwingHigh) and not na(priorSwingHigh) and math.abs(latestSwingHigh - priorSwingHigh) <= liquidityToleranceTicks * tick
+bool equalLows = not na(latestSwingLow) and not na(priorSwingLow) and math.abs(latestSwingLow - priorSwingLow) <= liquidityToleranceTicks * tick
+
+// Execution FVGs exist only when candle three closes.
+var float latestBullFVGLower = na
+var float latestBullFVGUpper = na
+var float latestBearFVGLower = na
+var float latestBearFVGUpper = na
+bool newBullFVG = barstate.isconfirmed and low - high[2] >= minimumFVGTicks * tick
+bool newBearFVG = barstate.isconfirmed and low[2] - high >= minimumFVGTicks * tick
+if newBullFVG
+    latestBullFVGLower := high[2]
+    latestBullFVGUpper := low
+if newBearFVG
+    latestBearFVGLower := high
+    latestBearFVGUpper := low[2]
+if not na(latestBullFVGLower) and close < latestBullFVGLower
+    latestBullFVGLower := na
+    latestBullFVGUpper := na
+if not na(latestBearFVGUpper) and close > latestBearFVGUpper
+    latestBearFVGLower := na
+    latestBearFVGUpper := na
+
+// With lookahead_on, the [1]/[3] offsets expose only completed HTF candles.
+float h1Low1 = request.security(syminfo.tickerid, "60", low[1], lookahead = barmerge.lookahead_on)
+float h1High3 = request.security(syminfo.tickerid, "60", high[3], lookahead = barmerge.lookahead_on)
+float h1High1 = request.security(syminfo.tickerid, "60", high[1], lookahead = barmerge.lookahead_on)
+float h1Low3 = request.security(syminfo.tickerid, "60", low[3], lookahead = barmerge.lookahead_on)
+float h4Low1 = request.security(syminfo.tickerid, "240", low[1], lookahead = barmerge.lookahead_on)
+float h4High3 = request.security(syminfo.tickerid, "240", high[3], lookahead = barmerge.lookahead_on)
+float h4High1 = request.security(syminfo.tickerid, "240", high[1], lookahead = barmerge.lookahead_on)
+float h4Low3 = request.security(syminfo.tickerid, "240", low[3], lookahead = barmerge.lookahead_on)
+bool h1BullFVG = h1Low1 > h1High3
+bool h1BearFVG = h1High1 < h1Low3
+bool h4BullFVG = h4Low1 > h4High3
+bool h4BearFVG = h4High1 < h4Low3
+
+int regimeLength = 20
+float path = math.sum(math.abs(ta.change(close)), regimeLength)
+float efficiency = path > 0 ? math.abs(close - close[regimeLength]) / path : 0.0
+string regime = efficiency >= 0.45 ? (close > close[regimeLength] ? "TREND UP" : "TREND DOWN") : "RANGE"
+
+// ── Explicit state machine ────────────────────────────────────────────────────
+int IDLE = 0
+int TRACKING = 1
+int ACTIVE = 2
+int COOLDOWN = 3
+var int modelState = IDLE
+var int direction = 0
+var float impulseOrigin = na
+var float impulseExtreme = na
+var float knownMidpoint = na
+var int breakoutBar = na
+var int exitBar = na
+var float breakoutATR = na
+var float breakoutRangeWidth = na
+var float breakoutBody = na
+var float activeEntry = na
+var float activeStop = na
+var float activeTP1 = na
+var float activeTP2 = na
+var float setupScore = na
+var float expectedRR = na
+var bool tp1Reached = false
+var bool usedLiquidityTarget = false
+bool longSignal = false
+bool shortSignal = false
+bool stopEvent = false
+bool tp1Event = false
+bool tp2Event = false
+
+if barstate.isconfirmed
+    if sessionStarted and modelState != ACTIVE
+        modelState := IDLE
+        direction := 0
+        impulseOrigin := na
+        impulseExtreme := na
+        knownMidpoint := na
+    if sessionEnded
+        modelState := IDLE
+        direction := 0
+        activeEntry := na
+        activeStop := na
+        activeTP1 := na
+        activeTP2 := na
+        tp1Reached := false
+    if inSession and timeframeApproved
+        if modelState == IDLE
+            if bullishBreak != bearishBreak
+                direction := bullishBreak ? 1 : -1
+                impulseOrigin := direction == 1 ? rangeLowPrior : rangeHighPrior
+                impulseExtreme := direction == 1 ? high : low
+                knownMidpoint := (impulseOrigin + impulseExtreme) / 2.0
+                breakoutBar := bar_index
+                breakoutATR := atrPrior
+                breakoutRangeWidth := rangeWidthPrior
+                breakoutBody := math.abs(close - open)
+                modelState := TRACKING
+        else if modelState == TRACKING
+            bool expired = bar_index - breakoutBar > maximumRetraceBars
+            bool invalidated = direction == 1 ? close < impulseOrigin : close > impulseOrigin
+            bool touched = direction == 1 ? (low <= knownMidpoint + retestToleranceTicks * tick and high >= knownMidpoint) : (high >= knownMidpoint - retestToleranceTicks * tick and low <= knownMidpoint)
+            if expired or invalidated
+                modelState := IDLE
+                direction := 0
+                impulseOrigin := na
+                impulseExtreme := na
+                knownMidpoint := na
+            else if touched
+                activeEntry := knownMidpoint
+                float fixedStop = activeEntry - direction * fixedStopTicks * tick
+                float pivotalStop = impulseOrigin - direction * pivotalBufferTicks * tick
+                float pivotalDistance = math.abs(activeEntry - pivotalStop)
+                activeStop := pivotalDistance > 0 and pivotalDistance <= fixedStopTicks * tick ? pivotalStop : fixedStop
+                activeTP1 := impulseExtreme
+                float extensionTarget = impulseOrigin + direction * extensionMultiple * math.abs(impulseExtreme - impulseOrigin)
+                bool validBullLiquidity = direction == 1 and not na(latestSwingHigh) and latestSwingHigh > activeTP1 + tick
+                bool validBearLiquidity = direction == -1 and not na(latestSwingLow) and latestSwingLow < activeTP1 - tick
+                usedLiquidityTarget := validBullLiquidity or validBearLiquidity
+                float candidateTarget = validBullLiquidity ? latestSwingHigh : validBearLiquidity ? latestSwingLow : extensionTarget
+                activeTP2 := direction == 1 ? math.max(candidateTarget, activeTP1) : math.min(candidateTarget, activeTP1)
+                float riskPoints = math.abs(activeEntry - activeStop)
+                expectedRR := riskPoints > 0 ? math.abs(activeTP2 - activeEntry) / riskPoints : 0.0
+                float locationScore = math.max(0.0, 1.0 - breakoutRangeWidth / math.max(breakoutATR * consolidationMaxATR, tick))
+                float displacementScore = math.min(1.0, breakoutBody / math.max(breakoutATR * displacementMinATR, tick))
+                float liquidityScore = usedLiquidityTarget ? 0.8 : 0.4
+                bool matchingHTF = direction == 1 ? (h1BullFVG or h4BullFVG) : (h1BearFVG or h4BearFVG)
+                float contextScore = matchingHTF ? 1.0 : 0.5
+                float freshnessScore = math.max(0.0, 1.0 - (bar_index - breakoutBar) / maximumRetraceBars)
+                setupScore := 100.0 * (0.25 * locationScore + 0.25 * displacementScore + 0.20 * liquidityScore + 0.15 * contextScore + 0.15 * freshnessScore)
+                bool orderingValid = direction == 1 ? activeStop < activeEntry and activeTP2 > activeEntry : activeStop > activeEntry and activeTP2 < activeEntry
+                if orderingValid and expectedRR >= minimumRR
+                    longSignal := direction == 1
+                    shortSignal := direction == -1
+                    tp1Reached := false
+                    modelState := ACTIVE
+                    if showHistoricalLabels
+                        label.new(bar_index, direction == 1 ? low : high, (direction == 1 ? "LONG" : "SHORT") + "\n50% " + str.tostring(activeEntry, format.mintick) + "\nSTOP " + str.tostring(activeStop, format.mintick) + "\nTP1 " + str.tostring(activeTP1, format.mintick) + " · TP2 " + str.tostring(activeTP2, format.mintick), style = direction == 1 ? label.style_label_up : label.style_label_down, color = direction == 1 ? color.rgb(30, 83, 63) : color.rgb(100, 39, 49), textcolor = color.white, size = size.small)
+                else
+                    modelState := COOLDOWN
+                    exitBar := bar_index
+            else
+                if direction == 1 and high > impulseExtreme
+                    impulseExtreme := high
+                    knownMidpoint := (impulseOrigin + impulseExtreme) / 2.0
+                else if direction == -1 and low < impulseExtreme
+                    impulseExtreme := low
+                    knownMidpoint := (impulseOrigin + impulseExtreme) / 2.0
+        else if modelState == ACTIVE
+            bool stopHit = direction == 1 ? low <= activeStop : high >= activeStop
+            bool targetOneHit = direction == 1 ? high >= activeTP1 : low <= activeTP1
+            bool targetTwoHit = direction == 1 ? high >= activeTP2 : low <= activeTP2
+            if stopHit
+                stopEvent := true
+                modelState := COOLDOWN
+                exitBar := bar_index
+                if showHistoricalLabels
+                    label.new(bar_index, activeStop, "STOP", style = direction == 1 ? label.style_label_down : label.style_label_up, color = color.rgb(121, 43, 55), textcolor = color.white, size = size.tiny)
+            else
+                if not tp1Reached and targetOneHit
+                    tp1Event := true
+                    tp1Reached := true
+                    activeStop := activeEntry
+                    if showHistoricalLabels
+                        label.new(bar_index, activeTP1, "TP1 → B/E", style = direction == 1 ? label.style_label_down : label.style_label_up, color = color.rgb(35, 92, 69), textcolor = color.white, size = size.tiny)
+                    bool sameBarBreakEven = direction == 1 ? low <= activeStop : high >= activeStop
+                    if sameBarBreakEven
+                        stopEvent := true
+                        modelState := COOLDOWN
+                        exitBar := bar_index
+                if modelState == ACTIVE and targetTwoHit
+                    tp2Event := true
+                    modelState := COOLDOWN
+                    exitBar := bar_index
+                    if showHistoricalLabels
+                        label.new(bar_index, activeTP2, "TP2", style = direction == 1 ? label.style_label_down : label.style_label_up, color = color.rgb(35, 92, 69), textcolor = color.white, size = size.tiny)
+        else if modelState == COOLDOWN and bar_index - exitBar >= cooldownBars
+            modelState := IDLE
+            direction := 0
+            activeEntry := na
+            activeStop := na
+            activeTP1 := na
+            activeTP2 := na
+
+// ── Visuals ──────────────────────────────────────────────────────────────────
+color sessionColor = shadeSession and inSession ? color.new(color.rgb(73, 117, 99), 92) : na
+bgcolor(sessionColor, title = "Approved session")
+plot(modelState == TRACKING ? knownMidpoint : na, "Tracking midpoint", color = color.new(color.rgb(138, 184, 255), 25), linewidth = 1, style = plot.style_linebr)
+plot(modelState == TRACKING ? impulseOrigin : na, "Impulse origin", color = color.new(color.gray, 60), linewidth = 1, style = plot.style_linebr)
+plot(modelState == ACTIVE ? activeEntry : na, "Sphinx Entry", color = color.rgb(138, 184, 255), linewidth = 2, style = plot.style_linebr)
+plot(modelState == ACTIVE ? activeStop : na, "Sphinx Stop", color = color.rgb(255, 101, 119), linewidth = 2, style = plot.style_linebr)
+plot(modelState == ACTIVE ? activeTP1 : na, "Sphinx TP1", color = color.new(color.rgb(98, 242, 176), 25), linewidth = 1, style = plot.style_linebr)
+plot(modelState == ACTIVE ? activeTP2 : na, "Sphinx TP2", color = color.rgb(98, 242, 176), linewidth = 2, style = plot.style_linebr)
+plot(showSwings ? latestSwingHigh : na, "Confirmed buy-side liquidity", color = equalHighs ? color.new(color.rgb(234, 201, 119), 10) : color.new(color.rgb(234, 201, 119), 65), linewidth = 1, style = plot.style_stepline)
+plot(showSwings ? latestSwingLow : na, "Confirmed sell-side liquidity", color = equalLows ? color.new(color.rgb(234, 201, 119), 10) : color.new(color.rgb(234, 201, 119), 65), linewidth = 1, style = plot.style_stepline)
+plot(showFVG ? latestBullFVGUpper : na, "Bull FVG upper", color = color.new(color.lime, 75), style = plot.style_linebr)
+plot(showFVG ? latestBullFVGLower : na, "Bull FVG lower", color = color.new(color.lime, 75), style = plot.style_linebr)
+plot(showFVG ? latestBearFVGUpper : na, "Bear FVG upper", color = color.new(color.red, 75), style = plot.style_linebr)
+plot(showFVG ? latestBearFVGLower : na, "Bear FVG lower", color = color.new(color.red, 75), style = plot.style_linebr)
+plot(showHTFContext and h1BullFVG ? h1Low1 : na, "1H bull FVG", color = color.new(color.aqua, 78), style = plot.style_stepline)
+plot(showHTFContext and h4BullFVG ? h4Low1 : na, "4H bull FVG", color = color.new(color.blue, 72), style = plot.style_stepline)
+plot(showHTFContext and h1BearFVG ? h1High1 : na, "1H bear FVG", color = color.new(color.orange, 78), style = plot.style_stepline)
+plot(showHTFContext and h4BearFVG ? h4High1 : na, "4H bear FVG", color = color.new(color.purple, 72), style = plot.style_stepline)
+plotshape(longSignal, "Long trigger", shape.labelup, location.belowbar, color.rgb(30, 83, 63), text = "LONG", textcolor = color.white, size = size.tiny)
+plotshape(shortSignal, "Short trigger", shape.labeldown, location.abovebar, color.rgb(100, 39, 49), text = "SHORT", textcolor = color.white, size = size.tiny)
+plotshape(tp1Event, "TP1 event", shape.circle, location.abovebar, color.rgb(98, 242, 176), size = size.tiny)
+plotshape(tp2Event, "TP2 event", shape.diamond, location.abovebar, color.rgb(98, 242, 176), size = size.tiny)
+plotshape(stopEvent, "Stop event", shape.xcross, location.belowbar, color.rgb(255, 101, 119), size = size.tiny)
+
+f_stateName() =>
+    modelState == IDLE ? "WAITING LOCATION" : modelState == TRACKING ? "TRACKING 50%" : modelState == ACTIVE ? (direction == 1 ? "LONG ACTIVE" : "SHORT ACTIVE") : "COOLDOWN"
+f_price(float value) =>
+    na(value) ? "—" : str.tostring(value, format.mintick)
+f_cellColor(string stateName) =>
+    str.contains(stateName, "LONG") ? color.rgb(22, 61, 49) : str.contains(stateName, "SHORT") ? color.rgb(72, 33, 42) : color.rgb(25, 31, 37)
+
+var table desk = table.new(position.top_right, 2, 12, bgcolor = color.new(color.rgb(10, 14, 18), 4), frame_color = color.rgb(39, 50, 60), frame_width = 1, border_color = color.rgb(31, 41, 50))
+if barstate.islast and showDashboard
+    string stateName = timeframeApproved ? f_stateName() : "USE 2-MIN CHART"
+    table.cell(desk, 0, 0, "SPHINX / PAPER", text_color = color.rgb(98, 242, 176), bgcolor = color.rgb(12, 18, 22), text_size = size.small)
+    table.cell(desk, 1, 0, syminfo.ticker, text_color = color.white, bgcolor = color.rgb(12, 18, 22), text_size = size.small)
+    table.cell(desk, 0, 1, "STATE", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 1, stateName, text_color = color.white, bgcolor = f_cellColor(stateName), text_size = size.tiny)
+    table.cell(desk, 0, 2, "SESSION", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 2, inSession ? "APPROVED" : "CLOSED", text_color = inSession ? color.rgb(98, 242, 176) : color.gray, text_size = size.tiny)
+    table.cell(desk, 0, 3, "REGIME", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 3, regime, text_color = color.white, text_size = size.tiny)
+    table.cell(desk, 0, 4, "ENTRY", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 4, f_price(activeEntry), text_color = color.rgb(138, 184, 255), text_size = size.tiny)
+    table.cell(desk, 0, 5, "STOP", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 5, f_price(activeStop), text_color = color.rgb(255, 101, 119), text_size = size.tiny)
+    table.cell(desk, 0, 6, "TP1", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 6, f_price(activeTP1), text_color = color.rgb(98, 242, 176), text_size = size.tiny)
+    table.cell(desk, 0, 7, "TP2", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 7, f_price(activeTP2), text_color = color.rgb(98, 242, 176), text_size = size.tiny)
+    table.cell(desk, 0, 8, "R:R", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 8, na(expectedRR) ? "—" : str.tostring(expectedRR, "#.##") + "R", text_color = color.white, text_size = size.tiny)
+    table.cell(desk, 0, 9, "SCORE", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 9, na(setupScore) ? "—" : str.tostring(setupScore, "#") + "/100", text_color = color.white, text_size = size.tiny)
+    table.cell(desk, 0, 10, "LIQUIDITY", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 10, usedLiquidityTarget ? "CONFIRMED" : "1.66 FALLBACK", text_color = color.rgb(234, 201, 119), text_size = size.tiny)
+    table.cell(desk, 0, 11, "HTF FVG", text_color = color.gray, text_size = size.tiny)
+    table.cell(desk, 1, 11, h4BullFVG ? "4H BULL" : h4BearFVG ? "4H BEAR" : h1BullFVG ? "1H BULL" : h1BearFVG ? "1H BEAR" : "NONE", text_color = color.white, text_size = size.tiny)
+
+// ── Alerts ───────────────────────────────────────────────────────────────────
+// Individual alertcondition entries appear in TradingView's Create Alert menu.
+alertcondition(longSignal, "Sphinx Long", '{"system":"sphinx","mode":"paper","side":"LONG","ticker":"{{ticker}}","close":{{close}},"entry":{{plot("Sphinx Entry")}},"stop":{{plot("Sphinx Stop")}},"tp1":{{plot("Sphinx TP1")}},"tp2":{{plot("Sphinx TP2")}}}')
+alertcondition(shortSignal, "Sphinx Short", '{"system":"sphinx","mode":"paper","side":"SHORT","ticker":"{{ticker}}","close":{{close}},"entry":{{plot("Sphinx Entry")}},"stop":{{plot("Sphinx Stop")}},"tp1":{{plot("Sphinx TP1")}},"tp2":{{plot("Sphinx TP2")}}}')
+alertcondition(stopEvent, "Sphinx Stop / Invalidation", "Sphinx invalidation on {{exchange}}:{{ticker}} at {{close}}")
+alertcondition(tp1Event, "Sphinx TP1", "Sphinx target one on {{exchange}}:{{ticker}} at {{close}}")
+alertcondition(tp2Event, "Sphinx TP2", "Sphinx target two on {{exchange}}:{{ticker}} at {{close}}")
+
+if longSignal
+    alert('{"system":"sphinx","mode":"paper","side":"LONG","ticker":"' + syminfo.ticker + '","entry":' + str.tostring(activeEntry, format.mintick) + ',"stop":' + str.tostring(activeStop, format.mintick) + ',"tp1":' + str.tostring(activeTP1, format.mintick) + ',"tp2":' + str.tostring(activeTP2, format.mintick) + '}', alert.freq_once_per_bar_close)
+if shortSignal
+    alert('{"system":"sphinx","mode":"paper","side":"SHORT","ticker":"' + syminfo.ticker + '","entry":' + str.tostring(activeEntry, format.mintick) + ',"stop":' + str.tostring(activeStop, format.mintick) + ',"tp1":' + str.tostring(activeTP1, format.mintick) + ',"tp2":' + str.tostring(activeTP2, format.mintick) + '}', alert.freq_once_per_bar_close)

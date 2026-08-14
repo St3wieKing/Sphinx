@@ -1,0 +1,1 @@
+"""Sphinx paper signal dashboard."""
