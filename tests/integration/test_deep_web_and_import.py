@@ -3,6 +3,7 @@ from __future__ import annotations
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from sphinx_bot.config import load_config
 from sphinx_bot.data.csv_feed import read_bars
@@ -56,6 +57,37 @@ class DeepWebImportTests(unittest.TestCase):
         self.assertEqual(overview["holdout_status"], "LOCKED")
         self.assertEqual(service.instrument("NQ")["data_mode"], "SYNTHETIC_ENGINEERING_DEMO")
         self.assertTrue(PINE_PATH.exists())
+
+    def test_tradingview_webhook_is_receive_only_and_validated(self):
+        with tempfile.TemporaryDirectory() as directory:
+            log = Path(directory) / "webhooks.jsonl"
+            with patch.dict("os.environ", {"SPHINX_WEBHOOK_TOKEN": "test-secret"}):
+                service = DashboardService(webhook_log=log)
+            event = service.accept_tradingview_alert(
+                {
+                    "side": "LONG",
+                    "ticker": "MNQ1!",
+                    "entry": 20000,
+                    "stop": 19990,
+                    "tp1": 20010,
+                    "tp2": 20020,
+                }
+            )
+            self.assertEqual(event["status"], "RECEIVED_NOT_ROUTED")
+            self.assertEqual(event["symbol"], "MNQ")
+            self.assertEqual(service.webhook_status()["received_this_run"], 1)
+            self.assertTrue(log.exists())
+            with self.assertRaisesRegex(ValueError, "ordering"):
+                service.accept_tradingview_alert(
+                    {
+                        "side": "LONG",
+                        "ticker": "NQ1!",
+                        "entry": 20000,
+                        "stop": 20010,
+                        "tp1": 19990,
+                        "tp2": 19980,
+                    }
+                )
 
     def test_packaged_pine_copy_matches_deliverable(self):
         deliverable = (ROOT / "tradingview/sphinx_signal_indicator.pine").read_text()

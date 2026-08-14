@@ -32,8 +32,15 @@ class AuditLogger:
         self.records: list[dict[str, Any]] = []
         if self.path:
             self.path.parent.mkdir(parents=True, exist_ok=True)
-            # Each run starts a distinct chain; never mutate an old record.
             self.path.touch(exist_ok=True)
+            if self.path.stat().st_size:
+                valid, _, error = verify_chain(self.path)
+                if not valid:
+                    raise ValueError(f"cannot resume invalid audit chain: {error}")
+                with self.path.open(encoding="utf-8") as handle:
+                    for line in handle:
+                        if line.strip():
+                            self.previous_hash = json.loads(line)["record_hash"]
 
     def write(self, record_type: str, payload: Any) -> dict[str, Any]:
         body = {

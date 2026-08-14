@@ -2,20 +2,26 @@
 
 from __future__ import annotations
 
+import hmac
 import json
+import math
 import mimetypes
+import os
+import re
 from collections.abc import Sequence
 from dataclasses import replace
-from datetime import datetime
+from datetime import UTC, datetime
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from threading import Lock
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 from ..config import StrategyConfig, load_config
 from ..data.csv_feed import read_bars
 from ..models import Decision
+from ..monitoring.audit import AuditLogger
 from ..research.backtest import BacktestEngine
 from ..research.synthetic import generate_synthetic_bars
 
@@ -71,8 +77,14 @@ class DashboardService:
         nq_data: str | Path | None = None,
         mnq_data: str | Path | None = None,
         deep_report: str | Path | None = None,
+        webhook_log: str | Path | None = None,
     ) -> None:
         self.started_at = datetime.now().astimezone().isoformat()
+        self.webhook_token = os.environ.get("SPHINX_WEBHOOK_TOKEN", "")
+        self.webhook_events: list[dict[str, Any]] = []
+        self.webhook_lock = Lock()
+        default_log = Path("artifacts/webhooks/tradingview-alerts.jsonl")
+        self.webhook_audit = AuditLogger(webhook_log or default_log)
         nq_config = load_config(REPOSITORY_ROOT / "config" / "baseline.json")
         mnq_config = load_config(REPOSITORY_ROOT / "config" / "mnq.json")
         self.instruments = {
@@ -173,6 +185,60 @@ class DashboardService:
             ],
         }
 
+    def accept_tradingview_alert(self, payload: dict[str, Any]) -> dict[str, Any]:
+        if not self.webhook_token:
+            raise RuntimeError(
+                "TradingView webhook intake is disabled until SPHINX_WEBHOOK_TOKEN is set"
+            )
+        side = str(payload.get("side", "")).upper()
+        ticker = str(payload.get("ticker", "")).upper()
+        if side not in {"LONG", "SHORT"}:
+            raise ValueError("side must be LONG or SHORT")
+        symbol = "MNQ" if "MNQ" in ticker else "NQ" if "NQ" in ticker else ""
+        if not symbol:
+            raise ValueError("ticker must identify NQ or MNQ")
+        prices: dict[str, float] = {}
+        for key in ("entry", "stop", "tp1", "tp2"):
+            try:
+                prices[key] = float(payload[key])
+            except (KeyError, TypeError, ValueError) as exc:
+                raise ValueError(f"{key} must be numeric") from exc
+            if not math.isfinite(prices[key]) or prices[key] <= 0:
+                raise ValueError(f"{key} must be finite and positive")
+        ordering_valid = (
+            prices["stop"] < prices["entry"] < prices["tp1"] <= prices["tp2"]
+            if side == "LONG"
+            else prices["stop"] > prices["entry"] > prices["tp1"] >= prices["tp2"]
+        )
+        if not ordering_valid:
+            raise ValueError("entry, stop, and target ordering is invalid")
+        event = {
+            "received_at": datetime.now(UTC).isoformat(),
+            "system": "sphinx",
+            "mode": "paper",
+            "source": "tradingview",
+            "symbol": symbol,
+            "ticker": ticker,
+            "side": side,
+            **prices,
+            "status": "RECEIVED_NOT_ROUTED",
+        }
+        with self.webhook_lock:
+            record = self.webhook_audit.write("tradingview_paper_alert", event)
+            event["audit_hash"] = record["record_hash"]
+            self.webhook_events.append(event)
+            self.webhook_events = self.webhook_events[-200:]
+        return event
+
+    def webhook_status(self) -> dict[str, Any]:
+        with self.webhook_lock:
+            return {
+                "enabled": bool(self.webhook_token),
+                "mode": "RECEIVE_ONLY_NO_ORDER_ROUTING",
+                "received_this_run": len(self.webhook_events),
+                "latest": self.webhook_events[-1] if self.webhook_events else None,
+            }
+
     def overview(self) -> dict[str, Any]:
         return {
             "name": "Sphinx Signal Desk",
@@ -196,6 +262,7 @@ class DashboardService:
             },
             "deep_report": self.deep_report,
             "holdout_status": "LOCKED",
+            "webhook": self.webhook_status(),
         }
 
     def instrument(self, symbol: str) -> dict[str, Any]:
@@ -221,6 +288,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
             if parsed.path == "/api/overview":
                 self._json(self.service.overview())
                 return
+            if parsed.path == "/api/webhooks":
+                self._json(self.service.webhook_status())
+                return
             if parsed.path.startswith("/api/instrument/"):
                 symbol = parsed.path.rsplit("/", 1)[-1]
                 self._json(self.service.instrument(symbol))
@@ -241,6 +311,35 @@ class DashboardHandler(BaseHTTPRequestHandler):
                 {"error": f"dashboard request failed: {exc}"},
                 status=HTTPStatus.INTERNAL_SERVER_ERROR,
             )
+
+    def do_POST(self) -> None:
+        parsed = urlparse(self.path)
+        if parsed.path != "/api/webhook/tradingview":
+            self._json({"error": "unknown endpoint"}, status=HTTPStatus.NOT_FOUND)
+            return
+        if not self.service.webhook_token:
+            self._json(
+                {"error": "webhook intake disabled"},
+                status=HTTPStatus.SERVICE_UNAVAILABLE,
+            )
+            return
+        provided = parse_qs(parsed.query).get("token", [""])[0]
+        if not hmac.compare_digest(provided, self.service.webhook_token):
+            self._json({"error": "unauthorized"}, status=HTTPStatus.UNAUTHORIZED)
+            return
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            if length <= 0 or length > 65_536:
+                raise ValueError("JSON body must be between 1 and 65536 bytes")
+            payload = json.loads(self.rfile.read(length))
+            if not isinstance(payload, dict):
+                raise TypeError("JSON payload must be an object")
+            event = self.service.accept_tradingview_alert(payload)
+            self._json(event, status=HTTPStatus.ACCEPTED)
+        except (TypeError, ValueError, json.JSONDecodeError) as exc:
+            self._json({"error": str(exc)}, status=HTTPStatus.BAD_REQUEST)
+        except RuntimeError as exc:
+            self._json({"error": str(exc)}, status=HTTPStatus.SERVICE_UNAVAILABLE)
 
     def _static(self, request_path: str) -> None:
         relative = "index.html" if request_path in {"", "/"} else request_path.lstrip("/")
@@ -270,7 +369,8 @@ class DashboardHandler(BaseHTTPRequestHandler):
         self.wfile.write(content)
 
     def log_message(self, format: str, *args: Any) -> None:
-        print(f"[dashboard] {self.address_string()} — {format % args}")
+        message = re.sub(r"token=[^& ]+", "token=REDACTED", format % args)
+        print(f"[dashboard] {self.address_string()} — {message}")
 
 
 def serve_dashboard(
@@ -280,8 +380,14 @@ def serve_dashboard(
     nq_data: str | Path | None = None,
     mnq_data: str | Path | None = None,
     deep_report: str | Path | None = None,
+    webhook_log: str | Path | None = None,
 ) -> None:
-    service = DashboardService(nq_data=nq_data, mnq_data=mnq_data, deep_report=deep_report)
+    service = DashboardService(
+        nq_data=nq_data,
+        mnq_data=mnq_data,
+        deep_report=deep_report,
+        webhook_log=webhook_log,
+    )
     server = ThreadingHTTPServer((host, port), DashboardHandler)
     server.service = service  # type: ignore[attr-defined]
     print(f"Sphinx Signal Desk listening on http://{host}:{port} — PAPER/RESEARCH ONLY")

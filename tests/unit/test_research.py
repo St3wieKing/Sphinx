@@ -83,6 +83,13 @@ class ResearchTests(unittest.TestCase):
             valid, _, _ = verify_chain(path)
             self.assertFalse(valid)
 
+    def test_audit_chain_can_resume_without_breaking_hashes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "audit.jsonl"
+            AuditLogger(path).write("one", {"value": 1})
+            AuditLogger(path).write("two", {"value": 2})
+            self.assertEqual(verify_chain(path), (True, 2, None))
+
     def test_ledger_refuses_unfrozen_holdout(self):
         with tempfile.TemporaryDirectory() as directory:
             ledger = ExperimentLedger(Path(directory) / "ledger.jsonl")

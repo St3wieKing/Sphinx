@@ -25,7 +25,7 @@ The answer to “does this demonstrate robust performance after costs?” is cur
 
 On 2026-08-14:
 
-- all **28** standard-library unit/integration tests passed;
+- all **30** standard-library unit/integration tests passed;
 - strict config and all JSON deliverables parsed;
 - editable installation and console entry point were exercised in an isolated virtual environment;
 - deterministic synthetic replay exercised signal, risk, fill, trade, metric, paper artifact, and hash-chain paths;

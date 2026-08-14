@@ -59,6 +59,9 @@ sphinx deep-backtest --nq-data /path/to/nq_2m.csv --mnq-data /path/to/mnq_2m.csv
 sphinx dashboard --host 0.0.0.0 --port 8000 \
   --nq-data /path/to/nq_2m.csv --mnq-data /path/to/mnq_2m.csv \
   --deep-report artifacts/deep_research.json
+
+# Or start receive-only TradingView paper webhook intake with a local token
+scripts/start_paper_signal_desk.sh
 ```
 
 Without installation:

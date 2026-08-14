@@ -280,6 +280,7 @@ def command_dashboard(args: argparse.Namespace) -> int:
         nq_data=args.nq_data,
         mnq_data=args.mnq_data,
         deep_report=args.deep_report,
+        webhook_log=args.webhook_log,
     )
     return 0
 
@@ -385,6 +386,7 @@ def build_parser() -> argparse.ArgumentParser:
     dashboard.add_argument("--nq-data")
     dashboard.add_argument("--mnq-data")
     dashboard.add_argument("--deep-report")
+    dashboard.add_argument("--webhook-log", default="artifacts/webhooks/tradingview-alerts.jsonl")
     dashboard.set_defaults(function=command_dashboard)
     return parser
 
