@@ -1,0 +1,4276 @@
+{
+  "status": "RESEARCH_ONLY_NO_PROFITABILITY_CLAIM",
+  "reports": {
+    "NQ": {
+      "config_fingerprint": "c92438c2a7b850c5ef2d3c2e45b0de83e147698a8b4ba1b27243cbf41e909dcd",
+      "data": {
+        "dataset_fingerprint": "1294a03f4529b2a337dad4f400af705149a871c031a36f8f2f7f3fe41104e258",
+        "development_bars": 314073,
+        "duplicates": 0,
+        "first_timestamp": "2022-12-26T23:02:00+00:00",
+        "holdout_bars_locked": 104691,
+        "interval_mismatches": 0,
+        "large_gaps": 772,
+        "last_timestamp": "2025-12-12T01:50:00+00:00",
+        "out_of_order": 0,
+        "rows": 523455,
+        "sha256": "1294a03f4529b2a337dad4f400af705149a871c031a36f8f2f7f3fe41104e258",
+        "validation_bars": 104691
+      },
+      "development": {
+        "by_month": {
+          "2023-01": {
+            "costs": 248.4,
+            "expectancy": -42.27142857142857,
+            "gross_pnl": -47.5,
+            "net_pnl": -295.9,
+            "trades": 7,
+            "win_rate": 0.5714285714285714
+          },
+          "2023-02": {
+            "costs": 124.2,
+            "expectancy": 54.3666666666697,
+            "gross_pnl": 341.6666666666788,
+            "net_pnl": 217.4666666666788,
+            "trades": 4,
+            "win_rate": 0.75
+          },
+          "2023-03": {
+            "costs": 41.4,
+            "expectancy": 11.100000000000001,
+            "gross_pnl": 52.5,
+            "net_pnl": 11.100000000000001,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2023-04": {
+            "costs": 62.099999999999994,
+            "expectancy": -59.383333333339394,
+            "gross_pnl": -56.66666666667879,
+            "net_pnl": -118.76666666667879,
+            "trades": 2,
+            "win_rate": 0.5
+          },
+          "2023-05": {
+            "costs": 82.8,
+            "expectancy": -177.6,
+            "gross_pnl": -450.0,
+            "net_pnl": -532.8,
+            "trades": 3,
+            "win_rate": 0.0
+          },
+          "2023-06": {
+            "costs": 103.5,
+            "expectancy": 11.333333333333336,
+            "gross_pnl": 137.5,
+            "net_pnl": 34.0,
+            "trades": 3,
+            "win_rate": 0.6666666666666666
+          },
+          "2023-07": {
+            "costs": 20.7,
+            "expectancy": 429.3,
+            "gross_pnl": 450.0,
+            "net_pnl": 429.3,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2023-08": {
+            "costs": 124.19999999999999,
+            "expectancy": 29.575000000000003,
+            "gross_pnl": 242.5,
+            "net_pnl": 118.30000000000004,
+            "trades": 4,
+            "win_rate": 0.75
+          },
+          "2023-09": {
+            "costs": 41.4,
+            "expectancy": -121.4,
+            "gross_pnl": -80.0,
+            "net_pnl": -121.4,
+            "trades": 1,
+            "win_rate": 0.0
+          },
+          "2023-10": {
+            "costs": 41.4,
+            "expectancy": 176.1,
+            "gross_pnl": 217.5,
+            "net_pnl": 176.1,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2023-11": {
+            "costs": 41.4,
+            "expectancy": 116.80000000000001,
+            "gross_pnl": 275.0,
+            "net_pnl": 233.60000000000002,
+            "trades": 2,
+            "win_rate": 0.5
+          },
+          "2024-01": {
+            "costs": 41.4,
+            "expectancy": 258.6,
+            "gross_pnl": 300.0,
+            "net_pnl": 258.6,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2024-02": {
+            "costs": 62.099999999999994,
+            "expectancy": 58.95000000000002,
+            "gross_pnl": 180.0,
+            "net_pnl": 117.90000000000003,
+            "trades": 2,
+            "win_rate": 0.5
+          },
+          "2024-03": {
+            "costs": 20.7,
+            "expectancy": 206.8,
+            "gross_pnl": 227.5,
+            "net_pnl": 206.8,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2024-04": {
+            "costs": 82.8,
+            "expectancy": -215.93333333333334,
+            "gross_pnl": -565.0,
+            "net_pnl": -647.8,
+            "trades": 3,
+            "win_rate": 0.0
+          },
+          "2024-05": {
+            "costs": 41.4,
+            "expectancy": 1.1000000000000014,
+            "gross_pnl": 42.5,
+            "net_pnl": 1.1000000000000014,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2024-06": {
+            "costs": 20.7,
+            "expectancy": -220.7,
+            "gross_pnl": -200.0,
+            "net_pnl": -220.7,
+            "trades": 1,
+            "win_rate": 0.0
+          },
+          "2024-07": {
+            "costs": 103.5,
+            "expectancy": -56.49999999999999,
+            "gross_pnl": -122.5,
+            "net_pnl": -225.99999999999997,
+            "trades": 4,
+            "win_rate": 0.5
+          },
+          "2024-08": {
+            "costs": 82.8,
+            "expectancy": -168.2,
+            "gross_pnl": -590.0,
+            "net_pnl": -672.8,
+            "trades": 4,
+            "win_rate": 0.0
+          },
+          "2024-09": {
+            "costs": 62.099999999999994,
+            "expectancy": 298.46666666666664,
+            "gross_pnl": 957.5,
+            "net_pnl": 895.4,
+            "trades": 3,
+            "win_rate": 0.3333333333333333
+          }
+        },
+        "by_session_hour": {
+          "00:00": {
+            "expectancy": -70.35625,
+            "net_pnl": -1125.7,
+            "trades": 16,
+            "win_rate": 0.4375
+          },
+          "01:00": {
+            "expectancy": 132.40416666666516,
+            "net_pnl": 1059.2333333333213,
+            "trades": 8,
+            "win_rate": 0.625
+          },
+          "02:00": {
+            "expectancy": 70.59166666666744,
+            "net_pnl": 1129.4666666666787,
+            "trades": 16,
+            "win_rate": 0.625
+          },
+          "03:00": {
+            "expectancy": -133.27777777777777,
+            "net_pnl": -1199.5,
+            "trades": 9,
+            "win_rate": 0.2222222222222222
+          }
+        },
+        "metrics": {
+          "average_mae_points": 6.548469387755102,
+          "average_mfe_points": 9.400510204081632,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -26.959090909090904,
+              "net_pnl": -593.0999999999999,
+              "profit_factor": 0.6927738927738927,
+              "trades": 22,
+              "win_rate": 0.5
+            },
+            "SHORT": {
+              "expectancy": 16.911111111111126,
+              "net_pnl": 456.60000000000036,
+              "profit_factor": 1.1646176587230053,
+              "trades": 27,
+              "win_rate": 0.48148148148148145
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -70.35625,
+              "net_pnl": -1125.7,
+              "profit_factor": 0.2372789484382411,
+              "trades": 16,
+              "win_rate": 0.4375
+            },
+            "01:00": {
+              "expectancy": 132.40416666666516,
+              "net_pnl": 1059.2333333333213,
+              "profit_factor": 2.7007600085634578,
+              "trades": 8,
+              "win_rate": 0.625
+            },
+            "02:00": {
+              "expectancy": 70.59166666666742,
+              "net_pnl": 1129.4666666666787,
+              "profit_factor": 2.0153422030444794,
+              "trades": 16,
+              "win_rate": 0.625
+            },
+            "03:00": {
+              "expectancy": -133.27777777777777,
+              "net_pnl": -1199.5,
+              "profit_factor": 0.1966378675239435,
+              "trades": 9,
+              "win_rate": 0.2222222222222222
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -205.34,
+              "net_pnl": -1026.7,
+              "profit_factor": 0.0,
+              "trades": 5,
+              "win_rate": 0.0
+            },
+            "range": {
+              "expectancy": 20.23181818181818,
+              "net_pnl": 890.1999999999999,
+              "profit_factor": 1.2420666213460234,
+              "trades": 44,
+              "win_rate": 0.5454545454545454
+            }
+          },
+          "expectancy_per_trade": -2.7857142857142856,
+          "gross_pnl_before_costs": 1312.5,
+          "maximum_consecutive_losses": 8,
+          "maximum_drawdown": 0.023981694089054026,
+          "net_pnl_after_costs": -136.5,
+          "profit_factor": 0.9709833765571195,
+          "total_costs": 1449.000000000001,
+          "trade_count": 49,
+          "win_rate": 0.4897959183673469
+        }
+      },
+      "execution_scenarios_on_validation": {
+        "base": {
+          "average_mae_points": 9.289473684210526,
+          "average_mfe_points": 12.526315789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -135.27,
+              "net_pnl": -1352.7,
+              "profit_factor": 0.24514508928571427,
+              "trades": 10,
+              "win_rate": 0.1
+            },
+            "SHORT": {
+              "expectancy": -54.544444444444444,
+              "net_pnl": -490.9,
+              "profit_factor": 0.6092493831091299,
+              "trades": 9,
+              "win_rate": 0.2222222222222222
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -111.11999999999998,
+              "net_pnl": -555.5999999999999,
+              "profit_factor": 0.31339594661393966,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -57.9,
+              "net_pnl": -347.4,
+              "profit_factor": 0.5584085420109318,
+              "trades": 6,
+              "win_rate": 0.16666666666666666
+            },
+            "02:00": {
+              "expectancy": -197.575,
+              "net_pnl": -790.3,
+              "profit_factor": 0.0,
+              "trades": 4,
+              "win_rate": 0.0
+            },
+            "03:00": {
+              "expectancy": -37.57499999999999,
+              "net_pnl": -150.29999999999995,
+              "profit_factor": 0.7729950158586317,
+              "trades": 4,
+              "win_rate": 0.25
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -36.32499999999999,
+              "net_pnl": -145.29999999999995,
+              "profit_factor": 0.7788768832749963,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "range": {
+              "expectancy": -152.6857142857143,
+              "net_pnl": -2137.6000000000004,
+              "profit_factor": 0.1060555369688859,
+              "trades": 14,
+              "win_rate": 0.07142857142857142
+            },
+            "trend_up": {
+              "expectancy": 439.3,
+              "net_pnl": 439.3,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -97.03157894736844,
+          "gross_pnl_before_costs": -1367.5,
+          "maximum_consecutive_losses": 7,
+          "maximum_drawdown": 0.019973172079592545,
+          "net_pnl_after_costs": -1843.6000000000004,
+          "profit_factor": 0.39520388413213925,
+          "total_costs": 476.09999999999985,
+          "trade_count": 19,
+          "win_rate": 0.15789473684210525
+        },
+        "optimistic": {
+          "average_mae_points": 8.50328947368421,
+          "average_mfe_points": 12.838815789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -111.91,
+              "net_pnl": -1119.1,
+              "profit_factor": 0.32766596575548207,
+              "trades": 10,
+              "win_rate": 0.2
+            },
+            "SHORT": {
+              "expectancy": -51.0111111111111,
+              "net_pnl": -459.0999999999999,
+              "profit_factor": 0.6362123613312202,
+              "trades": 9,
+              "win_rate": 0.2222222222222222
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -91.11999999999999,
+              "net_pnl": -455.59999999999997,
+              "profit_factor": 0.3794606374284936,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -83.13333333333333,
+              "net_pnl": -498.79999999999995,
+              "profit_factor": 0.47527877130233537,
+              "trades": 6,
+              "win_rate": 0.16666666666666666
+            },
+            "02:00": {
+              "expectancy": -130.875,
+              "net_pnl": -523.5,
+              "profit_factor": 0.15167719980554206,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "03:00": {
+              "expectancy": -25.075000000000003,
+              "net_pnl": -100.30000000000001,
+              "profit_factor": 0.8394172270252962,
+              "trades": 4,
+              "win_rate": 0.25
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -23.825000000000003,
+              "net_pnl": -95.30000000000001,
+              "profit_factor": 0.8461910910264687,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "range": {
+              "expectancy": -138.19285714285715,
+              "net_pnl": -1934.7000000000003,
+              "profit_factor": 0.16134206077419916,
+              "trades": 14,
+              "win_rate": 0.14285714285714285
+            },
+            "trend_up": {
+              "expectancy": 451.8,
+              "net_pnl": 451.8,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -83.06315789473686,
+          "gross_pnl_before_costs": -1365.0,
+          "maximum_consecutive_losses": 7,
+          "maximum_drawdown": 0.016856575762690652,
+          "net_pnl_after_costs": -1578.2000000000003,
+          "profit_factor": 0.46072099777891684,
+          "total_costs": 213.2,
+          "trade_count": 19,
+          "win_rate": 0.21052631578947367
+        },
+        "pessimistic": {
+          "average_mae_points": 9.270833333333334,
+          "average_mfe_points": 3.7708333333333335,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -196.05,
+              "net_pnl": -980.25,
+              "profit_factor": 0.0,
+              "trades": 5,
+              "win_rate": 0.0
+            },
+            "SHORT": {
+              "expectancy": -139.33928571428572,
+              "net_pnl": -975.375,
+              "profit_factor": 0.13068181818181818,
+              "trades": 7,
+              "win_rate": 0.14285714285714285
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -96.71875,
+              "net_pnl": -386.875,
+              "profit_factor": 0.2748359887535145,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "01:00": {
+              "expectancy": -167.05,
+              "net_pnl": -835.25,
+              "profit_factor": 0.0,
+              "trades": 5,
+              "win_rate": 0.0
+            },
+            "02:00": {
+              "expectancy": -246.75,
+              "net_pnl": -246.75,
+              "profit_factor": 0.0,
+              "trades": 1,
+              "win_rate": 0.0
+            },
+            "03:00": {
+              "expectancy": -243.375,
+              "net_pnl": -486.75,
+              "profit_factor": 0.0,
+              "trades": 2,
+              "win_rate": 0.0
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -248.375,
+              "net_pnl": -248.375,
+              "profit_factor": 0.0,
+              "trades": 1,
+              "win_rate": 0.0
+            },
+            "range": {
+              "expectancy": -155.20454545454547,
+              "net_pnl": -1707.25,
+              "profit_factor": 0.07909109298091835,
+              "trades": 11,
+              "win_rate": 0.09090909090909091
+            }
+          },
+          "expectancy_per_trade": -162.96875,
+          "gross_pnl_before_costs": -1380.0,
+          "maximum_consecutive_losses": 7,
+          "maximum_drawdown": 0.020005210113116928,
+          "net_pnl_after_costs": -1955.625,
+          "profit_factor": 0.06974669996432394,
+          "total_costs": 575.625,
+          "trade_count": 12,
+          "win_rate": 0.08333333333333333
+        }
+      },
+      "generated_at": "2026-08-14T22:02:13.521657+00:00",
+      "holdout": {
+        "bars_locked": 104691,
+        "opened": false,
+        "reason": "Strategy is not frozen; suite intentionally stops before holdout."
+      },
+      "instrument": "NQ",
+      "one_factor_sensitivity_on_development": [
+        {
+          "case_id": "SENS-CONS-08",
+          "config_fingerprint": "ff3fdb5b899b64405a2de7ea4be3b4fd8ec76b5d8a272b8a92ed697d684357a3",
+          "hypothesis": "Shorter consolidation memory may react faster without losing location quality.",
+          "metrics": {
+            "average_mae_points": 6.545238095238095,
+            "average_mfe_points": 7.688095238095238,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -91.71044444444524,
+                "net_pnl": -4585.522222222262,
+                "profit_factor": 0.30197704135566017,
+                "trades": 50,
+                "win_rate": 0.26
+              },
+              "SHORT": {
+                "expectancy": -7.520519480520029,
+                "net_pnl": -413.6285714286016,
+                "profit_factor": 0.9210542101331072,
+                "trades": 55,
+                "win_rate": 0.43636363636363634
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -28.72533333333429,
+                "net_pnl": -718.1333333333573,
+                "profit_factor": 0.7032138970395676,
+                "trades": 25,
+                "win_rate": 0.44
+              },
+              "01:00": {
+                "expectancy": -70.4617283950622,
+                "net_pnl": -1902.4666666666792,
+                "profit_factor": 0.38868716729324926,
+                "trades": 27,
+                "win_rate": 0.3333333333333333
+              },
+              "02:00": {
+                "expectancy": -69.7291666666663,
+                "net_pnl": -2231.3333333333217,
+                "profit_factor": 0.45329217098708263,
+                "trades": 32,
+                "win_rate": 0.3125
+              },
+              "03:00": {
+                "expectancy": -7.0103552532146045,
+                "net_pnl": -147.2174603175067,
+                "profit_factor": 0.9329458162981065,
+                "trades": 21,
+                "win_rate": 0.3333333333333333
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -128.43492063492153,
+                "net_pnl": -2311.8285714285876,
+                "profit_factor": 0.26817709039930765,
+                "trades": 18,
+                "win_rate": 0.1111111111111111
+              },
+              "range": {
+                "expectancy": -29.78630490956137,
+                "net_pnl": -2561.6222222222777,
+                "profit_factor": 0.6994812033995463,
+                "trades": 86,
+                "win_rate": 0.4069767441860465
+              },
+              "trend_down": {
+                "expectancy": -125.7,
+                "net_pnl": -125.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "expectancy_per_trade": -47.61095993953202,
+            "gross_pnl_before_costs": -1997.6507936508642,
+            "maximum_consecutive_losses": 9,
+            "maximum_drawdown": 0.05009362287204619,
+            "net_pnl_after_costs": -4999.150793650862,
+            "profit_factor": 0.5766552801196695,
+            "total_costs": 3001.5000000000005,
+            "trade_count": 105,
+            "win_rate": 0.3523809523809524
+          },
+          "parameter": "setup.consolidation_lookback",
+          "value": 8
+        },
+        {
+          "case_id": "SENS-CONS-16",
+          "config_fingerprint": "6d90d4c8c88693f516308af6ecf6a08ecadacae00d182c7b932e5368e8829d3d",
+          "hypothesis": "Longer consolidation memory may reduce noisy breakouts.",
+          "metrics": {
+            "average_mae_points": 13.625,
+            "average_mfe_points": 10.375,
+            "by_direction": {
+              "SHORT": {
+                "expectancy": -185.7,
+                "net_pnl": -185.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "by_entry_hour": {
+              "01:00": {
+                "expectancy": -185.7,
+                "net_pnl": -185.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "by_regime": {
+              "range": {
+                "expectancy": -185.7,
+                "net_pnl": -185.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "expectancy_per_trade": -185.7,
+            "gross_pnl_before_costs": -165.0,
+            "maximum_consecutive_losses": 1,
+            "maximum_drawdown": 0.0018569999999999709,
+            "net_pnl_after_costs": -185.7,
+            "profit_factor": 0.0,
+            "total_costs": 20.7,
+            "trade_count": 1,
+            "win_rate": 0.0
+          },
+          "parameter": "setup.consolidation_lookback",
+          "value": 16
+        },
+        {
+          "case_id": "SENS-DISP-060",
+          "config_fingerprint": "aa9647fa49938e66fa3755994fe92043ced7676979d36f4eb0dffc5445043f5b",
+          "hypothesis": "A lower displacement threshold may increase frequency at a quality cost.",
+          "metrics": {
+            "average_mae_points": 6.563559322033898,
+            "average_mfe_points": 9.669491525423728,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -1.0359999999999991,
+                "net_pnl": -25.899999999999977,
+                "profit_factor": 0.9879641247269852,
+                "trades": 25,
+                "win_rate": 0.52
+              },
+              "SHORT": {
+                "expectancy": -0.7264705882352888,
+                "net_pnl": -24.699999999999818,
+                "profit_factor": 0.9928362191478873,
+                "trades": 34,
+                "win_rate": 0.4411764705882353
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -67.65555555555555,
+                "net_pnl": -1217.8,
+                "profit_factor": 0.24435343757756273,
+                "trades": 18,
+                "win_rate": 0.4444444444444444
+              },
+              "01:00": {
+                "expectancy": 78.08484848484738,
+                "net_pnl": 858.9333333333212,
+                "profit_factor": 1.852623916352314,
+                "trades": 11,
+                "win_rate": 0.5454545454545454
+              },
+              "02:00": {
+                "expectancy": 53.456862745098746,
+                "net_pnl": 908.7666666666787,
+                "profit_factor": 1.681694296501897,
+                "trades": 17,
+                "win_rate": 0.5882352941176471
+              },
+              "03:00": {
+                "expectancy": -46.19230769230769,
+                "net_pnl": -600.5,
+                "profit_factor": 0.6355525884566365,
+                "trades": 13,
+                "win_rate": 0.3076923076923077
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -205.34,
+                "net_pnl": -1026.7,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": 18.07592592592591,
+                "net_pnl": 976.0999999999992,
+                "profit_factor": 1.213443834597976,
+                "trades": 54,
+                "win_rate": 0.5185185185185185
+              }
+            },
+            "expectancy_per_trade": -0.8576271186440624,
+            "gross_pnl_before_costs": 1667.5,
+            "maximum_consecutive_losses": 10,
+            "maximum_drawdown": 0.028181933276287003,
+            "net_pnl_after_costs": -50.59999999999968,
+            "profit_factor": 0.9909639629986793,
+            "total_costs": 1718.1000000000017,
+            "trade_count": 59,
+            "win_rate": 0.4745762711864407
+          },
+          "parameter": "setup.displacement_min_atr",
+          "value": 0.6
+        },
+        {
+          "case_id": "SENS-DISP-100",
+          "config_fingerprint": "3e34f71d1c9249d05d567e4c45d2d64c3bf37418bbc8495b78a5f2562cfce162",
+          "hypothesis": "A higher displacement threshold may filter weak breaks.",
+          "metrics": {
+            "average_mae_points": 7.171875,
+            "average_mfe_points": 10.078125,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -38.00588235294117,
+                "net_pnl": -646.0999999999999,
+                "profit_factor": 0.6252537555826227,
+                "trades": 17,
+                "win_rate": 0.4117647058823529
+              },
+              "SHORT": {
+                "expectancy": 9.521739130434783,
+                "net_pnl": 219.0,
+                "profit_factor": 1.0857814336075207,
+                "trades": 23,
+                "win_rate": 0.43478260869565216
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -113.55000000000001,
+                "net_pnl": -1362.6000000000001,
+                "profit_factor": 0.07676671861237211,
+                "trades": 12,
+                "win_rate": 0.25
+              },
+              "01:00": {
+                "expectancy": 132.40416666666516,
+                "net_pnl": 1059.2333333333213,
+                "profit_factor": 2.7007600085634578,
+                "trades": 8,
+                "win_rate": 0.625
+              },
+              "02:00": {
+                "expectancy": 68.25151515151623,
+                "net_pnl": 750.7666666666785,
+                "profit_factor": 1.8286607799852965,
+                "trades": 11,
+                "win_rate": 0.5454545454545454
+              },
+              "03:00": {
+                "expectancy": -97.16666666666667,
+                "net_pnl": -874.5,
+                "profit_factor": 0.31271612700408674,
+                "trades": 9,
+                "win_rate": 0.3333333333333333
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -153.73333333333335,
+                "net_pnl": -922.4000000000001,
+                "profit_factor": 0.1015876107918574,
+                "trades": 6,
+                "win_rate": 0.16666666666666666
+              },
+              "range": {
+                "expectancy": 14.567647058823535,
+                "net_pnl": 495.3000000000002,
+                "profit_factor": 1.1523812453851836,
+                "trades": 34,
+                "win_rate": 0.47058823529411764
+              }
+            },
+            "expectancy_per_trade": -10.677500000000004,
+            "gross_pnl_before_costs": 670.0,
+            "maximum_consecutive_losses": 8,
+            "maximum_drawdown": 0.024532434843164967,
+            "net_pnl_after_costs": -427.10000000000014,
+            "profit_factor": 0.9001426199995327,
+            "total_costs": 1097.1000000000004,
+            "trade_count": 40,
+            "win_rate": 0.425
+          },
+          "parameter": "setup.displacement_min_atr",
+          "value": 1.0
+        },
+        {
+          "case_id": "SENS-STOP-32",
+          "config_fingerprint": "bf026df131e24e6e9a5952b743adc4e933b60afc8036d0855693486cd93db681",
+          "hypothesis": "A 32-tick cap may improve nominal R but increase invalidations.",
+          "metrics": {
+            "average_mae_points": 6.4770408163265305,
+            "average_mfe_points": 9.293367346938776,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -25.140909090909087,
+                "net_pnl": -553.0999999999999,
+                "profit_factor": 0.7074318963237237,
+                "trades": 22,
+                "win_rate": 0.5
+              },
+              "SHORT": {
+                "expectancy": 28.855555555555565,
+                "net_pnl": 779.1000000000003,
+                "profit_factor": 1.3178443211488249,
+                "trades": 27,
+                "win_rate": 0.48148148148148145
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -67.85625,
+                "net_pnl": -1085.7,
+                "profit_factor": 0.2438888501984818,
+                "trades": 16,
+                "win_rate": 0.4375
+              },
+              "01:00": {
+                "expectancy": 138.02916666666516,
+                "net_pnl": 1104.2333333333213,
+                "profit_factor": 2.911099573093322,
+                "trades": 8,
+                "win_rate": 0.625
+              },
+              "02:00": {
+                "expectancy": 75.43541666666742,
+                "net_pnl": 1206.9666666666787,
+                "profit_factor": 2.166264051277108,
+                "trades": 16,
+                "win_rate": 0.625
+              },
+              "03:00": {
+                "expectancy": -111.05555555555556,
+                "net_pnl": -999.5,
+                "profit_factor": 0.22705127213672574,
+                "trades": 9,
+                "win_rate": 0.2222222222222222
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -181.34,
+                "net_pnl": -906.7,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": 25.74318181818181,
+                "net_pnl": 1132.6999999999996,
+                "profit_factor": 1.3297525473071328,
+                "trades": 44,
+                "win_rate": 0.5454545454545454
+              }
+            },
+            "expectancy_per_trade": 4.612244897959188,
+            "gross_pnl_before_costs": 1675.0,
+            "maximum_consecutive_losses": 8,
+            "maximum_drawdown": 0.021167141748104475,
+            "net_pnl_after_costs": 226.00000000000023,
+            "profit_factor": 1.0520533431605135,
+            "total_costs": 1449.000000000001,
+            "trade_count": 49,
+            "win_rate": 0.4897959183673469
+          },
+          "parameter": "setup.fixed_stop_ticks",
+          "value": 32
+        },
+        {
+          "case_id": "SENS-STOP-48",
+          "config_fingerprint": "3b4ede27b1f1ebe4ba08ed659e1b6ee13d427ed162fb74ff36f8eeb2cb1b576b",
+          "hypothesis": "A 48-tick cap may survive noise but lower quantity/R.",
+          "metrics": {
+            "average_mae_points": 5.494047619047619,
+            "average_mfe_points": 10.166666666666666,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -17.73333333333333,
+                "net_pnl": -372.4,
+                "profit_factor": 0.7821967481576791,
+                "trades": 21,
+                "win_rate": 0.5238095238095238
+              },
+              "SHORT": {
+                "expectancy": 124.08571428571429,
+                "net_pnl": 2605.8,
+                "profit_factor": 3.1206054687499996,
+                "trades": 21,
+                "win_rate": 0.6666666666666666
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -18.793749999999992,
+                "net_pnl": -300.6999999999999,
+                "profit_factor": 0.7604365838113448,
+                "trades": 16,
+                "win_rate": 0.5
+              },
+              "01:00": {
+                "expectancy": 182.84761904761731,
+                "net_pnl": 1279.9333333333211,
+                "profit_factor": 4.1831219431318605,
+                "trades": 7,
+                "win_rate": 0.7142857142857143
+              },
+              "02:00": {
+                "expectancy": 90.01111111111192,
+                "net_pnl": 1350.1666666666788,
+                "profit_factor": 2.5141490037755734,
+                "trades": 15,
+                "win_rate": 0.6666666666666666
+              },
+              "03:00": {
+                "expectancy": -24.0,
+                "net_pnl": -96.0,
+                "profit_factor": 0.7535934291581109,
+                "trades": 4,
+                "win_rate": 0.5
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -182.3,
+                "net_pnl": -364.6,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": 64.94999999999997,
+                "net_pnl": 2597.999999999999,
+                "profit_factor": 2.0093240093240095,
+                "trades": 40,
+                "win_rate": 0.625
+              }
+            },
+            "expectancy_per_trade": 53.17619047619047,
+            "gross_pnl_before_costs": 3537.5,
+            "maximum_consecutive_losses": 5,
+            "maximum_drawdown": 0.009213649159751366,
+            "net_pnl_after_costs": 2233.3999999999996,
+            "profit_factor": 1.7600217790784731,
+            "total_costs": 1304.1000000000006,
+            "trade_count": 42,
+            "win_rate": 0.5952380952380952
+          },
+          "parameter": "setup.fixed_stop_ticks",
+          "value": 48
+        },
+        {
+          "case_id": "SENS-PIVOT-2",
+          "config_fingerprint": "18f99a66ddb8bd90f7d21f1ee300fc75bd1905d47b34744724fb53a1e9bac28c",
+          "hypothesis": "A shorter delayed pivot may map liquidity more responsively.",
+          "metrics": {
+            "average_mae_points": 6.548469387755102,
+            "average_mfe_points": 9.334183673469388,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -26.959090909090904,
+                "net_pnl": -593.0999999999999,
+                "profit_factor": 0.6927738927738927,
+                "trades": 22,
+                "win_rate": 0.5
+              },
+              "SHORT": {
+                "expectancy": 18.222839506171947,
+                "net_pnl": 492.01666666664255,
+                "profit_factor": 1.1773864032399475,
+                "trades": 27,
+                "win_rate": 0.48148148148148145
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -63.16875,
+                "net_pnl": -1010.7,
+                "profit_factor": 0.31519750660613866,
+                "trades": 16,
+                "win_rate": 0.4375
+              },
+              "01:00": {
+                "expectancy": 124.90416666666515,
+                "net_pnl": 999.2333333333212,
+                "profit_factor": 2.604420894883303,
+                "trades": 8,
+                "win_rate": 0.625
+              },
+              "02:00": {
+                "expectancy": 69.36770833333257,
+                "net_pnl": 1109.8833333333212,
+                "profit_factor": 1.9977376243557365,
+                "trades": 16,
+                "win_rate": 0.625
+              },
+              "03:00": {
+                "expectancy": -133.27777777777777,
+                "net_pnl": -1199.5,
+                "profit_factor": 0.1966378675239435,
+                "trades": 9,
+                "win_rate": 0.2222222222222222
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -205.34,
+                "net_pnl": -1026.7,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": 21.036742424241865,
+                "net_pnl": 925.6166666666421,
+                "profit_factor": 1.2516972581010588,
+                "trades": 44,
+                "win_rate": 0.5454545454545454
+              }
+            },
+            "expectancy_per_trade": -2.0629251700685223,
+            "gross_pnl_before_costs": 1347.9166666666424,
+            "maximum_consecutive_losses": 8,
+            "maximum_drawdown": 0.023973285354861446,
+            "net_pnl_after_costs": -101.08333333335759,
+            "profit_factor": 0.9785121097458961,
+            "total_costs": 1449.000000000001,
+            "trade_count": 49,
+            "win_rate": 0.4897959183673469
+          },
+          "parameter": "structure.pivot_left_right_bars",
+          "value": 2
+        },
+        {
+          "case_id": "SENS-PIVOT-4",
+          "config_fingerprint": "97f0443e96fcd411c3445290b5340af504172e7d154be163188b52a0f72b3052",
+          "hypothesis": "A longer delayed pivot may map cleaner liquidity.",
+          "metrics": {
+            "average_mae_points": 6.548469387755102,
+            "average_mfe_points": 9.517857142857142,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -22.48939393939449,
+                "net_pnl": -494.76666666667876,
+                "profit_factor": 0.7437106103772706,
+                "trades": 22,
+                "win_rate": 0.5
+              },
+              "SHORT": {
+                "expectancy": 17.281481481481496,
+                "net_pnl": 466.60000000000036,
+                "profit_factor": 1.1682229512924973,
+                "trades": 27,
+                "win_rate": 0.48148148148148145
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -70.35625,
+                "net_pnl": -1125.7,
+                "profit_factor": 0.2372789484382411,
+                "trades": 16,
+                "win_rate": 0.4375
+              },
+              "01:00": {
+                "expectancy": 135.52916666666516,
+                "net_pnl": 1084.2333333333213,
+                "profit_factor": 2.7409013059301883,
+                "trades": 8,
+                "win_rate": 0.625
+              },
+              "02:00": {
+                "expectancy": 75.8,
+                "net_pnl": 1212.8,
+                "profit_factor": 2.090255303847537,
+                "trades": 16,
+                "win_rate": 0.625
+              },
+              "03:00": {
+                "expectancy": -133.27777777777777,
+                "net_pnl": -1199.5,
+                "profit_factor": 0.1966378675239435,
+                "trades": 9,
+                "win_rate": 0.2222222222222222
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -205.34,
+                "net_pnl": -1026.7,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": 22.693939393939115,
+                "net_pnl": 998.533333333321,
+                "profit_factor": 1.2715250396555602,
+                "trades": 44,
+                "win_rate": 0.5454545454545454
+              }
+            },
+            "expectancy_per_trade": -0.5748299319730366,
+            "gross_pnl_before_costs": 1420.8333333333212,
+            "maximum_consecutive_losses": 8,
+            "maximum_drawdown": 0.023037805006657898,
+            "net_pnl_after_costs": -28.166666666678793,
+            "profit_factor": 0.9940124427816256,
+            "total_costs": 1449.000000000001,
+            "trade_count": 49,
+            "win_rate": 0.4897959183673469
+          },
+          "parameter": "structure.pivot_left_right_bars",
+          "value": 4
+        }
+      ],
+      "risk_scenarios_on_validation": {
+        "0.0010": {
+          "average_mae_points": null,
+          "average_mfe_points": null,
+          "by_direction": {},
+          "by_entry_hour": {},
+          "by_regime": {},
+          "expectancy_per_trade": null,
+          "gross_pnl_before_costs": 0,
+          "maximum_consecutive_losses": 0,
+          "maximum_drawdown": 0.0,
+          "net_pnl_after_costs": 0,
+          "profit_factor": null,
+          "total_costs": 0,
+          "trade_count": 0,
+          "win_rate": null
+        },
+        "0.0025": {
+          "average_mae_points": 9.289473684210526,
+          "average_mfe_points": 12.526315789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -135.27,
+              "net_pnl": -1352.7,
+              "profit_factor": 0.24514508928571427,
+              "trades": 10,
+              "win_rate": 0.1
+            },
+            "SHORT": {
+              "expectancy": -54.544444444444444,
+              "net_pnl": -490.9,
+              "profit_factor": 0.6092493831091299,
+              "trades": 9,
+              "win_rate": 0.2222222222222222
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -111.11999999999998,
+              "net_pnl": -555.5999999999999,
+              "profit_factor": 0.31339594661393966,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -57.9,
+              "net_pnl": -347.4,
+              "profit_factor": 0.5584085420109318,
+              "trades": 6,
+              "win_rate": 0.16666666666666666
+            },
+            "02:00": {
+              "expectancy": -197.575,
+              "net_pnl": -790.3,
+              "profit_factor": 0.0,
+              "trades": 4,
+              "win_rate": 0.0
+            },
+            "03:00": {
+              "expectancy": -37.57499999999999,
+              "net_pnl": -150.29999999999995,
+              "profit_factor": 0.7729950158586317,
+              "trades": 4,
+              "win_rate": 0.25
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -36.32499999999999,
+              "net_pnl": -145.29999999999995,
+              "profit_factor": 0.7788768832749963,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "range": {
+              "expectancy": -152.6857142857143,
+              "net_pnl": -2137.6000000000004,
+              "profit_factor": 0.1060555369688859,
+              "trades": 14,
+              "win_rate": 0.07142857142857142
+            },
+            "trend_up": {
+              "expectancy": 439.3,
+              "net_pnl": 439.3,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -97.03157894736844,
+          "gross_pnl_before_costs": -1367.5,
+          "maximum_consecutive_losses": 7,
+          "maximum_drawdown": 0.019973172079592545,
+          "net_pnl_after_costs": -1843.6000000000004,
+          "profit_factor": 0.39520388413213925,
+          "total_costs": 476.09999999999985,
+          "trade_count": 19,
+          "win_rate": 0.15789473684210525
+        },
+        "0.0050": {
+          "average_mae_points": 7.7368421052631575,
+          "average_mfe_points": 12.526315789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -226.4,
+              "net_pnl": -2264.0,
+              "profit_factor": 0.27113514905672526,
+              "trades": 10,
+              "win_rate": 0.2
+            },
+            "SHORT": {
+              "expectancy": -29.455555555555534,
+              "net_pnl": -265.0999999999998,
+              "profit_factor": 0.8067784256559768,
+              "trades": 9,
+              "win_rate": 0.4444444444444444
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -199.4,
+              "net_pnl": -997.0,
+              "profit_factor": 0.20278266432112588,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -26.81666666666665,
+              "net_pnl": -160.8999999999999,
+              "profit_factor": 0.8446311317110855,
+              "trades": 6,
+              "win_rate": 0.3333333333333333
+            },
+            "02:00": {
+              "expectancy": -310.15,
+              "net_pnl": -1240.6,
+              "profit_factor": 0.05239841124350749,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "03:00": {
+              "expectancy": -32.64999999999998,
+              "net_pnl": -130.5999999999999,
+              "profit_factor": 0.8520616221114636,
+              "trades": 4,
+              "win_rate": 0.5
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -30.149999999999977,
+              "net_pnl": -120.59999999999991,
+              "profit_factor": 0.8618240146654447,
+              "trades": 4,
+              "win_rate": 0.5
+            },
+            "range": {
+              "expectancy": -227.2928571428572,
+              "net_pnl": -3182.100000000001,
+              "profit_factor": 0.11740722249958392,
+              "trades": 14,
+              "win_rate": 0.21428571428571427
+            },
+            "trend_up": {
+              "expectancy": 773.6,
+              "net_pnl": 773.6,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -133.11052631578949,
+          "gross_pnl_before_costs": -1742.5,
+          "maximum_consecutive_losses": 4,
+          "maximum_drawdown": 0.026111987594456796,
+          "net_pnl_after_costs": -2529.1000000000004,
+          "profit_factor": 0.435241838238578,
+          "total_costs": 786.5999999999998,
+          "trade_count": 19,
+          "win_rate": 0.3157894736842105
+        }
+      },
+      "sensitivity_stability": {
+        "cases_with_trades": 8,
+        "expectancy_dispersion": 66.35280772477597,
+        "median_expectancy": -1.4602761443562924,
+        "positive_case_fraction": 0.25
+      },
+      "status": "RESEARCH_ONLY_NO_PROFITABILITY_CLAIM",
+      "suite_version": "1.0",
+      "validation": {
+        "by_month": {
+          "2024-10": {
+            "costs": 62.099999999999994,
+            "expectancy": -160.7,
+            "gross_pnl": -420.0,
+            "net_pnl": -482.09999999999997,
+            "trades": 3,
+            "win_rate": 0.0
+          },
+          "2024-11": {
+            "costs": 41.4,
+            "expectancy": 145.55,
+            "gross_pnl": 332.5,
+            "net_pnl": 291.1,
+            "trades": 2,
+            "win_rate": 0.5
+          },
+          "2024-12": {
+            "costs": 62.099999999999994,
+            "expectancy": -148.55,
+            "gross_pnl": -235.0,
+            "net_pnl": -297.1,
+            "trades": 2,
+            "win_rate": 0.0
+          },
+          "2025-01": {
+            "costs": 82.8,
+            "expectancy": -42.57499999999999,
+            "gross_pnl": -87.5,
+            "net_pnl": -170.2999999999999,
+            "trades": 4,
+            "win_rate": 0.25
+          },
+          "2025-02": {
+            "costs": 41.4,
+            "expectancy": 253.6,
+            "gross_pnl": 295.0,
+            "net_pnl": 253.6,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2025-03": {
+            "costs": 103.5,
+            "expectancy": -199.0,
+            "gross_pnl": -692.5,
+            "net_pnl": -795.9999999999999,
+            "trades": 4,
+            "win_rate": 0.0
+          },
+          "2025-04": {
+            "costs": 20.7,
+            "expectancy": -220.7,
+            "gross_pnl": -200.0,
+            "net_pnl": -220.7,
+            "trades": 1,
+            "win_rate": 0.0
+          },
+          "2025-05": {
+            "costs": 62.099999999999994,
+            "expectancy": -211.05,
+            "gross_pnl": -360.0,
+            "net_pnl": -422.1,
+            "trades": 2,
+            "win_rate": 0.0
+          }
+        },
+        "by_session_hour": {
+          "00:00": {
+            "expectancy": -111.12,
+            "net_pnl": -555.5999999999999,
+            "trades": 5,
+            "win_rate": 0.2
+          },
+          "01:00": {
+            "expectancy": -57.89999999999999,
+            "net_pnl": -347.4,
+            "trades": 6,
+            "win_rate": 0.16666666666666666
+          },
+          "02:00": {
+            "expectancy": -197.575,
+            "net_pnl": -790.3,
+            "trades": 4,
+            "win_rate": 0.0
+          },
+          "03:00": {
+            "expectancy": -37.57499999999999,
+            "net_pnl": -150.29999999999995,
+            "trades": 4,
+            "win_rate": 0.25
+          }
+        },
+        "expectancy_bootstrap": {
+          "mean": -97.25855789473684,
+          "p05": -172.80763157894734,
+          "p50": -100.73421052631578,
+          "p95": -5.3778947368420384,
+          "probability_positive": 0.0432,
+          "sample_trades": 19,
+          "simulations": 5000,
+          "warning": "Bootstrap resamples observed trades; it does not create unseen regimes."
+        },
+        "metrics": {
+          "average_mae_points": 9.289473684210526,
+          "average_mfe_points": 12.526315789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -135.27,
+              "net_pnl": -1352.7,
+              "profit_factor": 0.24514508928571427,
+              "trades": 10,
+              "win_rate": 0.1
+            },
+            "SHORT": {
+              "expectancy": -54.544444444444444,
+              "net_pnl": -490.9,
+              "profit_factor": 0.6092493831091299,
+              "trades": 9,
+              "win_rate": 0.2222222222222222
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -111.11999999999998,
+              "net_pnl": -555.5999999999999,
+              "profit_factor": 0.31339594661393966,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -57.9,
+              "net_pnl": -347.4,
+              "profit_factor": 0.5584085420109318,
+              "trades": 6,
+              "win_rate": 0.16666666666666666
+            },
+            "02:00": {
+              "expectancy": -197.575,
+              "net_pnl": -790.3,
+              "profit_factor": 0.0,
+              "trades": 4,
+              "win_rate": 0.0
+            },
+            "03:00": {
+              "expectancy": -37.57499999999999,
+              "net_pnl": -150.29999999999995,
+              "profit_factor": 0.7729950158586317,
+              "trades": 4,
+              "win_rate": 0.25
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -36.32499999999999,
+              "net_pnl": -145.29999999999995,
+              "profit_factor": 0.7788768832749963,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "range": {
+              "expectancy": -152.6857142857143,
+              "net_pnl": -2137.6000000000004,
+              "profit_factor": 0.1060555369688859,
+              "trades": 14,
+              "win_rate": 0.07142857142857142
+            },
+            "trend_up": {
+              "expectancy": 439.3,
+              "net_pnl": 439.3,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -97.03157894736844,
+          "gross_pnl_before_costs": -1367.5,
+          "maximum_consecutive_losses": 7,
+          "maximum_drawdown": 0.019973172079592545,
+          "net_pnl_after_costs": -1843.6000000000004,
+          "profit_factor": 0.39520388413213925,
+          "total_costs": 476.09999999999985,
+          "trade_count": 19,
+          "win_rate": 0.15789473684210525
+        }
+      },
+      "walk_forward_baseline": [
+        {
+          "development_bars_observed": 167505,
+          "end": "2024-03-04T09:02:00+00:00",
+          "fold": 0,
+          "metrics": {
+            "average_mae_points": 4.53125,
+            "average_mfe_points": 13.90625,
+            "by_direction": {
+              "LONG": {
+                "expectancy": 206.8,
+                "net_pnl": 206.8,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              },
+              "SHORT": {
+                "expectancy": 125.50000000000001,
+                "net_pnl": 376.50000000000006,
+                "profit_factor": 2.7059356592659722,
+                "trades": 3,
+                "win_rate": 0.6666666666666666
+              }
+            },
+            "by_entry_hour": {
+              "01:00": {
+                "expectancy": 18.950000000000017,
+                "net_pnl": 37.900000000000034,
+                "profit_factor": 1.1717263253285004,
+                "trades": 2,
+                "win_rate": 0.5
+              },
+              "02:00": {
+                "expectancy": 272.70000000000005,
+                "net_pnl": 545.4000000000001,
+                "profit_factor": null,
+                "trades": 2,
+                "win_rate": 1.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -220.7,
+                "net_pnl": -220.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": 268.0,
+                "net_pnl": 804.0,
+                "profit_factor": null,
+                "trades": 3,
+                "win_rate": 1.0
+              }
+            },
+            "expectancy_per_trade": 145.82500000000002,
+            "gross_pnl_before_costs": 707.5,
+            "maximum_consecutive_losses": 1,
+            "maximum_drawdown": 0.00526373995319464,
+            "net_pnl_after_costs": 583.3000000000001,
+            "profit_factor": 3.6429542365201635,
+            "total_costs": 124.2,
+            "trade_count": 4,
+            "win_rate": 0.75
+          },
+          "start": "2023-12-06T05:38:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 209381,
+          "end": "2024-05-29T07:18:00+00:00",
+          "fold": 1,
+          "metrics": {
+            "average_mae_points": 8.09375,
+            "average_mfe_points": 4.15625,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -142.0,
+                "net_pnl": -426.0,
+                "profit_factor": 0.002575509248419577,
+                "trades": 3,
+                "win_rate": 0.3333333333333333
+              },
+              "SHORT": {
+                "expectancy": -220.7,
+                "net_pnl": -220.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -102.65,
+                "net_pnl": -205.3,
+                "profit_factor": 0.005329457364341092,
+                "trades": 2,
+                "win_rate": 0.5
+              },
+              "02:00": {
+                "expectancy": -220.7,
+                "net_pnl": -220.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "03:00": {
+                "expectancy": -220.7,
+                "net_pnl": -220.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "by_regime": {
+              "range": {
+                "expectancy": -161.67499999999998,
+                "net_pnl": -646.6999999999999,
+                "profit_factor": 0.0016980549552330988,
+                "trades": 4,
+                "win_rate": 0.25
+              }
+            },
+            "expectancy_per_trade": -161.67499999999998,
+            "gross_pnl_before_costs": -522.5,
+            "maximum_consecutive_losses": 3,
+            "maximum_drawdown": 0.008040364567082714,
+            "net_pnl_after_costs": -646.6999999999999,
+            "profit_factor": 0.0016980549552330988,
+            "total_costs": 124.19999999999999,
+            "trade_count": 4,
+            "win_rate": 0.25
+          },
+          "start": "2024-03-04T09:04:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 251257,
+          "end": "2024-08-22T14:54:00+00:00",
+          "fold": 2,
+          "metrics": {
+            "average_mae_points": 10.267857142857142,
+            "average_mfe_points": 8.446428571428571,
+            "by_direction": {
+              "LONG": {
+                "expectancy": 14.066666666666672,
+                "net_pnl": 42.20000000000002,
+                "profit_factor": 1.3053545586107094,
+                "trades": 3,
+                "win_rate": 0.6666666666666666
+              },
+              "SHORT": {
+                "expectancy": -211.95,
+                "net_pnl": -847.8,
+                "profit_factor": 0.0,
+                "trades": 4,
+                "win_rate": 0.0
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -103.43333333333332,
+                "net_pnl": -310.29999999999995,
+                "profit_factor": 0.13541376427974366,
+                "trades": 3,
+                "win_rate": 0.3333333333333333
+              },
+              "01:00": {
+                "expectancy": -185.7,
+                "net_pnl": -185.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "02:00": {
+                "expectancy": 131.8,
+                "net_pnl": 131.8,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              },
+              "03:00": {
+                "expectancy": -220.7,
+                "net_pnl": -441.4,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -220.7,
+                "net_pnl": -220.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -97.4833333333333,
+                "net_pnl": -584.8999999999999,
+                "profit_factor": 0.2357245524630864,
+                "trades": 6,
+                "win_rate": 0.3333333333333333
+              }
+            },
+            "expectancy_per_trade": -115.08571428571427,
+            "gross_pnl_before_costs": -640.0,
+            "maximum_consecutive_losses": 4,
+            "maximum_drawdown": 0.008307889795991672,
+            "net_pnl_after_costs": -805.5999999999999,
+            "profit_factor": 0.18296146044624748,
+            "total_costs": 165.6,
+            "trade_count": 7,
+            "win_rate": 0.2857142857142857
+          },
+          "start": "2024-05-29T07:20:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 293133,
+          "end": "2024-11-15T15:20:00+00:00",
+          "fold": 3,
+          "metrics": {
+            "average_mae_points": 8.916666666666666,
+            "average_mfe_points": 14.555555555555555,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -152.575,
+                "net_pnl": -610.3,
+                "profit_factor": 0.0,
+                "trades": 4,
+                "win_rate": 0.0
+              },
+              "SHORT": {
+                "expectancy": 244.3,
+                "net_pnl": 1221.5,
+                "profit_factor": 3.3064577039274927,
+                "trades": 5,
+                "win_rate": 0.4
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -129.45,
+                "net_pnl": -258.9,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              },
+              "01:00": {
+                "expectancy": 325.13333333333327,
+                "net_pnl": 975.3999999999999,
+                "profit_factor": 4.696097006441835,
+                "trades": 3,
+                "win_rate": 0.3333333333333333
+              },
+              "02:00": {
+                "expectancy": -205.69999999999996,
+                "net_pnl": -617.0999999999999,
+                "profit_factor": 0.0,
+                "trades": 3,
+                "win_rate": 0.0
+              },
+              "03:00": {
+                "expectancy": 511.8,
+                "net_pnl": 511.8,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": 511.8,
+                "net_pnl": 511.8,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              },
+              "range": {
+                "expectancy": 12.425000000000004,
+                "net_pnl": 99.40000000000003,
+                "profit_factor": 1.0872006316343537,
+                "trades": 8,
+                "win_rate": 0.125
+              }
+            },
+            "expectancy_per_trade": 67.91111111111111,
+            "gross_pnl_before_costs": 797.5,
+            "maximum_consecutive_losses": 4,
+            "maximum_drawdown": 0.007699946971025873,
+            "net_pnl_after_costs": 611.2,
+            "profit_factor": 1.5361873848583207,
+            "total_costs": 186.29999999999998,
+            "trade_count": 9,
+            "win_rate": 0.2222222222222222
+          },
+          "start": "2024-08-22T14:56:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 335009,
+          "end": "2025-02-13T11:00:00+00:00",
+          "fold": 4,
+          "metrics": {
+            "average_mae_points": 8.109375,
+            "average_mfe_points": 12.359375,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -34.449999999999974,
+                "net_pnl": -137.7999999999999,
+                "profit_factor": 0.7612198925662799,
+                "trades": 4,
+                "win_rate": 0.25
+              },
+              "SHORT": {
+                "expectancy": -74.17499999999998,
+                "net_pnl": -296.69999999999993,
+                "profit_factor": 0.46083954206796296,
+                "trades": 4,
+                "win_rate": 0.25
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": 46.099999999999994,
+                "net_pnl": 92.19999999999999,
+                "profit_factor": 1.571251548946716,
+                "trades": 2,
+                "win_rate": 0.5
+              },
+              "01:00": {
+                "expectancy": 135.55,
+                "net_pnl": 271.1,
+                "profit_factor": 2.6117717003567185,
+                "trades": 2,
+                "win_rate": 0.5
+              },
+              "02:00": {
+                "expectancy": -178.2,
+                "net_pnl": -356.4,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              },
+              "03:00": {
+                "expectancy": -220.7,
+                "net_pnl": -441.4,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -220.7,
+                "net_pnl": -220.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -108.85000000000001,
+                "net_pnl": -653.1,
+                "profit_factor": 0.27969559942649164,
+                "trades": 6,
+                "win_rate": 0.16666666666666666
+              },
+              "trend_up": {
+                "expectancy": 439.3,
+                "net_pnl": 439.3,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              }
+            },
+            "expectancy_per_trade": -54.312500000000014,
+            "gross_pnl_before_costs": -227.5,
+            "maximum_consecutive_losses": 6,
+            "maximum_drawdown": 0.012607968967457675,
+            "net_pnl_after_costs": -434.5000000000001,
+            "profit_factor": 0.6145999645201348,
+            "total_costs": 207.0,
+            "trade_count": 8,
+            "win_rate": 0.25
+          },
+          "start": "2024-11-15T15:22:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 376885,
+          "end": "2025-05-12T09:02:00+00:00",
+          "fold": 5,
+          "metrics": {
+            "average_mae_points": 10.821428571428571,
+            "average_mfe_points": 14.0,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -215.875,
+                "net_pnl": -863.5,
+                "profit_factor": 0.0,
+                "trades": 4,
+                "win_rate": 0.0
+              },
+              "SHORT": {
+                "expectancy": -191.76666666666665,
+                "net_pnl": -575.3,
+                "profit_factor": 0.0,
+                "trades": 3,
+                "win_rate": 0.0
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -215.9333333333333,
+                "net_pnl": -647.8,
+                "profit_factor": 0.0,
+                "trades": 3,
+                "win_rate": 0.0
+              },
+              "01:00": {
+                "expectancy": -177.3,
+                "net_pnl": -354.6,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              },
+              "02:00": {
+                "expectancy": -215.7,
+                "net_pnl": -215.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "03:00": {
+                "expectancy": -220.7,
+                "net_pnl": -220.7,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -218.2,
+                "net_pnl": -436.4,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -200.48,
+                "net_pnl": -1002.4,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              }
+            },
+            "expectancy_per_trade": -205.54285714285714,
+            "gross_pnl_before_costs": -1252.5,
+            "maximum_consecutive_losses": 7,
+            "maximum_drawdown": 0.014387999999999738,
+            "net_pnl_after_costs": -1438.8,
+            "profit_factor": 0.0,
+            "total_costs": 186.3,
+            "trade_count": 7,
+            "win_rate": 0.0
+          },
+          "start": "2025-02-13T11:02:00+00:00",
+          "validation_bars": 41876
+        }
+      ],
+      "warnings": [
+        "Validation contains fewer than 100 trades; inference is weak.",
+        "Dataset has 772 gaps above the configured threshold; verify session closures.",
+        "Final 20% holdout was not opened by this suite."
+      ]
+    },
+    "MNQ": {
+      "config_fingerprint": "54f6ee98fccd38320136276242e4f52fb46d17e0571da366a20877a46825b615",
+      "data": {
+        "dataset_fingerprint": "1294a03f4529b2a337dad4f400af705149a871c031a36f8f2f7f3fe41104e258",
+        "development_bars": 314073,
+        "duplicates": 0,
+        "first_timestamp": "2022-12-26T23:02:00+00:00",
+        "holdout_bars_locked": 104691,
+        "interval_mismatches": 0,
+        "large_gaps": 772,
+        "last_timestamp": "2025-12-12T01:50:00+00:00",
+        "out_of_order": 0,
+        "rows": 523455,
+        "sha256": "1294a03f4529b2a337dad4f400af705149a871c031a36f8f2f7f3fe41104e258",
+        "validation_bars": 104691
+      },
+      "development": {
+        "by_month": {
+          "2023-01": {
+            "costs": 421.20000000000005,
+            "expectancy": -92.67142857142858,
+            "gross_pnl": -227.5,
+            "net_pnl": -648.7,
+            "trades": 7,
+            "win_rate": 0.14285714285714285
+          },
+          "2023-02": {
+            "costs": 222.3,
+            "expectancy": -43.2,
+            "gross_pnl": 49.5,
+            "net_pnl": -172.8,
+            "trades": 4,
+            "win_rate": 0.5
+          },
+          "2023-03": {
+            "costs": 62.4,
+            "expectancy": -20.4,
+            "gross_pnl": 42.0,
+            "net_pnl": -20.4,
+            "trades": 1,
+            "win_rate": 0.0
+          },
+          "2023-04": {
+            "costs": 101.4,
+            "expectancy": -93.36666666667152,
+            "gross_pnl": -85.33333333334303,
+            "net_pnl": -186.73333333334304,
+            "trades": 2,
+            "win_rate": 0.5
+          },
+          "2023-05": {
+            "costs": 167.7,
+            "expectancy": -226.06666666666666,
+            "gross_pnl": -510.5,
+            "net_pnl": -678.2,
+            "trades": 3,
+            "win_rate": 0.0
+          },
+          "2023-06": {
+            "costs": 159.9,
+            "expectancy": 37.36666666666667,
+            "gross_pnl": 272.0,
+            "net_pnl": 112.1,
+            "trades": 3,
+            "win_rate": 1.0
+          },
+          "2023-07": {
+            "costs": 50.7,
+            "expectancy": 339.3,
+            "gross_pnl": 390.0,
+            "net_pnl": 339.3,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2023-08": {
+            "costs": 198.9,
+            "expectancy": 13.775,
+            "gross_pnl": 254.0,
+            "net_pnl": 55.10000000000002,
+            "trades": 4,
+            "win_rate": 0.75
+          },
+          "2023-09": {
+            "costs": 50.7,
+            "expectancy": -102.7,
+            "gross_pnl": -52.0,
+            "net_pnl": -102.7,
+            "trades": 1,
+            "win_rate": 0.0
+          },
+          "2023-10": {
+            "costs": 54.6,
+            "expectancy": 97.65,
+            "gross_pnl": 152.25,
+            "net_pnl": 97.65,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2023-11": {
+            "costs": 89.7,
+            "expectancy": 26.525000000000006,
+            "gross_pnl": 142.75,
+            "net_pnl": 53.05000000000001,
+            "trades": 2,
+            "win_rate": 0.5
+          },
+          "2024-01": {
+            "costs": 46.8,
+            "expectancy": 133.2,
+            "gross_pnl": 180.0,
+            "net_pnl": 133.2,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2024-02": {
+            "costs": 85.8,
+            "expectancy": -28.900000000000006,
+            "gross_pnl": 28.0,
+            "net_pnl": -57.80000000000001,
+            "trades": 2,
+            "win_rate": 0.5
+          },
+          "2024-03": {
+            "costs": 46.8,
+            "expectancy": 32.7,
+            "gross_pnl": 79.5,
+            "net_pnl": 32.7,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2024-04": {
+            "costs": 128.7,
+            "expectancy": -211.98333333333332,
+            "gross_pnl": -507.25,
+            "net_pnl": -635.95,
+            "trades": 3,
+            "win_rate": 0.0
+          },
+          "2024-05": {
+            "costs": 46.8,
+            "expectancy": -21.299999999999997,
+            "gross_pnl": 25.5,
+            "net_pnl": -21.299999999999997,
+            "trades": 1,
+            "win_rate": 0.0
+          },
+          "2024-06": {
+            "costs": 39.0,
+            "expectancy": -239.0,
+            "gross_pnl": -200.0,
+            "net_pnl": -239.0,
+            "trades": 1,
+            "win_rate": 0.0
+          },
+          "2024-07": {
+            "costs": 167.7,
+            "expectancy": -87.2375,
+            "gross_pnl": -181.25,
+            "net_pnl": -348.95000000000005,
+            "trades": 4,
+            "win_rate": 0.5
+          },
+          "2024-08": {
+            "costs": 171.6,
+            "expectancy": -150.9625,
+            "gross_pnl": -432.25,
+            "net_pnl": -603.85,
+            "trades": 4,
+            "win_rate": 0.25
+          },
+          "2024-09": {
+            "costs": 124.80000000000001,
+            "expectancy": 128.4,
+            "gross_pnl": 510.0,
+            "net_pnl": 385.20000000000005,
+            "trades": 3,
+            "win_rate": 0.3333333333333333
+          }
+        },
+        "by_session_hour": {
+          "00:00": {
+            "expectancy": -92.015625,
+            "net_pnl": -1472.2500000000002,
+            "trades": 16,
+            "win_rate": 0.3125
+          },
+          "01:00": {
+            "expectancy": 41.108333333332126,
+            "net_pnl": 328.866666666657,
+            "trades": 8,
+            "win_rate": 0.5
+          },
+          "02:00": {
+            "expectancy": 2.3250000000000006,
+            "net_pnl": 37.200000000000045,
+            "trades": 16,
+            "win_rate": 0.5625
+          },
+          "03:00": {
+            "expectancy": -155.76666666666665,
+            "net_pnl": -1401.9,
+            "trades": 9,
+            "win_rate": 0.2222222222222222
+          }
+        },
+        "metrics": {
+          "average_mae_points": 6.079081632653061,
+          "average_mfe_points": 9.262755102040817,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -72.89015151515197,
+              "net_pnl": -1603.5833333333433,
+              "profit_factor": 0.21567908178653344,
+              "trades": 22,
+              "win_rate": 0.45454545454545453
+            },
+            "SHORT": {
+              "expectancy": -33.500000000000014,
+              "net_pnl": -904.5000000000003,
+              "profit_factor": 0.6907903733078079,
+              "trades": 27,
+              "win_rate": 0.37037037037037035
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -92.01562500000001,
+              "net_pnl": -1472.2500000000002,
+              "profit_factor": 0.07825950853028643,
+              "trades": 16,
+              "win_rate": 0.3125
+            },
+            "01:00": {
+              "expectancy": 41.108333333332126,
+              "net_pnl": 328.866666666657,
+              "profit_factor": 1.508451865594708,
+              "trades": 8,
+              "win_rate": 0.5
+            },
+            "02:00": {
+              "expectancy": 2.325000000000003,
+              "net_pnl": 37.200000000000045,
+              "profit_factor": 1.033980360812971,
+              "trades": 16,
+              "win_rate": 0.5625
+            },
+            "03:00": {
+              "expectancy": -155.76666666666668,
+              "net_pnl": -1401.9,
+              "profit_factor": 0.1404396210797388,
+              "trades": 9,
+              "win_rate": 0.2222222222222222
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -230.55,
+              "net_pnl": -1152.75,
+              "profit_factor": 0.0,
+              "trades": 5,
+              "win_rate": 0.0
+            },
+            "range": {
+              "expectancy": -30.803030303030535,
+              "net_pnl": -1355.3333333333435,
+              "profit_factor": 0.6449218408872561,
+              "trades": 44,
+              "win_rate": 0.45454545454545453
+            }
+          },
+          "expectancy_per_trade": -51.18537414966007,
+          "gross_pnl_before_costs": -70.58333333334303,
+          "maximum_consecutive_losses": 5,
+          "maximum_drawdown": 0.03379752915557071,
+          "net_pnl_after_costs": -2508.0833333333435,
+          "profit_factor": 0.4953300803192631,
+          "total_costs": 2437.5000000000005,
+          "trade_count": 49,
+          "win_rate": 0.40816326530612246
+        }
+      },
+      "execution_scenarios_on_validation": {
+        "base": {
+          "average_mae_points": 7.7368421052631575,
+          "average_mfe_points": 12.526315789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -134.23,
+              "net_pnl": -1342.3,
+              "profit_factor": 0.2226662033819782,
+              "trades": 10,
+              "win_rate": 0.2
+            },
+            "SHORT": {
+              "expectancy": -40.25,
+              "net_pnl": -362.25,
+              "profit_factor": 0.5680300500834725,
+              "trades": 9,
+              "win_rate": 0.4444444444444444
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -120.42999999999999,
+              "net_pnl": -602.15,
+              "profit_factor": 0.152677126574263,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -45.06666666666666,
+              "net_pnl": -270.4,
+              "profit_factor": 0.5947545897339828,
+              "trades": 6,
+              "win_rate": 0.3333333333333333
+            },
+            "02:00": {
+              "expectancy": -173.375,
+              "net_pnl": -693.5,
+              "profit_factor": 0.02255109231853418,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "03:00": {
+              "expectancy": -34.625,
+              "net_pnl": -138.5,
+              "profit_factor": 0.7102510460251046,
+              "trades": 4,
+              "win_rate": 0.5
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -33.375,
+              "net_pnl": -133.5,
+              "profit_factor": 0.7177589852008457,
+              "trades": 4,
+              "win_rate": 0.5
+            },
+            "range": {
+              "expectancy": -138.53928571428574,
+              "net_pnl": -1939.5500000000002,
+              "profit_factor": 0.07305008602561651,
+              "trades": 14,
+              "win_rate": 0.21428571428571427
+            },
+            "trend_up": {
+              "expectancy": 368.5,
+              "net_pnl": 368.5,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -89.71315789473685,
+          "gross_pnl_before_costs": -936.25,
+          "maximum_consecutive_losses": 4,
+          "maximum_drawdown": 0.01740218300756802,
+          "net_pnl_after_costs": -1704.5500000000002,
+          "profit_factor": 0.3355617057768769,
+          "total_costs": 768.3,
+          "trade_count": 19,
+          "win_rate": 0.3157894736842105
+        },
+        "optimistic": {
+          "average_mae_points": 7.4243421052631575,
+          "average_mfe_points": 12.838815789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -125.93499999999999,
+              "net_pnl": -1259.35,
+              "profit_factor": 0.24537855409413667,
+              "trades": 10,
+              "win_rate": 0.2
+            },
+            "SHORT": {
+              "expectancy": -27.055555555555557,
+              "net_pnl": -243.50000000000003,
+              "profit_factor": 0.6842173518350408,
+              "trades": 9,
+              "win_rate": 0.4444444444444444
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -107.67999999999999,
+              "net_pnl": -538.4,
+              "profit_factor": 0.1835001516530179,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -31.316666666666666,
+              "net_pnl": -187.9,
+              "profit_factor": 0.6924713584288053,
+              "trades": 6,
+              "win_rate": 0.3333333333333333
+            },
+            "02:00": {
+              "expectancy": -172.0125,
+              "net_pnl": -688.05,
+              "profit_factor": 0.03977391668411137,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "03:00": {
+              "expectancy": -22.125,
+              "net_pnl": -88.5,
+              "profit_factor": 0.804635761589404,
+              "trades": 4,
+              "win_rate": 0.5
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -26.412499999999994,
+              "net_pnl": -105.64999999999998,
+              "profit_factor": 0.7752844836754228,
+              "trades": 4,
+              "win_rate": 0.5
+            },
+            "range": {
+              "expectancy": -127.01428571428572,
+              "net_pnl": -1778.2,
+              "profit_factor": 0.09726875824956847,
+              "trades": 14,
+              "win_rate": 0.21428571428571427
+            },
+            "trend_up": {
+              "expectancy": 381.0,
+              "net_pnl": 381.0,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -79.09736842105265,
+          "gross_pnl_before_costs": -975.5,
+          "maximum_consecutive_losses": 4,
+          "maximum_drawdown": 0.015521231623572053,
+          "net_pnl_after_costs": -1502.8500000000004,
+          "profit_factor": 0.3840652472386729,
+          "total_costs": 527.3499999999999,
+          "trade_count": 19,
+          "win_rate": 0.3157894736842105
+        },
+        "pessimistic": {
+          "average_mae_points": 11.710526315789474,
+          "average_mfe_points": 5.697368421052632,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -179.04249999999996,
+              "net_pnl": -1790.4249999999997,
+              "profit_factor": 0.023732926197551737,
+              "trades": 10,
+              "win_rate": 0.1
+            },
+            "SHORT": {
+              "expectancy": -117.33611111111112,
+              "net_pnl": -1056.025,
+              "profit_factor": 0.06880208103699133,
+              "trades": 9,
+              "win_rate": 0.1111111111111111
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -151.29500000000002,
+              "net_pnl": -756.475,
+              "profit_factor": 0.0,
+              "trades": 5,
+              "win_rate": 0.0
+            },
+            "01:00": {
+              "expectancy": -108.80833333333335,
+              "net_pnl": -652.8500000000001,
+              "profit_factor": 0.0625022437623407,
+              "trades": 6,
+              "win_rate": 0.16666666666666666
+            },
+            "02:00": {
+              "expectancy": -195.45000000000002,
+              "net_pnl": -586.35,
+              "profit_factor": 0.0,
+              "trades": 3,
+              "win_rate": 0.0
+            },
+            "03:00": {
+              "expectancy": -170.155,
+              "net_pnl": -850.775,
+              "profit_factor": 0.08400624461670975,
+              "trades": 5,
+              "win_rate": 0.2
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -154.34375,
+              "net_pnl": -617.375,
+              "profit_factor": 0.11220161058383665,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "range": {
+              "expectancy": -162.32857142857142,
+              "net_pnl": -2272.6,
+              "profit_factor": 0.0,
+              "trades": 14,
+              "win_rate": 0.0
+            },
+            "trend_up": {
+              "expectancy": 43.525000000000006,
+              "net_pnl": 43.525000000000006,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -149.81315789473686,
+          "gross_pnl_before_costs": -1792.75,
+          "maximum_consecutive_losses": 8,
+          "maximum_drawdown": 0.028815704520852966,
+          "net_pnl_after_costs": -2846.4500000000003,
+          "profit_factor": 0.040953504043126684,
+          "total_costs": 1053.7,
+          "trade_count": 19,
+          "win_rate": 0.10526315789473684
+        }
+      },
+      "generated_at": "2026-08-14T22:02:04.738438+00:00",
+      "holdout": {
+        "bars_locked": 104691,
+        "opened": false,
+        "reason": "Strategy is not frozen; suite intentionally stops before holdout."
+      },
+      "instrument": "MNQ",
+      "one_factor_sensitivity_on_development": [
+        {
+          "case_id": "SENS-CONS-08",
+          "config_fingerprint": "eb042688ace090b1062e4651a1db40589c7cdc9916503c46cec511d47aa7e492",
+          "hypothesis": "Shorter consolidation memory may react faster without losing location quality.",
+          "metrics": {
+            "average_mae_points": 5.6534810126582276,
+            "average_mfe_points": 7.688291139240507,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -86.21282051282128,
+                "net_pnl": -3362.30000000003,
+                "profit_factor": 0.28946228378820393,
+                "trades": 39,
+                "win_rate": 0.358974358974359
+              },
+              "SHORT": {
+                "expectancy": -42.63958333333359,
+                "net_pnl": -1705.5833333333435,
+                "profit_factor": 0.5544976861828304,
+                "trades": 40,
+                "win_rate": 0.425
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -25.437500000001442,
+                "net_pnl": -508.7500000000289,
+                "profit_factor": 0.6609011531026934,
+                "trades": 20,
+                "win_rate": 0.5
+              },
+              "01:00": {
+                "expectancy": -106.33333333333336,
+                "net_pnl": -2233.0000000000005,
+                "profit_factor": 0.11445114213197968,
+                "trades": 21,
+                "win_rate": 0.23809523809523808
+              },
+              "02:00": {
+                "expectancy": -98.06666666666668,
+                "net_pnl": -2647.8,
+                "profit_factor": 0.2832548318986519,
+                "trades": 27,
+                "win_rate": 0.37037037037037035
+              },
+              "03:00": {
+                "expectancy": 29.24242424242336,
+                "net_pnl": 321.66666666665697,
+                "profit_factor": 1.3809411021632605,
+                "trades": 11,
+                "win_rate": 0.5454545454545454
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -84.33,
+                "net_pnl": -843.3,
+                "profit_factor": 0.3984592338968543,
+                "trades": 10,
+                "win_rate": 0.4
+              },
+              "range": {
+                "expectancy": -62.327696078431984,
+                "net_pnl": -4238.283333333375,
+                "profit_factor": 0.40794522206389905,
+                "trades": 68,
+                "win_rate": 0.38235294117647056
+              },
+              "trend_down": {
+                "expectancy": 13.700000000000003,
+                "net_pnl": 13.700000000000003,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              }
+            },
+            "expectancy_per_trade": -64.15042194092878,
+            "gross_pnl_before_costs": -731.0833333333721,
+            "maximum_consecutive_losses": 6,
+            "maximum_drawdown": 0.05067883333333215,
+            "net_pnl_after_costs": -5067.883333333373,
+            "profit_factor": 0.4079921344158201,
+            "total_costs": 4336.800000000002,
+            "trade_count": 79,
+            "win_rate": 0.3924050632911392
+          },
+          "parameter": "setup.consolidation_lookback",
+          "value": 8
+        },
+        {
+          "case_id": "SENS-CONS-16",
+          "config_fingerprint": "4d7e108e89549632493ad7506568cca2de56c6d8799727445d9de1f0227c5992",
+          "hypothesis": "Longer consolidation memory may reduce noisy breakouts.",
+          "metrics": {
+            "average_mae_points": 13.625,
+            "average_mfe_points": 10.375,
+            "by_direction": {
+              "SHORT": {
+                "expectancy": -224.4,
+                "net_pnl": -224.4,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "by_entry_hour": {
+              "01:00": {
+                "expectancy": -224.4,
+                "net_pnl": -224.4,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "by_regime": {
+              "range": {
+                "expectancy": -224.4,
+                "net_pnl": -224.4,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "expectancy_per_trade": -224.4,
+            "gross_pnl_before_costs": -181.5,
+            "maximum_consecutive_losses": 1,
+            "maximum_drawdown": 0.002243999999999942,
+            "net_pnl_after_costs": -224.4,
+            "profit_factor": 0.0,
+            "total_costs": 42.9,
+            "trade_count": 1,
+            "win_rate": 0.0
+          },
+          "parameter": "setup.consolidation_lookback",
+          "value": 16
+        },
+        {
+          "case_id": "SENS-DISP-060",
+          "config_fingerprint": "eea4374d6f929b742586cd59e5ec954404d361f6e9c25564afc1185190196759",
+          "hypothesis": "A lower displacement threshold may increase frequency at a quality cost.",
+          "metrics": {
+            "average_mae_points": 6.173728813559322,
+            "average_mfe_points": 9.555084745762711,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -44.771333333333715,
+                "net_pnl": -1119.2833333333429,
+                "profit_factor": 0.5027506904492135,
+                "trades": 25,
+                "win_rate": 0.48
+              },
+              "SHORT": {
+                "expectancy": -46.4485294117647,
+                "net_pnl": -1579.25,
+                "profit_factor": 0.5771017713926119,
+                "trades": 34,
+                "win_rate": 0.35294117647058826
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -93.53611111111113,
+                "net_pnl": -1683.6500000000003,
+                "profit_factor": 0.07126899633174283,
+                "trades": 18,
+                "win_rate": 0.3333333333333333
+              },
+              "01:00": {
+                "expectancy": 7.274242424241544,
+                "net_pnl": 80.01666666665699,
+                "profit_factor": 1.0760000633201854,
+                "trades": 11,
+                "win_rate": 0.45454545454545453
+              },
+              "02:00": {
+                "expectancy": -11.870588235294116,
+                "net_pnl": -201.79999999999998,
+                "profit_factor": 0.848697282099344,
+                "trades": 17,
+                "win_rate": 0.5294117647058824
+              },
+              "03:00": {
+                "expectancy": -68.69999999999999,
+                "net_pnl": -893.0999999999999,
+                "profit_factor": 0.499902007447434,
+                "trades": 13,
+                "win_rate": 0.3076923076923077
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -230.55,
+                "net_pnl": -1152.75,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -28.62561728395081,
+                "net_pnl": -1545.7833333333438,
+                "profit_factor": 0.6801309177694297,
+                "trades": 54,
+                "win_rate": 0.4444444444444444
+              }
+            },
+            "expectancy_per_trade": -45.737853107344804,
+            "gross_pnl_before_costs": 218.66666666665697,
+            "maximum_consecutive_losses": 6,
+            "maximum_drawdown": 0.03570201201522509,
+            "net_pnl_after_costs": -2698.5333333333433,
+            "profit_factor": 0.5491398370452037,
+            "total_costs": 2917.2000000000007,
+            "trade_count": 59,
+            "win_rate": 0.4067796610169492
+          },
+          "parameter": "setup.displacement_min_atr",
+          "value": 0.6
+        },
+        {
+          "case_id": "SENS-DISP-100",
+          "config_fingerprint": "2db61290590b7260cd61206f919034a2c7d2700388b1b63bb9ca065bc15fdb09",
+          "hypothesis": "A higher displacement threshold may filter weak breaks.",
+          "metrics": {
+            "average_mae_points": 6.596875,
+            "average_mfe_points": 9.909375,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -86.65196078431431,
+                "net_pnl": -1473.0833333333433,
+                "profit_factor": 0.18807069760605025,
+                "trades": 17,
+                "win_rate": 0.47058823529411764
+              },
+              "SHORT": {
+                "expectancy": -36.48260869565218,
+                "net_pnl": -839.1000000000003,
+                "profit_factor": 0.6851820586414541,
+                "trades": 23,
+                "win_rate": 0.391304347826087
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -127.52500000000002,
+                "net_pnl": -1530.3000000000002,
+                "profit_factor": 0.016232200829288675,
+                "trades": 12,
+                "win_rate": 0.25
+              },
+              "01:00": {
+                "expectancy": 41.108333333332126,
+                "net_pnl": 328.866666666657,
+                "profit_factor": 1.508451865594708,
+                "trades": 8,
+                "win_rate": 0.5
+              },
+              "02:00": {
+                "expectancy": -6.31363636363636,
+                "net_pnl": -69.44999999999996,
+                "profit_factor": 0.9215564466030383,
+                "trades": 11,
+                "win_rate": 0.6363636363636364
+              },
+              "03:00": {
+                "expectancy": -115.70000000000002,
+                "net_pnl": -1041.3000000000002,
+                "profit_factor": 0.2519127842235712,
+                "trades": 9,
+                "win_rate": 0.3333333333333333
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -171.85833333333335,
+                "net_pnl": -1031.15,
+                "profit_factor": 0.10548687920190848,
+                "trades": 6,
+                "win_rate": 0.16666666666666666
+              },
+              "range": {
+                "expectancy": -37.67745098039245,
+                "net_pnl": -1281.0333333333433,
+                "profit_factor": 0.6149468474155089,
+                "trades": 34,
+                "win_rate": 0.47058823529411764
+              }
+            },
+            "expectancy_per_trade": -57.804583333333596,
+            "gross_pnl_before_costs": -346.58333333334303,
+            "maximum_consecutive_losses": 4,
+            "maximum_drawdown": 0.03212019727415098,
+            "net_pnl_after_costs": -2312.183333333344,
+            "profit_factor": 0.48384732438173894,
+            "total_costs": 1965.6000000000006,
+            "trade_count": 40,
+            "win_rate": 0.425
+          },
+          "parameter": "setup.displacement_min_atr",
+          "value": 1.0
+        },
+        {
+          "case_id": "SENS-STOP-32",
+          "config_fingerprint": "bce8a4aff129180bbe214f97aab516db839e501435ef639b8f3bfa9077956617",
+          "hypothesis": "A 32-tick cap may improve nominal R but increase invalidations.",
+          "metrics": {
+            "average_mae_points": 6.00765306122449,
+            "average_mfe_points": 9.15561224489796,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -72.28106060606105,
+                "net_pnl": -1590.1833333333432,
+                "profit_factor": 0.22215700181801398,
+                "trades": 22,
+                "win_rate": 0.45454545454545453
+              },
+              "SHORT": {
+                "expectancy": -30.03703703703704,
+                "net_pnl": -811.0000000000001,
+                "profit_factor": 0.7222697852813259,
+                "trades": 27,
+                "win_rate": 0.37037037037037035
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -92.00312500000001,
+                "net_pnl": -1472.0500000000002,
+                "profit_factor": 0.0782693090385398,
+                "trades": 16,
+                "win_rate": 0.3125
+              },
+              "01:00": {
+                "expectancy": 41.82083333333212,
+                "net_pnl": 334.56666666665694,
+                "profit_factor": 1.5218634638381796,
+                "trades": 8,
+                "win_rate": 0.5
+              },
+              "02:00": {
+                "expectancy": 6.0937500000000036,
+                "net_pnl": 97.50000000000006,
+                "profit_factor": 1.0889314543713229,
+                "trades": 16,
+                "win_rate": 0.5625
+              },
+              "03:00": {
+                "expectancy": -151.2444444444444,
+                "net_pnl": -1361.1999999999998,
+                "profit_factor": 0.16488235835455078,
+                "trades": 9,
+                "win_rate": 0.2222222222222222
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -230.42999999999998,
+                "net_pnl": -1152.1499999999999,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -28.38712121212144,
+                "net_pnl": -1249.0333333333433,
+                "profit_factor": 0.6723675121754994,
+                "trades": 44,
+                "win_rate": 0.45454545454545453
+              }
+            },
+            "expectancy_per_trade": -49.003741496598856,
+            "gross_pnl_before_costs": 129.91666666665697,
+            "maximum_consecutive_losses": 5,
+            "maximum_drawdown": 0.032728538776484475,
+            "net_pnl_after_costs": -2401.183333333344,
+            "profit_factor": 0.5163243998160233,
+            "total_costs": 2531.1000000000004,
+            "trade_count": 49,
+            "win_rate": 0.40816326530612246
+          },
+          "parameter": "setup.fixed_stop_ticks",
+          "value": 32
+        },
+        {
+          "case_id": "SENS-STOP-48",
+          "config_fingerprint": "840b87442d94d7efdac1b0c960a8aa5a9948144007ec283d634602a2649750a5",
+          "hypothesis": "A 48-tick cap may survive noise but lower quantity/R.",
+          "metrics": {
+            "average_mae_points": 6.283163265306122,
+            "average_mfe_points": 9.517857142857142,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -72.94924242424287,
+                "net_pnl": -1604.8833333333432,
+                "profit_factor": 0.2089299650852283,
+                "trades": 22,
+                "win_rate": 0.45454545454545453
+              },
+              "SHORT": {
+                "expectancy": -14.16481481481482,
+                "net_pnl": -382.45000000000016,
+                "profit_factor": 0.8442824861057387,
+                "trades": 27,
+                "win_rate": 0.4074074074074074
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -73.771875,
+                "net_pnl": -1180.35,
+                "profit_factor": 0.13097736057426837,
+                "trades": 16,
+                "win_rate": 0.375
+              },
+              "01:00": {
+                "expectancy": 46.33333333333212,
+                "net_pnl": 370.66666666665697,
+                "profit_factor": 1.6126721763085239,
+                "trades": 8,
+                "win_rate": 0.5
+              },
+              "02:00": {
+                "expectancy": 2.2437500000000057,
+                "net_pnl": 35.90000000000009,
+                "profit_factor": 1.0332730895778304,
+                "trades": 16,
+                "win_rate": 0.5625
+              },
+              "03:00": {
+                "expectancy": -134.8388888888889,
+                "net_pnl": -1213.5500000000002,
+                "profit_factor": 0.1587758214335228,
+                "trades": 9,
+                "win_rate": 0.2222222222222222
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -215.87000000000003,
+                "net_pnl": -1079.3500000000001,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -20.635984848485073,
+                "net_pnl": -907.9833333333432,
+                "profit_factor": 0.7333734650829279,
+                "trades": 44,
+                "win_rate": 0.4772727272727273
+              }
+            },
+            "expectancy_per_trade": -40.55782312925191,
+            "gross_pnl_before_costs": 391.66666666665697,
+            "maximum_consecutive_losses": 5,
+            "maximum_drawdown": 0.02859007602264891,
+            "net_pnl_after_costs": -1987.3333333333435,
+            "profit_factor": 0.556873587822569,
+            "total_costs": 2379.0000000000005,
+            "trade_count": 49,
+            "win_rate": 0.42857142857142855
+          },
+          "parameter": "setup.fixed_stop_ticks",
+          "value": 48
+        },
+        {
+          "case_id": "SENS-PIVOT-2",
+          "config_fingerprint": "1ac28537565363c8155ac71f74d4b5c8151ac5fd2138e844e31da0991776425e",
+          "hypothesis": "A shorter delayed pivot may map liquidity more responsively.",
+          "metrics": {
+            "average_mae_points": 6.079081632653061,
+            "average_mfe_points": 9.196428571428571,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -72.89015151515197,
+                "net_pnl": -1603.5833333333433,
+                "profit_factor": 0.21567908178653344,
+                "trades": 22,
+                "win_rate": 0.45454545454545453
+              },
+              "SHORT": {
+                "expectancy": -31.44598765432145,
+                "net_pnl": -849.0416666666791,
+                "profit_factor": 0.7091227288818805,
+                "trades": 27,
+                "win_rate": 0.4074074074074074
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -85.54687500000001,
+                "net_pnl": -1368.7500000000002,
+                "profit_factor": 0.13966498004337027,
+                "trades": 16,
+                "win_rate": 0.375
+              },
+              "01:00": {
+                "expectancy": 36.608333333332126,
+                "net_pnl": 292.866666666657,
+                "profit_factor": 1.4527932385075093,
+                "trades": 8,
+                "win_rate": 0.5
+              },
+              "02:00": {
+                "expectancy": 1.5723958333325783,
+                "net_pnl": 25.158333333321252,
+                "profit_factor": 1.0229808936591196,
+                "trades": 16,
+                "win_rate": 0.5625
+              },
+              "03:00": {
+                "expectancy": -155.76666666666668,
+                "net_pnl": -1401.9,
+                "profit_factor": 0.1404396210797388,
+                "trades": 9,
+                "win_rate": 0.2222222222222222
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -230.55,
+                "net_pnl": -1152.75,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -29.542613636364134,
+                "net_pnl": -1299.8750000000218,
+                "profit_factor": 0.6588881307896128,
+                "trades": 44,
+                "win_rate": 0.4772727272727273
+              }
+            },
+            "expectancy_per_trade": -50.05357142857189,
+            "gross_pnl_before_costs": -15.125000000021828,
+            "maximum_consecutive_losses": 5,
+            "maximum_drawdown": 0.03324295081344251,
+            "net_pnl_after_costs": -2452.6250000000227,
+            "profit_factor": 0.5058628574882347,
+            "total_costs": 2437.5000000000005,
+            "trade_count": 49,
+            "win_rate": 0.42857142857142855
+          },
+          "parameter": "structure.pivot_left_right_bars",
+          "value": 2
+        },
+        {
+          "case_id": "SENS-PIVOT-4",
+          "config_fingerprint": "772e9ffe93cf069a7bff2fcaa309986e180c2d1562b637238f06507805b5f3c6",
+          "hypothesis": "A longer delayed pivot may map cleaner liquidity.",
+          "metrics": {
+            "average_mae_points": 6.079081632653061,
+            "average_mfe_points": 9.380102040816327,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -70.29924242424288,
+                "net_pnl": -1546.5833333333433,
+                "profit_factor": 0.24355807716448946,
+                "trades": 22,
+                "win_rate": 0.45454545454545453
+              },
+              "SHORT": {
+                "expectancy": -33.222222222222236,
+                "net_pnl": -897.0000000000003,
+                "profit_factor": 0.6933543005606453,
+                "trades": 27,
+                "win_rate": 0.37037037037037035
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -92.01562500000001,
+                "net_pnl": -1472.2500000000002,
+                "profit_factor": 0.07825950853028643,
+                "trades": 16,
+                "win_rate": 0.3125
+              },
+              "01:00": {
+                "expectancy": 42.983333333332126,
+                "net_pnl": 343.866666666657,
+                "profit_factor": 1.531642960214374,
+                "trades": 8,
+                "win_rate": 0.5
+              },
+              "02:00": {
+                "expectancy": 5.418750000000003,
+                "net_pnl": 86.70000000000005,
+                "profit_factor": 1.0791961635076501,
+                "trades": 16,
+                "win_rate": 0.5625
+              },
+              "03:00": {
+                "expectancy": -155.76666666666668,
+                "net_pnl": -1401.9,
+                "profit_factor": 0.1404396210797388,
+                "trades": 9,
+                "win_rate": 0.2222222222222222
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -230.55,
+                "net_pnl": -1152.75,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -29.337121212121442,
+                "net_pnl": -1290.8333333333435,
+                "profit_factor": 0.6618199283905309,
+                "trades": 44,
+                "win_rate": 0.45454545454545453
+              }
+            },
+            "expectancy_per_trade": -49.869047619047834,
+            "gross_pnl_before_costs": -6.083333333343035,
+            "maximum_consecutive_losses": 5,
+            "maximum_drawdown": 0.03315253496051847,
+            "net_pnl_after_costs": -2443.583333333344,
+            "profit_factor": 0.5083086003655432,
+            "total_costs": 2437.5000000000005,
+            "trade_count": 49,
+            "win_rate": 0.40816326530612246
+          },
+          "parameter": "structure.pivot_left_right_bars",
+          "value": 4
+        }
+      ],
+      "risk_scenarios_on_validation": {
+        "0.0010": {
+          "average_mae_points": 7.7368421052631575,
+          "average_mfe_points": 12.526315789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -60.169999999999995,
+              "net_pnl": -601.6999999999999,
+              "profit_factor": 0.20693291155924604,
+              "trades": 10,
+              "win_rate": 0.2
+            },
+            "SHORT": {
+              "expectancy": -26.549999999999997,
+              "net_pnl": -238.95,
+              "profit_factor": 0.486073771373266,
+              "trades": 9,
+              "win_rate": 0.4444444444444444
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -61.239999999999995,
+              "net_pnl": -306.2,
+              "profit_factor": 0.20960247805885393,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -34.14166666666667,
+              "net_pnl": -204.85000000000002,
+              "profit_factor": 0.4329411764705883,
+              "trades": 6,
+              "win_rate": 0.3333333333333333
+            },
+            "02:00": {
+              "expectancy": -68.55,
+              "net_pnl": -274.2,
+              "profit_factor": 0.03382663847780128,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "03:00": {
+              "expectancy": -13.849999999999996,
+              "net_pnl": -55.399999999999984,
+              "profit_factor": 0.7102510460251047,
+              "trades": 4,
+              "win_rate": 0.5
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -13.349999999999996,
+              "net_pnl": -53.399999999999984,
+              "profit_factor": 0.7177589852008458,
+              "trades": 4,
+              "win_rate": 0.5
+            },
+            "range": {
+              "expectancy": -66.76071428571429,
+              "net_pnl": -934.6500000000001,
+              "profit_factor": 0.09647638841896661,
+              "trades": 14,
+              "win_rate": 0.21428571428571427
+            },
+            "trend_up": {
+              "expectancy": 147.4,
+              "net_pnl": 147.4,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -44.24473684210527,
+          "gross_pnl_before_costs": -446.75,
+          "maximum_consecutive_losses": 4,
+          "maximum_drawdown": 0.008602796646264448,
+          "net_pnl_after_costs": -840.6500000000001,
+          "profit_factor": 0.3129979977934867,
+          "total_costs": 393.90000000000003,
+          "trade_count": 19,
+          "win_rate": 0.3157894736842105
+        },
+        "0.0025": {
+          "average_mae_points": 7.7368421052631575,
+          "average_mfe_points": 12.526315789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -134.23,
+              "net_pnl": -1342.3,
+              "profit_factor": 0.2226662033819782,
+              "trades": 10,
+              "win_rate": 0.2
+            },
+            "SHORT": {
+              "expectancy": -40.25,
+              "net_pnl": -362.25,
+              "profit_factor": 0.5680300500834725,
+              "trades": 9,
+              "win_rate": 0.4444444444444444
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -120.42999999999999,
+              "net_pnl": -602.15,
+              "profit_factor": 0.152677126574263,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -45.06666666666666,
+              "net_pnl": -270.4,
+              "profit_factor": 0.5947545897339828,
+              "trades": 6,
+              "win_rate": 0.3333333333333333
+            },
+            "02:00": {
+              "expectancy": -173.375,
+              "net_pnl": -693.5,
+              "profit_factor": 0.02255109231853418,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "03:00": {
+              "expectancy": -34.625,
+              "net_pnl": -138.5,
+              "profit_factor": 0.7102510460251046,
+              "trades": 4,
+              "win_rate": 0.5
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -33.375,
+              "net_pnl": -133.5,
+              "profit_factor": 0.7177589852008457,
+              "trades": 4,
+              "win_rate": 0.5
+            },
+            "range": {
+              "expectancy": -138.53928571428574,
+              "net_pnl": -1939.5500000000002,
+              "profit_factor": 0.07305008602561651,
+              "trades": 14,
+              "win_rate": 0.21428571428571427
+            },
+            "trend_up": {
+              "expectancy": 368.5,
+              "net_pnl": 368.5,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -89.71315789473685,
+          "gross_pnl_before_costs": -936.25,
+          "maximum_consecutive_losses": 4,
+          "maximum_drawdown": 0.01740218300756802,
+          "net_pnl_after_costs": -1704.5500000000002,
+          "profit_factor": 0.3355617057768769,
+          "total_costs": 768.3,
+          "trade_count": 19,
+          "win_rate": 0.3157894736842105
+        },
+        "0.0050": {
+          "average_mae_points": 7.7368421052631575,
+          "average_mfe_points": 12.526315789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -149.015,
+              "net_pnl": -1490.1499999999999,
+              "profit_factor": 0.22256423633755054,
+              "trades": 10,
+              "win_rate": 0.2
+            },
+            "SHORT": {
+              "expectancy": -40.01111111111111,
+              "net_pnl": -360.1,
+              "profit_factor": 0.5824927536231884,
+              "trades": 9,
+              "win_rate": 0.4444444444444444
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -134.76999999999998,
+              "net_pnl": -673.8499999999999,
+              "profit_factor": 0.13868473189748834,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -38.05,
+              "net_pnl": -228.29999999999998,
+              "profit_factor": 0.657849381790933,
+              "trades": 6,
+              "win_rate": 0.3333333333333333
+            },
+            "02:00": {
+              "expectancy": -196.96249999999998,
+              "net_pnl": -787.8499999999999,
+              "profit_factor": 0.01990421098463644,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "03:00": {
+              "expectancy": -40.062499999999986,
+              "net_pnl": -160.24999999999994,
+              "profit_factor": 0.6952263217953595,
+              "trades": 4,
+              "win_rate": 0.5
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -44.53750000000001,
+              "net_pnl": -178.15000000000003,
+              "profit_factor": 0.6723376862240205,
+              "trades": 4,
+              "win_rate": 0.5
+            },
+            "range": {
+              "expectancy": -148.76428571428573,
+              "net_pnl": -2082.7000000000003,
+              "profit_factor": 0.06837243631321151,
+              "trades": 14,
+              "win_rate": 0.21428571428571427
+            },
+            "trend_up": {
+              "expectancy": 410.6,
+              "net_pnl": 410.6,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -97.38157894736841,
+          "gross_pnl_before_costs": -1031.25,
+          "maximum_consecutive_losses": 4,
+          "maximum_drawdown": 0.018858654308485465,
+          "net_pnl_after_costs": -1850.2499999999998,
+          "profit_factor": 0.3342628406944319,
+          "total_costs": 818.9999999999997,
+          "trade_count": 19,
+          "win_rate": 0.3157894736842105
+        }
+      },
+      "sensitivity_stability": {
+        "cases_with_trades": 8,
+        "expectancy_dispersion": 57.73166520263385,
+        "median_expectancy": -49.96130952380986,
+        "positive_case_fraction": 0.0
+      },
+      "status": "RESEARCH_ONLY_NO_PROFITABILITY_CLAIM",
+      "suite_version": "1.0",
+      "validation": {
+        "by_month": {
+          "2024-10": {
+            "costs": 124.80000000000001,
+            "expectancy": -189.01666666666668,
+            "gross_pnl": -442.25,
+            "net_pnl": -567.05,
+            "trades": 3,
+            "win_rate": 0.0
+          },
+          "2024-11": {
+            "costs": 78.0,
+            "expectancy": -24.625,
+            "gross_pnl": 28.75,
+            "net_pnl": -49.25,
+            "trades": 2,
+            "win_rate": 0.5
+          },
+          "2024-12": {
+            "costs": 78.0,
+            "expectancy": -41.5,
+            "gross_pnl": -5.0,
+            "net_pnl": -83.0,
+            "trades": 2,
+            "win_rate": 0.5
+          },
+          "2025-01": {
+            "costs": 159.9,
+            "expectancy": -20.2875,
+            "gross_pnl": 78.75,
+            "net_pnl": -81.14999999999998,
+            "trades": 4,
+            "win_rate": 0.5
+          },
+          "2025-02": {
+            "costs": 39.0,
+            "expectancy": 108.5,
+            "gross_pnl": 147.5,
+            "net_pnl": 108.5,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2025-03": {
+            "costs": 167.7,
+            "expectancy": -203.1125,
+            "gross_pnl": -644.75,
+            "net_pnl": -812.4499999999999,
+            "trades": 4,
+            "win_rate": 0.0
+          },
+          "2025-04": {
+            "costs": 39.0,
+            "expectancy": 149.75,
+            "gross_pnl": 188.75,
+            "net_pnl": 149.75,
+            "trades": 1,
+            "win_rate": 1.0
+          },
+          "2025-05": {
+            "costs": 81.9,
+            "expectancy": -184.95,
+            "gross_pnl": -288.0,
+            "net_pnl": -369.9,
+            "trades": 2,
+            "win_rate": 0.0
+          }
+        },
+        "by_session_hour": {
+          "00:00": {
+            "expectancy": -120.43,
+            "net_pnl": -602.15,
+            "trades": 5,
+            "win_rate": 0.2
+          },
+          "01:00": {
+            "expectancy": -45.06666666666667,
+            "net_pnl": -270.4,
+            "trades": 6,
+            "win_rate": 0.3333333333333333
+          },
+          "02:00": {
+            "expectancy": -173.375,
+            "net_pnl": -693.5,
+            "trades": 4,
+            "win_rate": 0.25
+          },
+          "03:00": {
+            "expectancy": -34.625,
+            "net_pnl": -138.5,
+            "trades": 4,
+            "win_rate": 0.5
+          }
+        },
+        "expectancy_bootstrap": {
+          "mean": -90.24599947368421,
+          "p05": -154.22368421052633,
+          "p50": -92.27236842105263,
+          "p95": -20.02986842105262,
+          "probability_positive": 0.0204,
+          "sample_trades": 19,
+          "simulations": 5000,
+          "warning": "Bootstrap resamples observed trades; it does not create unseen regimes."
+        },
+        "metrics": {
+          "average_mae_points": 7.7368421052631575,
+          "average_mfe_points": 12.526315789473685,
+          "by_direction": {
+            "LONG": {
+              "expectancy": -134.23,
+              "net_pnl": -1342.3,
+              "profit_factor": 0.2226662033819782,
+              "trades": 10,
+              "win_rate": 0.2
+            },
+            "SHORT": {
+              "expectancy": -40.25,
+              "net_pnl": -362.25,
+              "profit_factor": 0.5680300500834725,
+              "trades": 9,
+              "win_rate": 0.4444444444444444
+            }
+          },
+          "by_entry_hour": {
+            "00:00": {
+              "expectancy": -120.42999999999999,
+              "net_pnl": -602.15,
+              "profit_factor": 0.152677126574263,
+              "trades": 5,
+              "win_rate": 0.2
+            },
+            "01:00": {
+              "expectancy": -45.06666666666666,
+              "net_pnl": -270.4,
+              "profit_factor": 0.5947545897339828,
+              "trades": 6,
+              "win_rate": 0.3333333333333333
+            },
+            "02:00": {
+              "expectancy": -173.375,
+              "net_pnl": -693.5,
+              "profit_factor": 0.02255109231853418,
+              "trades": 4,
+              "win_rate": 0.25
+            },
+            "03:00": {
+              "expectancy": -34.625,
+              "net_pnl": -138.5,
+              "profit_factor": 0.7102510460251046,
+              "trades": 4,
+              "win_rate": 0.5
+            }
+          },
+          "by_regime": {
+            "expansion": {
+              "expectancy": -33.375,
+              "net_pnl": -133.5,
+              "profit_factor": 0.7177589852008457,
+              "trades": 4,
+              "win_rate": 0.5
+            },
+            "range": {
+              "expectancy": -138.53928571428574,
+              "net_pnl": -1939.5500000000002,
+              "profit_factor": 0.07305008602561651,
+              "trades": 14,
+              "win_rate": 0.21428571428571427
+            },
+            "trend_up": {
+              "expectancy": 368.5,
+              "net_pnl": 368.5,
+              "profit_factor": null,
+              "trades": 1,
+              "win_rate": 1.0
+            }
+          },
+          "expectancy_per_trade": -89.71315789473685,
+          "gross_pnl_before_costs": -936.25,
+          "maximum_consecutive_losses": 4,
+          "maximum_drawdown": 0.01740218300756802,
+          "net_pnl_after_costs": -1704.5500000000002,
+          "profit_factor": 0.3355617057768769,
+          "total_costs": 768.3,
+          "trade_count": 19,
+          "win_rate": 0.3157894736842105
+        }
+      },
+      "walk_forward_baseline": [
+        {
+          "development_bars_observed": 167505,
+          "end": "2024-03-04T09:02:00+00:00",
+          "fold": 0,
+          "metrics": {
+            "average_mae_points": 4.53125,
+            "average_mfe_points": 12.21875,
+            "by_direction": {
+              "LONG": {
+                "expectancy": 32.7,
+                "net_pnl": 32.7,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              },
+              "SHORT": {
+                "expectancy": 25.133333333333326,
+                "net_pnl": 75.39999999999998,
+                "profit_factor": 1.3154811715481172,
+                "trades": 3,
+                "win_rate": 0.6666666666666666
+              }
+            },
+            "by_entry_hour": {
+              "01:00": {
+                "expectancy": -52.900000000000006,
+                "net_pnl": -105.80000000000001,
+                "profit_factor": 0.5573221757322175,
+                "trades": 2,
+                "win_rate": 0.5
+              },
+              "02:00": {
+                "expectancy": 106.94999999999999,
+                "net_pnl": 213.89999999999998,
+                "profit_factor": null,
+                "trades": 2,
+                "win_rate": 1.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -239.0,
+                "net_pnl": -239.0,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": 115.69999999999999,
+                "net_pnl": 347.09999999999997,
+                "profit_factor": null,
+                "trades": 3,
+                "win_rate": 1.0
+              }
+            },
+            "expectancy_per_trade": 27.024999999999995,
+            "gross_pnl_before_costs": 287.5,
+            "maximum_consecutive_losses": 1,
+            "maximum_drawdown": 0.005649065601378239,
+            "net_pnl_after_costs": 108.09999999999998,
+            "profit_factor": 1.4523012552301253,
+            "total_costs": 179.39999999999998,
+            "trade_count": 4,
+            "win_rate": 0.75
+          },
+          "start": "2023-12-06T05:38:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 209381,
+          "end": "2024-05-29T07:18:00+00:00",
+          "fold": 1,
+          "metrics": {
+            "average_mae_points": 8.09375,
+            "average_mfe_points": 4.15625,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -139.41666666666666,
+                "net_pnl": -418.25,
+                "profit_factor": 0.0,
+                "trades": 3,
+                "win_rate": 0.0
+              },
+              "SHORT": {
+                "expectancy": -239.0,
+                "net_pnl": -239.0,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -89.625,
+                "net_pnl": -179.25,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              },
+              "02:00": {
+                "expectancy": -239.0,
+                "net_pnl": -239.0,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "03:00": {
+                "expectancy": -239.0,
+                "net_pnl": -239.0,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              }
+            },
+            "by_regime": {
+              "range": {
+                "expectancy": -164.3125,
+                "net_pnl": -657.25,
+                "profit_factor": 0.0,
+                "trades": 4,
+                "win_rate": 0.0
+              }
+            },
+            "expectancy_per_trade": -164.3125,
+            "gross_pnl_before_costs": -481.75,
+            "maximum_consecutive_losses": 4,
+            "maximum_drawdown": 0.008040599912130048,
+            "net_pnl_after_costs": -657.25,
+            "profit_factor": 0.0,
+            "total_costs": 175.5,
+            "trade_count": 4,
+            "win_rate": 0.0
+          },
+          "start": "2024-03-04T09:04:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 251257,
+          "end": "2024-08-22T14:54:00+00:00",
+          "fold": 2,
+          "metrics": {
+            "average_mae_points": 9.767857142857142,
+            "average_mfe_points": 8.446428571428571,
+            "by_direction": {
+              "LONG": {
+                "expectancy": 45.04999999999999,
+                "net_pnl": 135.14999999999998,
+                "profit_factor": null,
+                "trades": 3,
+                "win_rate": 1.0
+              },
+              "SHORT": {
+                "expectancy": -235.35,
+                "net_pnl": -941.4,
+                "profit_factor": 0.0,
+                "trades": 4,
+                "win_rate": 0.0
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -72.06666666666666,
+                "net_pnl": -216.2,
+                "profit_factor": 0.09539748953974897,
+                "trades": 3,
+                "win_rate": 0.6666666666666666
+              },
+              "01:00": {
+                "expectancy": -224.4,
+                "net_pnl": -224.4,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "02:00": {
+                "expectancy": 112.35,
+                "net_pnl": 112.35,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              },
+              "03:00": {
+                "expectancy": -239.0,
+                "net_pnl": -478.0,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -239.0,
+                "net_pnl": -239.0,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -94.54166666666667,
+                "net_pnl": -567.25,
+                "profit_factor": 0.19241173120728927,
+                "trades": 6,
+                "win_rate": 0.5
+              }
+            },
+            "expectancy_per_trade": -115.17857142857143,
+            "gross_pnl_before_costs": -513.75,
+            "maximum_consecutive_losses": 3,
+            "maximum_drawdown": 0.008443499999999767,
+            "net_pnl_after_costs": -806.25,
+            "profit_factor": 0.14356277884002547,
+            "total_costs": 292.5,
+            "trade_count": 7,
+            "win_rate": 0.42857142857142855
+          },
+          "start": "2024-05-29T07:20:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 293133,
+          "end": "2024-11-15T15:20:00+00:00",
+          "fold": 3,
+          "metrics": {
+            "average_mae_points": 8.916666666666666,
+            "average_mfe_points": 14.555555555555555,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -182.04999999999998,
+                "net_pnl": -728.1999999999999,
+                "profit_factor": 0.0,
+                "trades": 4,
+                "win_rate": 0.0
+              },
+              "SHORT": {
+                "expectancy": 70.11000000000001,
+                "net_pnl": 350.55000000000007,
+                "profit_factor": 1.565585672797677,
+                "trades": 5,
+                "win_rate": 0.4
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -162.525,
+                "net_pnl": -325.05,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              },
+              "01:00": {
+                "expectancy": 150.01666666666668,
+                "net_pnl": 450.05000000000007,
+                "profit_factor": 2.361518680986235,
+                "trades": 3,
+                "win_rate": 0.3333333333333333
+              },
+              "02:00": {
+                "expectancy": -230.79999999999998,
+                "net_pnl": -692.4,
+                "profit_factor": 0.0,
+                "trades": 3,
+                "win_rate": 0.0
+              },
+              "03:00": {
+                "expectancy": 189.75,
+                "net_pnl": 189.75,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": 189.75,
+                "net_pnl": 189.75,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              },
+              "range": {
+                "expectancy": -70.92499999999998,
+                "net_pnl": -567.3999999999999,
+                "profit_factor": 0.579080118694362,
+                "trades": 8,
+                "win_rate": 0.125
+              }
+            },
+            "expectancy_per_trade": -41.961111111111094,
+            "gross_pnl_before_costs": -3.25,
+            "maximum_consecutive_losses": 4,
+            "maximum_drawdown": 0.009043965749490871,
+            "net_pnl_after_costs": -377.64999999999986,
+            "profit_factor": 0.7198442136498516,
+            "total_costs": 374.4,
+            "trade_count": 9,
+            "win_rate": 0.2222222222222222
+          },
+          "start": "2024-08-22T14:56:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 335009,
+          "end": "2025-02-13T11:00:00+00:00",
+          "fold": 4,
+          "metrics": {
+            "average_mae_points": 5.859375,
+            "average_mfe_points": 12.359375,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -23.375,
+                "net_pnl": -93.5,
+                "profit_factor": 0.8043933054393305,
+                "trades": 4,
+                "win_rate": 0.5
+              },
+              "SHORT": {
+                "expectancy": -50.287499999999994,
+                "net_pnl": -201.14999999999998,
+                "profit_factor": 0.4048816568047337,
+                "trades": 4,
+                "win_rate": 0.5
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": 4.75,
+                "net_pnl": 9.5,
+                "profit_factor": 1.095959595959596,
+                "trades": 2,
+                "win_rate": 0.5
+              },
+              "01:00": {
+                "expectancy": 198.425,
+                "net_pnl": 396.85,
+                "profit_factor": null,
+                "trades": 2,
+                "win_rate": 1.0
+              },
+              "02:00": {
+                "expectancy": -111.5,
+                "net_pnl": -223.0,
+                "profit_factor": 0.06694560669456066,
+                "trades": 2,
+                "win_rate": 0.5
+              },
+              "03:00": {
+                "expectancy": -239.0,
+                "net_pnl": -478.0,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -239.0,
+                "net_pnl": -239.0,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "range": {
+                "expectancy": -70.69166666666666,
+                "net_pnl": -424.15,
+                "profit_factor": 0.2649046793760832,
+                "trades": 6,
+                "win_rate": 0.5
+              },
+              "trend_up": {
+                "expectancy": 368.5,
+                "net_pnl": 368.5,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              }
+            },
+            "expectancy_per_trade": -36.83125,
+            "gross_pnl_before_costs": 21.25,
+            "maximum_consecutive_losses": 2,
+            "maximum_drawdown": 0.009169180367166744,
+            "net_pnl_after_costs": -294.65,
+            "profit_factor": 0.6389093137254902,
+            "total_costs": 315.9,
+            "trade_count": 8,
+            "win_rate": 0.5
+          },
+          "start": "2024-11-15T15:22:00+00:00",
+          "validation_bars": 41876
+        },
+        {
+          "development_bars_observed": 376885,
+          "end": "2025-05-12T09:02:00+00:00",
+          "fold": 5,
+          "metrics": {
+            "average_mae_points": 9.178571428571429,
+            "average_mfe_points": 14.0,
+            "by_direction": {
+              "LONG": {
+                "expectancy": -211.4125,
+                "net_pnl": -845.65,
+                "profit_factor": 0.0,
+                "trades": 4,
+                "win_rate": 0.0
+              },
+              "SHORT": {
+                "expectancy": -62.31666666666667,
+                "net_pnl": -186.95000000000002,
+                "profit_factor": 0.4447579447579447,
+                "trades": 3,
+                "win_rate": 0.3333333333333333
+              }
+            },
+            "by_entry_hour": {
+              "00:00": {
+                "expectancy": -203.88333333333333,
+                "net_pnl": -611.65,
+                "profit_factor": 0.0,
+                "trades": 3,
+                "win_rate": 0.0
+              },
+              "01:00": {
+                "expectancy": -168.35000000000002,
+                "net_pnl": -336.70000000000005,
+                "profit_factor": 0.0,
+                "trades": 2,
+                "win_rate": 0.0
+              },
+              "02:00": {
+                "expectancy": -234.0,
+                "net_pnl": -234.0,
+                "profit_factor": 0.0,
+                "trades": 1,
+                "win_rate": 0.0
+              },
+              "03:00": {
+                "expectancy": 149.75,
+                "net_pnl": 149.75,
+                "profit_factor": null,
+                "trades": 1,
+                "win_rate": 1.0
+              }
+            },
+            "by_regime": {
+              "expansion": {
+                "expectancy": -42.125,
+                "net_pnl": -84.25,
+                "profit_factor": 0.6399572649572649,
+                "trades": 2,
+                "win_rate": 0.5
+              },
+              "range": {
+                "expectancy": -189.67000000000002,
+                "net_pnl": -948.35,
+                "profit_factor": 0.0,
+                "trades": 5,
+                "win_rate": 0.0
+              }
+            },
+            "expectancy_per_trade": -147.5142857142857,
+            "gross_pnl_before_costs": -744.0,
+            "maximum_consecutive_losses": 4,
+            "maximum_drawdown": 0.010325999999999913,
+            "net_pnl_after_costs": -1032.6,
+            "profit_factor": 0.1266545439167759,
+            "total_costs": 288.59999999999997,
+            "trade_count": 7,
+            "win_rate": 0.14285714285714285
+          },
+          "start": "2025-02-13T11:02:00+00:00",
+          "validation_bars": 41876
+        }
+      ],
+      "warnings": [
+        "Validation contains fewer than 100 trades; inference is weak.",
+        "Dataset has 772 gaps above the configured threshold; verify session closures.",
+        "Final 20% holdout was not opened by this suite."
+      ]
+    }
+  },
+  "paired_summary": {
+    "instruments": {
+      "NQ": {
+        "average_mae_points": 9.289473684210526,
+        "average_mfe_points": 12.526315789473685,
+        "by_direction": {
+          "LONG": {
+            "expectancy": -135.27,
+            "net_pnl": -1352.7,
+            "profit_factor": 0.24514508928571427,
+            "trades": 10,
+            "win_rate": 0.1
+          },
+          "SHORT": {
+            "expectancy": -54.544444444444444,
+            "net_pnl": -490.9,
+            "profit_factor": 0.6092493831091299,
+            "trades": 9,
+            "win_rate": 0.2222222222222222
+          }
+        },
+        "by_entry_hour": {
+          "00:00": {
+            "expectancy": -111.11999999999998,
+            "net_pnl": -555.5999999999999,
+            "profit_factor": 0.31339594661393966,
+            "trades": 5,
+            "win_rate": 0.2
+          },
+          "01:00": {
+            "expectancy": -57.9,
+            "net_pnl": -347.4,
+            "profit_factor": 0.5584085420109318,
+            "trades": 6,
+            "win_rate": 0.16666666666666666
+          },
+          "02:00": {
+            "expectancy": -197.575,
+            "net_pnl": -790.3,
+            "profit_factor": 0.0,
+            "trades": 4,
+            "win_rate": 0.0
+          },
+          "03:00": {
+            "expectancy": -37.57499999999999,
+            "net_pnl": -150.29999999999995,
+            "profit_factor": 0.7729950158586317,
+            "trades": 4,
+            "win_rate": 0.25
+          }
+        },
+        "by_regime": {
+          "expansion": {
+            "expectancy": -36.32499999999999,
+            "net_pnl": -145.29999999999995,
+            "profit_factor": 0.7788768832749963,
+            "trades": 4,
+            "win_rate": 0.25
+          },
+          "range": {
+            "expectancy": -152.6857142857143,
+            "net_pnl": -2137.6000000000004,
+            "profit_factor": 0.1060555369688859,
+            "trades": 14,
+            "win_rate": 0.07142857142857142
+          },
+          "trend_up": {
+            "expectancy": 439.3,
+            "net_pnl": 439.3,
+            "profit_factor": null,
+            "trades": 1,
+            "win_rate": 1.0
+          }
+        },
+        "expectancy_per_trade": -97.03157894736844,
+        "gross_pnl_before_costs": -1367.5,
+        "maximum_consecutive_losses": 7,
+        "maximum_drawdown": 0.019973172079592545,
+        "net_pnl_after_costs": -1843.6000000000004,
+        "profit_factor": 0.39520388413213925,
+        "total_costs": 476.09999999999985,
+        "trade_count": 19,
+        "win_rate": 0.15789473684210525
+      },
+      "MNQ": {
+        "average_mae_points": 7.7368421052631575,
+        "average_mfe_points": 12.526315789473685,
+        "by_direction": {
+          "LONG": {
+            "expectancy": -134.23,
+            "net_pnl": -1342.3,
+            "profit_factor": 0.2226662033819782,
+            "trades": 10,
+            "win_rate": 0.2
+          },
+          "SHORT": {
+            "expectancy": -40.25,
+            "net_pnl": -362.25,
+            "profit_factor": 0.5680300500834725,
+            "trades": 9,
+            "win_rate": 0.4444444444444444
+          }
+        },
+        "by_entry_hour": {
+          "00:00": {
+            "expectancy": -120.42999999999999,
+            "net_pnl": -602.15,
+            "profit_factor": 0.152677126574263,
+            "trades": 5,
+            "win_rate": 0.2
+          },
+          "01:00": {
+            "expectancy": -45.06666666666666,
+            "net_pnl": -270.4,
+            "profit_factor": 0.5947545897339828,
+            "trades": 6,
+            "win_rate": 0.3333333333333333
+          },
+          "02:00": {
+            "expectancy": -173.375,
+            "net_pnl": -693.5,
+            "profit_factor": 0.02255109231853418,
+            "trades": 4,
+            "win_rate": 0.25
+          },
+          "03:00": {
+            "expectancy": -34.625,
+            "net_pnl": -138.5,
+            "profit_factor": 0.7102510460251046,
+            "trades": 4,
+            "win_rate": 0.5
+          }
+        },
+        "by_regime": {
+          "expansion": {
+            "expectancy": -33.375,
+            "net_pnl": -133.5,
+            "profit_factor": 0.7177589852008457,
+            "trades": 4,
+            "win_rate": 0.5
+          },
+          "range": {
+            "expectancy": -138.53928571428574,
+            "net_pnl": -1939.5500000000002,
+            "profit_factor": 0.07305008602561651,
+            "trades": 14,
+            "win_rate": 0.21428571428571427
+          },
+          "trend_up": {
+            "expectancy": 368.5,
+            "net_pnl": 368.5,
+            "profit_factor": null,
+            "trades": 1,
+            "win_rate": 1.0
+          }
+        },
+        "expectancy_per_trade": -89.71315789473685,
+        "gross_pnl_before_costs": -936.25,
+        "maximum_consecutive_losses": 4,
+        "maximum_drawdown": 0.01740218300756802,
+        "net_pnl_after_costs": -1704.5500000000002,
+        "profit_factor": 0.3355617057768769,
+        "total_costs": 768.3,
+        "trade_count": 19,
+        "win_rate": 0.3157894736842105
+      }
+    },
+    "independence_warning": "NQ and MNQ track the same Nasdaq-100 exposure. Treat them as execution/sizing variants, not independent strategy confirmations."
+  },
+  "holdout_opened": false
+}
