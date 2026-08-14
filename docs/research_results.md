@@ -29,6 +29,10 @@ Development details (all after costs): longs −593.10 on 22 trades, shorts +456
 
 Validation bootstrap (5,000 resamples of the 19 observed trades): mean expectancy −97.26/trade, 95th percentile −5.38/trade, probability of positive expectancy ≈ 4.3%.
 
+MNQ companion run (same price path, MNQ economics — point value $2.00, $0.85 commission + $0.35 exchange fee per side, 20-contract cap; **not independent MNQ evidence**): development expectancy −51.19/trade (PF 0.50, 49 trades); validation expectancy −89.71/trade (PF 0.34, 19 trades). Recorded as `EXP-MNQ-REAL-000`.
+
+Entry-hour breakdown on the development partition (ET): 01:00 and 02:00 entries were net positive (+1,059 and +1,129 before partition aggregation) while 00:00 and 03:00 entries were net negative (−1,126 and −1,200). Small samples; this is descriptive observation, not a fitted rule. Any hour-based change would need to be predeclared as a new experiment and survive validation unchanged.
+
 ## Honest baseline conclusion
 
 The software makes the source-inspired hypothesis testable. On the first real dataset, the frozen baseline **fails** to demonstrate positive expectancy: development is breakeven before costs and costs wipe it out; validation is clearly negative with only 4% bootstrap probability of a positive true mean. This is a scientific negative, not a tuning invitation: no parameter was changed in response to this result, the holdout was not opened, and the experiment is recorded as `EXP-NQ-REAL-000` with decision `REJECT_POSITIVE_EXPECTANCY_AT_BASELINE`.

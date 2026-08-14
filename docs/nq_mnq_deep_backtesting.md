@@ -18,7 +18,11 @@ quality  : 0 duplicates, 0 out-of-order, 0 interval mismatches
 rollover : quarterly roll-date reopen gaps typically <= 25 points; series appears
            back-adjusted; largest reopen gaps are news-driven (see research_results.md)
 suite    : sphinx deep-backtest --nq-data artifacts/data/nq_2m.csv
-           --bootstrap-simulations 5000 -> artifacts/deep_research.json
+           --bootstrap-simulations 5000 -> artifacts/deep_research_nq.json
+           sphinx deep-backtest --mnq-data artifacts/data/mnq_2m_modeled_from_nq.csv
+           --bootstrap-simulations 5000 -> artifacts/deep_research_mnq.json
+           (merged with the non-independence paired summary into
+           artifacts/deep_research.json, which the dashboard loads)
 MNQ      : artifacts/data/mnq_2m_modeled_from_nq.csv (NQ price path, MNQ economics;
            NOT independent MNQ evidence — see manifest for the exact warning)
 ```
