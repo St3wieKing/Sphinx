@@ -12,6 +12,15 @@ No market dataset is committed to Git (`artifacts/` is ignored). Synthetic data 
 | `artifacts/data/mnq_2m_modeled_from_nq.csv` | NQ price path relabeled for MNQ economics | **NOT independent MNQ evidence**; manifest documents the warning |
 | `artifacts/deep_research*.json` | Deep-suite reports (holdout never opened) | Research-only, no profitability claim |
 
+Everything in `artifacts/` is reproducible from the operator's GitHub data repo:
+
+```bash
+bash scripts/rebuild_local_artifacts.sh
+```
+
+A copy of the merged deep report is also committed under `research/reports/`
+as the durable research record (aggregate metrics only — no market data).
+
 ## CSV
 
 ```csv
