@@ -98,7 +98,8 @@ function renderEquity(payload) {
 
 function renderMetrics(payload) {
   const m = payload.metrics; setText("m-trades", m.trade_count ?? "—"); setText("m-win", percent(m.win_rate)); setText("m-pf", number(m.profit_factor)); setText("m-exp", money(m.expectancy_per_trade)); setText("m-dd", percent(m.maximum_drawdown)); setText("m-cost", money(m.total_costs));
-  setText("metric-context", payload.data_mode.includes("SYNTHETIC") ? "Synthetic · not market evidence" : "User replay · validate provenance");
+  const context = payload.data_mode.includes("SYNTHETIC") ? "Synthetic · not market evidence" : `User replay (dev+validation) · ${payload.holdout_bars_excluded ?? "?"} holdout bars excluded`;
+  setText("metric-context", context);
 }
 
 function renderSignals(payload) {
@@ -118,8 +119,7 @@ function updateSelectedLevels(plan) { setText("entry", price(plan.raw_entry)); s
 async function loadInstrument(symbol) {
   state.symbol = symbol; document.querySelectorAll(".instrument").forEach(n => n.classList.toggle("active", n.dataset.symbol === symbol));
   const payload = await getJSON(`/api/instrument/${symbol}`); state.payload = payload;
-  setText("data-mode", payload.data_mode.replaceAll("_", " ")); setText("as-of", dateET(payload.as_of, true)); setText("session", payload.config.session); setText("chart-title", `${symbol} · setup replay`); setText("config-fingerprint", `CONFIG ${payload.config.fingerprint.slice(0, 12).toUpperCase()}`);
-  updateSignal(payload); renderPriceChart(payload); renderEquity(payload); renderMetrics(payload); renderSignals(payload);
+  setText("data-mode", payload.data_mode.replaceAll("_", " ")); setText("as-of", dateET(payload.as_of, true)); setText("session", payload.config.session); setText("chart-title", `${symbol} · setup replay`); setText("config-fingerprint", `CONFIG ${payload.config.fingerprint.slice(0, 12).toUpperCase()}`);  updateSignal(payload); renderPriceChart(payload); renderEquity(payload); renderMetrics(payload); renderSignals(payload);
 }
 
 function renderResearch(overview) {

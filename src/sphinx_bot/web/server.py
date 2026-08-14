@@ -20,6 +20,7 @@ from urllib.parse import parse_qs, urlparse
 
 from ..config import StrategyConfig, load_config
 from ..data.csv_feed import read_bars
+from ..data.split import chronological_split
 from ..models import Decision
 from ..monitoring.audit import AuditLogger
 from ..research.backtest import BacktestEngine
@@ -104,13 +105,26 @@ class DashboardService:
                 symbol=config.instrument.symbol,
                 interval_seconds=config.timeframes.execution_seconds,
             )
-            mode = "USER_PROVIDED_REPLAY"
+            # Respect the locked final holdout: the signal desk replays only the
+            # development and validation partitions and never exposes holdout
+            # trades or metrics, matching the deep research suite.
+            split = chronological_split(
+                bars,
+                config.research.development_fraction,
+                config.research.validation_fraction,
+                config.research.holdout_fraction,
+                config.research.minimum_bars_per_partition,
+            )
+            bars = list(split.development) + list(split.validation)
+            mode = "USER_PROVIDED_REPLAY_DEV_AND_VALIDATION_ONLY"
             source = str(Path(data_path).resolve())
+            holdout_excluded = len(split.holdout)
         else:
             base = generate_synthetic_bars(days=15, seed=44)
             bars = [replace(bar, symbol=config.instrument.symbol) for bar in base]
             mode = "SYNTHETIC_ENGINEERING_DEMO"
             source = "deterministic synthetic fixture — not market data"
+            holdout_excluded = 0
         result = BacktestEngine(config).run(bars)
         plans = [plan for decision in result.decisions if (plan := _decision_plan(decision))]
         latest = plans[-1] if plans else None
@@ -150,6 +164,7 @@ class DashboardService:
             "symbol": config.instrument.symbol,
             "data_mode": mode,
             "data_source": source,
+            "holdout_bars_excluded": holdout_excluded,
             "as_of": bars[-1].timestamp.isoformat(),
             "bar_count": len(bars),
             "first_bar": bars[0].timestamp.isoformat(),
