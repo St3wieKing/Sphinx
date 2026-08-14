@@ -1,0 +1,134 @@
+{
+  "version": "0.2.0",
+  "name": "bryan_powell_key_open_rejection_block_exp_001",
+  "paper_only": true,
+  "instrument": {
+    "symbol": "NQ",
+    "tick_size": 0.25,
+    "point_value": 20.0,
+    "quantity_increment": 1,
+    "max_contracts": 2
+  },
+  "session": {
+    "timezone": "America/New_York",
+    "start": "00:00",
+    "end": "04:00",
+    "weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "force_flat_at_end": true,
+    "warmup_bars": 30
+  },
+  "timeframes": {
+    "execution_seconds": 120,
+    "intermediate_seconds": [
+      300,
+      900
+    ],
+    "context_seconds": [
+      3600,
+      14400
+    ]
+  },
+  "structure": {
+    "method": "fixed",
+    "pivot_left_bars": 3,
+    "pivot_right_bars": 3,
+    "atr_period": 14,
+    "atr_reversal_multiplier": 1.5,
+    "percentage_reversal": 0.002,
+    "equal_tolerance_ticks": 4.0,
+    "regime_lookback": 20,
+    "trend_efficiency_threshold": 0.45,
+    "expansion_atr_ratio": 1.5
+  },
+  "setup": {
+    "consolidation_lookback": 12,
+    "consolidation_max_atr": 2.0,
+    "displacement_min_atr": 0.8,
+    "breakout_buffer_ticks": 1.0,
+    "max_retrace_bars": 12,
+    "retest_tolerance_ticks": 1.0,
+    "entry_confirmation": "touch",
+    "stop_mode": "fixed_or_pivotal",
+    "fixed_stop_ticks": 40.0,
+    "pivotal_buffer_ticks": 1.0,
+    "extension_multiple": 1.66,
+    "first_target_fraction": 0.0,
+    "minimum_rr": 3.0,
+    "cooldown_bars": 3,
+    "require_context_aoi": false,
+    "require_smt": false,
+    "fvg_min_ticks": 2.0,
+    "max_aoi_age_bars": 120,
+    "score_weights": {
+      "location": 0.25,
+      "displacement": 0.25,
+      "liquidity": 0.2,
+      "context": 0.15,
+      "freshness": 0.15
+    },
+    "aoi_score_weights": {
+      "displacement": 0.3,
+      "freshness": 0.3,
+      "mitigation": 0.2,
+      "interactions": 0.2
+    }
+  },
+  "liquidity": {
+    "max_levels": 200,
+    "equal_level_tolerance_ticks": 4.0,
+    "sweep_excursion_ticks": 1.0,
+    "sweep_reclaim_bars": 1,
+    "min_target_distance_ticks": 4.0,
+    "weights": {
+      "timeframe": 0.3,
+      "touches": 0.2,
+      "recency": 0.15,
+      "equality": 0.15,
+      "distance": 0.1,
+      "session": 0.1
+    }
+  },
+  "risk": {
+    "initial_equity": 100000.0,
+    "risk_per_trade_pct": 0.0025,
+    "daily_loss_limit_pct": 0.01,
+    "max_drawdown_pct": 0.05,
+    "max_trades_per_session": 3,
+    "max_consecutive_losses": 2,
+    "loss_cooldown_minutes": 60,
+    "max_notional_exposure": 1000000.0,
+    "reject_after_count": 3,
+    "flatten_on_critical_kill": true
+  },
+  "execution": {
+    "spread_ticks": 1.0,
+    "slippage_ticks": 1.0,
+    "commission_per_contract_per_side": 2.5,
+    "exchange_fee_per_contract_per_side": 0.35,
+    "entry_delay_bars": 0,
+    "same_bar_policy": "stop_first_no_favorable_exit",
+    "fill_mode": "trigger_market",
+    "max_spread_ticks": 4.0,
+    "max_data_gap_seconds": 360
+  },
+  "research": {
+    "development_fraction": 0.6,
+    "validation_fraction": 0.2,
+    "holdout_fraction": 0.2,
+    "minimum_bars_per_partition": 100,
+    "strategy_frozen": false,
+    "random_seed": 44
+  },
+  "logging": {
+    "output_directory": "artifacts",
+    "decisions_filename": "decisions.jsonl",
+    "trades_filename": "trades.jsonl",
+    "reports_directory": "reports"
+  }
+}

@@ -4,10 +4,12 @@ import unittest
 from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from unittest.mock import MagicMock
 
 from sphinx_bot.config import load_config
 from sphinx_bot.execution.simulator import PaperBroker
-from sphinx_bot.models import Bar, Direction, ExitReason, Regime, SetupPlan, Trade
+from sphinx_bot.models import Bar, Direction, ExitReason, Regime, SetupPlan, StrategyState, Trade
+from sphinx_bot.research.backtest import BacktestEngine
 from sphinx_bot.risk.manager import RiskManager
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -56,6 +58,27 @@ class ExecutionAndRiskTests(unittest.TestCase):
         self.assertEqual(trade.exit_reason, ExitReason.STOP)
         self.assertAlmostEqual(trade.gross_pnl, 200)
         self.assertEqual(len(trade.fills), 3)
+
+    def test_internal_risk_rejection_is_not_counted_as_broker_rejection(self):
+        engine = BacktestEngine(self.config)
+        machine = MagicMock()
+        machine.state = StrategyState.ENTRY_READY
+        risk = MagicMock()
+        decisions = []
+        bar = Bar(NOW, 100, 101, 99, 100, 100, "NQ", 120)
+
+        engine._reject_entry(
+            machine,
+            risk,
+            plan(),
+            bar,
+            ("maximum trades per session reached",),
+            decisions,
+        )
+
+        risk.record_rejection.assert_not_called()
+        machine.notify_entry_rejected.assert_called_once_with()
+        self.assertEqual(decisions[0].event, "risk_rejected_entry")
 
     def test_position_size_includes_costs_and_never_uses_score(self):
         risk = RiskManager(self.config)

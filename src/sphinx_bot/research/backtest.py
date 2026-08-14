@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass, replace
 from datetime import datetime
+from typing import Protocol
 
 from ..config import StrategyConfig
 from ..execution.simulator import PaperBroker
@@ -44,11 +45,35 @@ class _Pending:
     due_index: int
 
 
+class StrategyMachine(Protocol):
+    state: StrategyState
+
+    def session_info(self, timestamp: datetime) -> tuple[bool, object]: ...
+
+    def on_bar(self, bar: Bar, secondary_bar: Bar | None = None): ...
+
+    def notify_position_open(self) -> None: ...
+
+    def notify_entry_rejected(self) -> None: ...
+
+    def notify_position_closed(self) -> None: ...
+
+    def disable(self) -> None: ...
+
+    def reenable_after_session_reset(self) -> None: ...
+
+
 class BacktestEngine:
-    def __init__(self, config: StrategyConfig, audit: AuditLogger | None = None) -> None:
+    def __init__(
+        self,
+        config: StrategyConfig,
+        audit: AuditLogger | None = None,
+        machine_factory: Callable[[StrategyConfig], StrategyMachine] = ScrivStateMachine,
+    ) -> None:
         config.validate()
         self.config = config
         self.audit = audit or AuditLogger()
+        self.machine_factory = machine_factory
 
     def run(
         self,
@@ -58,7 +83,7 @@ class BacktestEngine:
     ) -> BacktestResult:
         if not bars:
             raise ValueError("backtest requires at least one bar")
-        machine = ScrivStateMachine(self.config)
+        machine = self.machine_factory(self.config)
         broker = PaperBroker(self.config)
         risk = RiskManager(self.config)
         decisions: list[Decision] = []
@@ -281,7 +306,7 @@ class BacktestEngine:
 
     def _reject_entry(
         self,
-        machine: ScrivStateMachine,
+        machine: StrategyMachine,
         risk: RiskManager,
         plan: SetupPlan,
         bar: Bar,
@@ -298,14 +323,17 @@ class BacktestEngine:
         )
         decisions.append(decision)
         self.audit.write("decision", decision)
-        risk.record_rejection(bar.timestamp, "; ".join(reasons))
+        # This is an internal pre-order policy rejection, not a broker/exchange
+        # order rejection. Counting it toward the repeated-order-rejection kill
+        # would permanently disable research after ordinary limits such as
+        # "maximum trades per session" are reached.
         machine.notify_entry_rejected()
 
     @staticmethod
     def _record_trade(
         trade: Trade,
         risk: RiskManager,
-        machine: ScrivStateMachine,
+        machine: StrategyMachine,
     ) -> None:
         risk.record_trade(trade)
         if machine.state is not StrategyState.DISABLED:

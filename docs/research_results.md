@@ -7,13 +7,17 @@
 | Source extraction | Complete for the requested public video | See `research_report.md`. |
 | Mechanical baseline | Implemented | See runtime config, machine spec, and tests. |
 | Historical baseline result | **Run on real public NQ data — no edge found** | CC0 Kaggle NQ 1-minute data (2022-12-26 → 2025-12-11) normalized to 523,455 two-minute bars; results in the section below. |
-| Development experiments | **Not run** | Baseline alone shows no development edge to compound; any future change must be predeclared in `research/experiments.jsonl`. |
+| Development experiments | **Bryan rejection-block candidate run and rejected** | It failed the predeclared dual-metric and robustness criteria; see `bryan_futures_research.md`. |
 | Validation result | **Negative** | 19 trades, expectancy −97.03/trade after costs; bootstrap P(positive) ≈ 4%. |
 | Final holdout | **Locked and untouched** | Config remains `strategy_frozen=false`. |
 | Execution stress | Tool implemented; run on real validation partition | Optimistic/base/pessimistic scenarios in the deep report. |
 | Monte Carlo | Tool implemented; market run pending | 19 validation trades are too few for a stable equity simulation; bootstrap was used instead. |
 | Final selected profitable configuration | **None** | There is no empirical basis to select or claim one. |
 | Paper deployment | CSV-replay paper system implemented | This validates architecture, not expectancy. |
+
+## Bryan Futures rejection-block experiment (2026-08-14)
+
+The predeclared Bryan/Powell-inspired 00:00/02:00 key-open rejection-block candidate was **rejected and not promoted**. It improved validation win rate and expectancy, but worsened development win rate, profit factor, net P&L, drawdown, and losing streak, and it failed pessimistic execution stress. The final holdout remained locked. See [`bryan_futures_research.md`](bryan_futures_research.md) for the source evidence labels, exact rules, complete comparison, and decision.
 
 ## Real-data baseline result (2026-08-14)
 
