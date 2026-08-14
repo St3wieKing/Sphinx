@@ -6,26 +6,42 @@
 |---|---|---|
 | Source extraction | Complete for the requested public video | See `research_report.md`. |
 | Mechanical baseline | Implemented | See runtime config, machine spec, and tests. |
-| Historical baseline result | **Not run / no claim** | No licensed, point-in-time 2-minute NQ or MNQ contract dataset was supplied or committed. |
-| Development experiments | **Not run** | Running synthetic data would not answer the trading hypothesis. |
-| Validation result | **Untouched** | Intentionally unavailable until development hypothesis exists. |
+| Historical baseline result | **Run on real public NQ data — no edge found** | CC0 Kaggle NQ 1-minute data (2022-12-26 → 2025-12-11) normalized to 523,455 two-minute bars; results in the section below. |
+| Development experiments | **Not run** | Baseline alone shows no development edge to compound; any future change must be predeclared in `research/experiments.jsonl`. |
+| Validation result | **Negative** | 19 trades, expectancy −97.03/trade after costs; bootstrap P(positive) ≈ 4%. |
 | Final holdout | **Locked and untouched** | Config remains `strategy_frozen=false`. |
-| Execution stress | Tool implemented; market result pending | Requires the same real partition. |
-| Monte Carlo | Tool implemented; market result pending | Requires a sufficient observed trade series. |
+| Execution stress | Tool implemented; run on real validation partition | Optimistic/base/pessimistic scenarios in the deep report. |
+| Monte Carlo | Tool implemented; market run pending | 19 validation trades are too few for a stable equity simulation; bootstrap was used instead. |
 | Final selected profitable configuration | **None** | There is no empirical basis to select or claim one. |
 | Paper deployment | CSV-replay paper system implemented | This validates architecture, not expectancy. |
 
+## Real-data baseline result (2026-08-14)
+
+Dataset: public CC0 [NQ Futures 1-minute 2022–2025](https://www.kaggle.com/datasets/tgtanalytics/nq-futures-1min-bar-2022-2025) (publisher: TGT Analytics). The operator supplied the publisher ZIP via a GitHub repository; it was hash-pinned and normalized to strict two-minute buckets in `America/New_York` (no forward-fill, incomplete buckets dropped). Source rows 1,048,575 → 523,455 target bars. Rollover scan: gaps around all quarterly roll dates are small (typically ≤25 points), consistent with a back-adjusted continuous series; the largest session-reopen gaps are news-driven (2025-04-06 −926; 2025-02-02 −552; 2025-10-12 +520), not roll artifacts.
+
+| Partition | Bars | Trades | Net after costs | Profit factor | Win rate | Expectancy | Max DD | Max consec. losses |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Development (60%) | 314,073 | 49 | **−$136.50** | 0.971 | 48.98% | −2.79/trade | 2.40% | 8 |
+| Validation (20%) | 104,691 | 19 | **−$1,843.60** | 0.395 | 15.79% | −97.03/trade | 2.00% | 7 |
+| Holdout (20%) | 104,691 | — | — | — | — | — | — | — |
+
+Development details (all after costs): longs −593.10 on 22 trades, shorts +456.60 on 27 trades. Range regime +890.20 on 44 trades, expansion regime −1,026.70 on 5 trades (0/5 wins). Gross P&L before costs was +1,312.50 against total costs of 1,449.00 — costs consumed the entire pre-cost edge.
+
+Validation bootstrap (5,000 resamples of the 19 observed trades): mean expectancy −97.26/trade, 95th percentile −5.38/trade, probability of positive expectancy ≈ 4.3%.
+
 ## Honest baseline conclusion
 
-The software makes the source-inspired hypothesis testable. It does **not** establish that it works. A selected YouTube winner cannot provide expectancy, realistic drawdown, or regime robustness. Synthetic fixture results are prohibited from being presented as trading research because the generator contains deliberately structured moves for software-path testing.
+The software makes the source-inspired hypothesis testable. On the first real dataset, the frozen baseline **fails** to demonstrate positive expectancy: development is breakeven before costs and costs wipe it out; validation is clearly negative with only 4% bootstrap probability of a positive true mean. This is a scientific negative, not a tuning invitation: no parameter was changed in response to this result, the holdout was not opened, and the experiment is recorded as `EXP-NQ-REAL-000` with decision `REJECT_POSITIVE_EXPECTANCY_AT_BASELINE`.
 
-The answer to “does this demonstrate robust performance after costs?” is currently **unknown**, not yes.
+The answer to “does this demonstrate robust performance after costs?” is currently **no evidence**, not yes.
+
+Known weaknesses of this evaluation (not excuses): one third-party continuous series; no bid/ask or tick data; no MNQ-native series (MNQ was run as NQ prices with MNQ economics and is explicitly labeled non-independent); only 68 observed trades across both partitions; the source methodology's discretionary bias selection and “pivotal” stop remain under-specified, so the mechanical proxy may simply not capture the edge.
 
 ## Engineering validation (not trading research)
 
 On 2026-08-14:
 
-- all **30** standard-library unit/integration tests passed;
+- all **31** standard-library unit/integration tests passed (30 → 31 after the timezone-hour-bucketing regression test);
 - strict config and all JSON deliverables parsed;
 - editable installation and console entry point were exercised in an isolated virtual environment;
 - deterministic synthetic replay exercised signal, risk, fill, trade, metric, paper artifact, and hash-chain paths;

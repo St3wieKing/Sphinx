@@ -60,6 +60,19 @@ class ResearchTests(unittest.TestCase):
         self.assertEqual(metrics["total_costs"], 20)
         self.assertEqual(metrics["profit_factor"], 2)
 
+    def test_metrics_by_entry_hour_respects_timezone(self):
+        trades = [trade(0, 100), trade(1, -50)]
+        curve = [(NOW, 100_000), (NOW + timedelta(days=1), 100_050)]
+        metrics = performance_metrics(trades, 100_000, curve)
+        # trade() uses NOW at midnight UTC; without a timezone the bucket is 00:00.
+        self.assertEqual(set(metrics["by_entry_hour"]), {"00:00"})
+        # In New York (UTC-5) the same trades land at 19:00 the previous day.
+        ny = performance_metrics(trades, 100_000, curve, timezone_name="America/New_York")
+        self.assertEqual(set(ny["by_entry_hour"]), {"19:00"})
+        # Tokyo (UTC+9) pushes them to 09:00.
+        tokyo = performance_metrics(trades, 100_000, curve, timezone_name="Asia/Tokyo")
+        self.assertEqual(set(tokyo["by_entry_hour"]), {"09:00"})
+
     def test_monte_carlo_is_reproducible(self):
         trades = [trade(index, 100 if index % 2 == 0 else -50) for index in range(10)]
         config = MonteCarloConfig(simulations=100, seed=7)

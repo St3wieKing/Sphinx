@@ -8,6 +8,7 @@ from collections.abc import Iterable, Sequence
 from datetime import datetime
 from itertools import pairwise
 from statistics import mean, pstdev
+from zoneinfo import ZoneInfo
 
 from ..models import Trade
 
@@ -58,7 +59,15 @@ def performance_metrics(
     trades: Sequence[Trade],
     initial_equity: float,
     equity_curve: Sequence[tuple[datetime, float]],
+    *,
+    timezone_name: str | None = None,
 ) -> dict[str, object]:
+    """Compute standard performance metrics for a completed backtest.
+
+    ``timezone_name`` controls the hour bucketing of ``by_entry_hour``. When
+    omitted the raw timestamp hour is used, which is only correct for data
+    already expressed in the analysis timezone.
+    """
     wins = [trade for trade in trades if trade.net_pnl > 0]
     losses = [trade for trade in trades if trade.net_pnl < 0]
     breakeven = [trade for trade in trades if trade.net_pnl == 0]
@@ -105,8 +114,10 @@ def performance_metrics(
     grouped_hour: dict[str, list[Trade]] = defaultdict(list)
     grouped_direction: dict[str, list[Trade]] = defaultdict(list)
     grouped_regime: dict[str, list[Trade]] = defaultdict(list)
+    hour_zone = ZoneInfo(timezone_name) if timezone_name else None
     for trade in trades:
-        grouped_hour[f"{trade.entry_time.hour:02d}:00"].append(trade)
+        entry_time = trade.entry_time.astimezone(hour_zone) if hour_zone else trade.entry_time
+        grouped_hour[f"{entry_time.hour:02d}:00"].append(trade)
         grouped_direction[trade.direction.value].append(trade)
         grouped_regime[trade.regime.value].append(trade)
 

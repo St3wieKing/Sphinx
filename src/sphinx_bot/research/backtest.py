@@ -254,7 +254,12 @@ class BacktestEngine:
                 self._record_trade(trade, risk, machine)
                 self.audit.write("trade", trade)
                 equity_curve.append((bars[-1].timestamp, risk.equity))
-        metrics = performance_metrics(broker.trades, self.config.risk.initial_equity, equity_curve)
+        metrics = performance_metrics(
+            broker.trades,
+            self.config.risk.initial_equity,
+            equity_curve,
+            timezone_name=self.config.session.timezone,
+        )
         kill_switches = tuple(
             {
                 "reason": reason.value,
