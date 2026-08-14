@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "name": "scriv_inspired_50pct_retest_baseline",
+  "version": "0.3.0",
+  "name": "scriv_inspired_50pct_retest_audited_research_suspended",
   "paper_only": true,
   "instrument": {
     "symbol": "NQ",
@@ -13,14 +13,23 @@
     "timezone": "America/New_York",
     "start": "00:00",
     "end": "04:00",
-    "weekdays": [0, 1, 2, 3, 4],
+    "weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
     "force_flat_at_end": true,
     "warmup_bars": 30
   },
   "timeframes": {
     "execution_seconds": 120,
-    "intermediate_seconds": [300, 900],
-    "context_seconds": [3600, 14400]
+    "intermediate_seconds": [],
+    "context_seconds": [
+      3600,
+      14400
+    ]
   },
   "structure": {
     "method": "fixed",
@@ -86,6 +95,7 @@
     "initial_equity": 100000.0,
     "risk_per_trade_pct": 0.0025,
     "daily_loss_limit_pct": 0.01,
+    "weekly_loss_limit_pct": 0.025,
     "max_drawdown_pct": 0.05,
     "max_trades_per_session": 3,
     "max_consecutive_losses": 2,

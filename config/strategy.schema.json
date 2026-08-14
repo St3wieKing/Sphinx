@@ -77,10 +77,10 @@
     },
     "risk": {
       "type": "object", "additionalProperties": false,
-      "required": ["initial_equity", "risk_per_trade_pct", "daily_loss_limit_pct", "max_drawdown_pct", "max_trades_per_session", "max_consecutive_losses", "loss_cooldown_minutes", "max_notional_exposure", "reject_after_count", "flatten_on_critical_kill"],
+      "required": ["initial_equity", "risk_per_trade_pct", "daily_loss_limit_pct", "weekly_loss_limit_pct", "max_drawdown_pct", "max_trades_per_session", "max_consecutive_losses", "loss_cooldown_minutes", "max_notional_exposure", "reject_after_count", "flatten_on_critical_kill"],
       "properties": {
         "initial_equity": {"type": "number", "exclusiveMinimum": 0}, "risk_per_trade_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.01},
-        "daily_loss_limit_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 1}, "max_drawdown_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "daily_loss_limit_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 1}, "weekly_loss_limit_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 1}, "max_drawdown_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
         "max_trades_per_session": {"type": "integer", "minimum": 1}, "max_consecutive_losses": {"type": "integer", "minimum": 1},
         "loss_cooldown_minutes": {"type": "integer", "minimum": 0}, "max_notional_exposure": {"type": "number", "exclusiveMinimum": 0},
         "reject_after_count": {"type": "integer", "minimum": 1}, "flatten_on_critical_kill": {"type": "boolean"}

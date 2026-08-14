@@ -1,5 +1,7 @@
 # Deliverable 2 — Mechanical Strategy Specification
 
+> **Historical rejected specification.** This strategy failed validation and is not active. It is retained for reproducibility only; the dashboard is forced to `WAIT`. See `full_system_refresh_2026-08-14.md`.
+
 The canonical machine-readable research specification is [`spec/strategy_spec.json`](../spec/strategy_spec.json). Runtime values are in [`config/baseline.json`](../config/baseline.json), validated by both Python and [`config/strategy.schema.json`](../config/strategy.schema.json).
 
 ## 1. Baseline identity

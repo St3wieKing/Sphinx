@@ -55,7 +55,12 @@ class DeepWebImportTests(unittest.TestCase):
         overview = service.overview()
         self.assertEqual(overview["mode"], "PAPER / RESEARCH ONLY")
         self.assertEqual(overview["holdout_status"], "LOCKED")
-        self.assertEqual(service.instrument("NQ")["data_mode"], "SYNTHETIC_ENGINEERING_DEMO")
+        instrument = service.instrument("NQ")
+        self.assertEqual(instrument["data_mode"], "SYNTHETIC_ENGINEERING_DEMO")
+        self.assertEqual(instrument["action"], "WAIT")
+        self.assertEqual(
+            instrument["strategy_status"], "RESEARCH_SUSPENDED_NO_VALIDATED_EDGE"
+        )
         self.assertTrue(PINE_PATH.exists())
 
     def test_tradingview_webhook_is_receive_only_and_validated(self):
@@ -95,6 +100,7 @@ class DeepWebImportTests(unittest.TestCase):
         self.assertEqual(deliverable, packaged)
         self.assertIn("//@version=6", deliverable)
         self.assertIn("alertcondition(longSignal", deliverable)
+        self.assertIn("enableRejectedResearchSignals = input.bool(false", deliverable)
         self.assertIn("lookahead = barmerge.lookahead_on", deliverable)
 
 

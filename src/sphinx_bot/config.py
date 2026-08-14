@@ -113,6 +113,7 @@ class RiskConfig:
     initial_equity: float = 100_000.0
     risk_per_trade_pct: float = 0.0025
     daily_loss_limit_pct: float = 0.01
+    weekly_loss_limit_pct: float = 0.025
     max_drawdown_pct: float = 0.05
     max_trades_per_session: int = 3
     max_consecutive_losses: int = 2
@@ -177,6 +178,20 @@ class StrategyConfig:
             errors.append("tick_size and point_value must be positive")
         if self.timeframes.execution_seconds <= 0:
             errors.append("execution timeframe must be positive")
+        context_intervals = (
+            self.timeframes.intermediate_seconds + self.timeframes.context_seconds
+        )
+        invalid_context = [
+            seconds
+            for seconds in context_intervals
+            if seconds <= self.timeframes.execution_seconds
+            or seconds % self.timeframes.execution_seconds != 0
+        ]
+        if invalid_context:
+            errors.append(
+                "higher timeframes must exceed and be exact multiples of the execution "
+                f"timeframe; invalid: {invalid_context}"
+            )
         if self.session.warmup_bars < self.setup.consolidation_lookback:
             errors.append("session warmup must cover consolidation lookback")
         try:
@@ -211,8 +226,15 @@ class StrategyConfig:
             errors.append("unsupported stop mode")
         if not 0 < self.risk.risk_per_trade_pct <= 0.01:
             errors.append("risk_per_trade_pct must be in (0, 0.01]")
-        if not 0 < self.risk.daily_loss_limit_pct <= self.risk.max_drawdown_pct:
-            errors.append("daily loss must be positive and no greater than max drawdown")
+        if not (
+            0
+            < self.risk.daily_loss_limit_pct
+            <= self.risk.weekly_loss_limit_pct
+            <= self.risk.max_drawdown_pct
+        ):
+            errors.append(
+                "daily loss must be <= weekly loss <= maximum drawdown, and all positive"
+            )
         if self.setup.fixed_stop_ticks <= 0 or self.setup.extension_multiple <= 1:
             errors.append("stop ticks must be positive and extension_multiple must exceed one")
         if not 0 <= self.setup.first_target_fraction <= 1:

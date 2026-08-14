@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "specification_version": "0.2.0",
-  "strategy_name": "Scriv-inspired 50% retracement research baseline",
-  "status": "RESEARCH_AND_PAPER_ONLY",
+  "specification_version": "0.3.0",
+  "strategy_name": "Scriv-inspired 50% retracement rejected research baseline",
+  "status": "REJECTED_DISABLED_RETAINED_FOR_REPRODUCIBILITY",
   "replication_claim": false,
   "profitability_claim": false,
   "primary_source": {

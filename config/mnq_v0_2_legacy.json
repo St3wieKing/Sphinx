@@ -1,13 +1,13 @@
 {
   "version": "0.2.0",
-  "name": "bryan_powell_key_open_rejection_block_exp_001",
+  "name": "scriv_inspired_50pct_retest_mnq",
   "paper_only": true,
   "instrument": {
-    "symbol": "NQ",
+    "symbol": "MNQ",
     "tick_size": 0.25,
-    "point_value": 20.0,
+    "point_value": 2.0,
     "quantity_increment": 1,
-    "max_contracts": 2
+    "max_contracts": 20
   },
   "session": {
     "timezone": "America/New_York",
@@ -58,8 +58,8 @@
     "fixed_stop_ticks": 40.0,
     "pivotal_buffer_ticks": 1.0,
     "extension_multiple": 1.66,
-    "first_target_fraction": 0.0,
-    "minimum_rr": 3.0,
+    "first_target_fraction": 0.5,
+    "minimum_rr": 1.0,
     "cooldown_bars": 3,
     "require_context_aoi": false,
     "require_smt": false,
@@ -102,14 +102,14 @@
     "max_trades_per_session": 3,
     "max_consecutive_losses": 2,
     "loss_cooldown_minutes": 60,
-    "max_notional_exposure": 1000000.0,
+    "max_notional_exposure": 500000.0,
     "reject_after_count": 3,
     "flatten_on_critical_kill": true
   },
   "execution": {
     "spread_ticks": 1.0,
     "slippage_ticks": 1.0,
-    "commission_per_contract_per_side": 2.5,
+    "commission_per_contract_per_side": 0.85,
     "exchange_fee_per_contract_per_side": 0.35,
     "entry_delay_bars": 0,
     "same_bar_policy": "stop_first_no_favorable_exit",

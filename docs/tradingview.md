@@ -4,7 +4,7 @@ Deliverable: [`tradingview/sphinx_signal_indicator.pine`](../tradingview/sphinx_
 
 ## Scope
 
-The Pine Script® v6 indicator is a chart-side implementation of the public-source-inspired mechanical proxy. It is **not** a copy of undisclosed discretionary rules and it does not place orders.
+The Pine Script® v6 indicator is a chart-side implementation of the rejected public-source-inspired mechanical proxy. It is **not** a copy of undisclosed discretionary rules and it does not place orders. It is now labelled **REJECTED / DISABLED**, and `Enable rejected research signals` defaults to **off** because no tested strategy passed the research gates.
 
 Use it on a **2-minute NQ or MNQ chart**. The default session is 00:00–04:00 America/New_York, which remains a configurable timezone inference from the source.
 

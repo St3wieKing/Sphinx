@@ -92,6 +92,7 @@ class KillReason(str, Enum):
     POSITION_MISMATCH = "position_mismatch"
     RISK_CALCULATION_FAILURE = "risk_calculation_failure"
     DAILY_LOSS_LIMIT = "daily_loss_limit"
+    WEEKLY_LOSS_LIMIT = "weekly_loss_limit"
     MAX_DRAWDOWN = "max_drawdown"
     REPEATED_REJECTION = "repeated_order_rejection"
     INVALID_DATA = "invalid_data"

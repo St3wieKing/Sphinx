@@ -1,8 +1,8 @@
 # Sphinx
 
-An evidence-labelled, mechanically testable **Matthew Scriv–inspired** NQ day-trading research system.
+An evidence-labelled NQ/MNQ trading **research and validation platform**.
 
-> **Research and paper simulation only.** This repository does not claim to reproduce Matthew Scriv's full discretionary process, does not establish profitability, and contains no live-money broker adapter.
+> **AUTOMATED SIGNALS SUSPENDED — NO VALIDATED EDGE.** The Scriv-inspired baseline, Bryan rejection-block candidate, and five liquidity/rejection refresh models failed the system's research gates. The dashboard is forced to `WAIT`, TradingView signals default to disabled, the final holdout remains locked, and there is no live-money broker adapter. See the [full refresh report](docs/full_system_refresh_2026-08-14.md).
 
 ## What was actually extracted
 
@@ -20,16 +20,19 @@ See:
 8. [Signal Desk website](docs/dashboard.md)
 9. [TradingView Pine v6 indicator](docs/tradingview.md)
 10. [Machine-readable strategy spec](spec/strategy_spec.json)
+11. [Full system refresh, audit, and rebuild](docs/full_system_refresh_2026-08-14.md)
 
 ## Features
 
-- explicit state machine rather than unrelated indicator voting;
-- 2m execution plus causal 5m/15m/1h/4h aggregation;
+- rejected legacy state machines retained for reproducible research, not active signals;
+- 2m event research plus causal exact-multiple 1h/4h aggregation (invalid 2m→5m/15m aggregation is prohibited);
+- five objective liquidity/rejection event families and 1R–4R target studies;
+- regularized logistic probability research with Platt calibration, Brier skill, reliability bins, and uncertainty-aware EV gating;
 - delayed fixed/fractal pivots and online ATR/percentage alternatives;
 - liquidity metadata, equal levels, sweep/consume lifecycle, and ranking;
 - causal FVG/IFVG tracking and optional synchronized NQ/ES SMT proxy;
 - conservative OHLC execution with spread, slippage, fees, gap stops, and adverse same-bar rules;
-- equity-risk sizing, daily/session limits, cooldowns, maximum drawdown, and kill switches;
+- equity-risk sizing, daily and weekly loss limits, cooldowns, maximum drawdown, and kill switches;
 - locked 60/20/20 split, walk-forward utilities, execution scenarios, Monte Carlo, and experiment ledger;
 - bounded NQ/MNQ deep suite with walk-forward, one-factor sensitivity, bootstrap, risk and execution scenarios;
 - polished paper Signal Desk website with contract switch, setup chart, checklist, levels, metrics, ledger, and research view;
@@ -49,6 +52,11 @@ sphinx validate-config --config config/baseline.json
 sphinx inspect-data --data /path/to/nq_2m.csv
 sphinx backtest --data /path/to/nq_2m.csv --partition development \
   --output artifacts/development.json
+# Reproduce the offline refresh study; no strategy is automatically selected
+sphinx refresh-research --data /path/to/nq_2m.csv \
+  --output artifacts/full_refresh_research.json
+
+# Legacy paper replay is for failure analysis only; current signals are suspended
 sphinx paper --data /path/to/nq_2m.csv --output-directory artifacts
 
 # NQ + MNQ bounded deep research; final holdout remains locked

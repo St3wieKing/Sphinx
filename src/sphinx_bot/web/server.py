@@ -136,7 +136,11 @@ class DashboardService:
             / config.timeframes.execution_seconds
         )
         fresh = latest is not None and 0 <= age_bars <= 2
-        action = latest["direction"] if fresh else "WAIT"
+        # Both historical strategy candidates failed the documented research
+        # acceptance gates. Keep displaying their diagnostics, but never present
+        # a rejected research event as an actionable paper signal.
+        action = "WAIT"
+        strategy_status = "RESEARCH_SUSPENDED_NO_VALIDATED_EDGE"
 
         chart_center = latest_timestamp if latest else bars[-1].timestamp
         center_index = min(
@@ -169,6 +173,7 @@ class DashboardService:
             "bar_count": len(bars),
             "first_bar": bars[0].timestamp.isoformat(),
             "action": action,
+            "strategy_status": strategy_status,
             "fresh": fresh,
             "signal_age_bars": age_bars if latest else None,
             "latest_signal": latest,
@@ -182,6 +187,7 @@ class DashboardService:
                 "point_value": config.instrument.point_value,
                 "risk_per_trade_pct": config.risk.risk_per_trade_pct,
                 "daily_loss_limit_pct": config.risk.daily_loss_limit_pct,
+                "weekly_loss_limit_pct": config.risk.weekly_loss_limit_pct,
                 "fixed_stop_ticks": config.setup.fixed_stop_ticks,
                 "paper_only": config.paper_only,
             },
@@ -192,7 +198,8 @@ class DashboardService:
                 {"timestamp": timestamp.isoformat(), "value": value} for timestamp, value in equity
             ],
             "warnings": [
-                "Signal is a mechanical research event, not a recommendation.",
+                "AUTOMATED SIGNALS SUSPENDED: no tested strategy passed the research gates.",
+                "Displayed setups are rejected mechanical research events, not recommendations.",
                 "Dashboard uses completed bars and does not route live orders.",
                 "Synthetic demo P&L is not evidence."
                 if mode.startswith("SYNTHETIC")
@@ -267,6 +274,8 @@ class DashboardService:
                         "data_mode",
                         "as_of",
                         "action",
+                        "strategy_status",
+                        "holdout_bars_excluded",
                         "fresh",
                         "latest_signal",
                         "metrics",

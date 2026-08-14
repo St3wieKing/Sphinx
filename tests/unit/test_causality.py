@@ -26,7 +26,7 @@ class CausalityTests(unittest.TestCase):
         self.assertEqual(high.confirmed_at, values[4].timestamp)
 
     def test_resampler_does_not_emit_open_bucket(self):
-        resampler = CausalResampler(300)
+        resampler = CausalResampler(360)
         first = Bar(datetime(2024, 1, 1, 0, 0, tzinfo=UTC), 1, 2, 0, 1.5, 10, "NQ", 120)
         second = Bar(datetime(2024, 1, 1, 0, 2, tzinfo=UTC), 1.5, 3, 1, 2.5, 20, "NQ", 120)
         next_bucket = Bar(datetime(2024, 1, 1, 0, 6, tzinfo=UTC), 2.5, 4, 2, 3, 5, "NQ", 120)
@@ -37,6 +37,21 @@ class CausalityTests(unittest.TestCase):
         self.assertEqual(completed.timestamp, first.timestamp)
         self.assertEqual(completed.high, 3)
         self.assertEqual(completed.volume, 30)
+
+    def test_resampler_rejects_straddling_source_interval(self):
+        resampler = CausalResampler(300)
+        source = Bar(
+            datetime(2024, 1, 1, 0, 0, tzinfo=UTC),
+            1,
+            2,
+            0,
+            1.5,
+            10,
+            "NQ",
+            120,
+        )
+        with self.assertRaisesRegex(ValueError, "exact multiple"):
+            resampler.update(source)
 
 
 if __name__ == "__main__":

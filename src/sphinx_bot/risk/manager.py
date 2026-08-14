@@ -33,7 +33,9 @@ class RiskManager:
         self.equity = config.risk.initial_equity
         self.peak_equity = self.equity
         self.session_start_equity = self.equity
+        self.week_start_equity = self.equity
         self.session_key: date | None = None
+        self.week_key: tuple[int, int] | None = None
         self.trades_this_session = 0
         self.consecutive_losses = 0
         self.cooldown_until: datetime | None = None
@@ -50,6 +52,12 @@ class RiskManager:
             return
         self.session_key = key
         self.session_start_equity = self.equity
+        iso = key.isocalendar()
+        current_week = (iso.year, iso.week)
+        if current_week != self.week_key:
+            self.week_key = current_week
+            self.week_start_equity = self.equity
+            self.kills.pop(KillReason.WEEKLY_LOSS_LIMIT, None)
         self.trades_this_session = 0
         self.consecutive_losses = 0
         self.cooldown_until = None
@@ -201,6 +209,14 @@ class RiskManager:
                 KillReason.DAILY_LOSS_LIMIT,
                 timestamp,
                 f"marked equity {marked_equity:.2f} <= daily floor {daily_floor:.2f}",
+                manual=False,
+            )
+        weekly_floor = self.week_start_equity * (1 - self.config.risk.weekly_loss_limit_pct)
+        if marked_equity <= weekly_floor:
+            self.activate(
+                KillReason.WEEKLY_LOSS_LIMIT,
+                timestamp,
+                f"marked equity {marked_equity:.2f} <= weekly floor {weekly_floor:.2f}",
                 manual=False,
             )
         drawdown = (

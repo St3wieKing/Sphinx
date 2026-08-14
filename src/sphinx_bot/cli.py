@@ -21,6 +21,7 @@ from .research.backtest import BacktestEngine
 from .research.deep import DeepResearchSuite, paired_instrument_summary
 from .research.experiments import ExperimentLedger
 from .research.monte_carlo import MonteCarloConfig, run_monte_carlo
+from .research.refresh import run_refresh_research
 from .research.stress import run_execution_scenarios
 from .research.synthetic import generate_synthetic_bars, write_bars_csv
 from .web.server import serve_dashboard
@@ -273,6 +274,48 @@ def command_deep_backtest(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_refresh_research(args: argparse.Namespace) -> int:
+    config = load_config(args.config)
+    bars = read_bars(
+        args.data,
+        symbol=config.instrument.symbol,
+        interval_seconds=config.timeframes.execution_seconds,
+    )
+    split = chronological_split(
+        bars,
+        config.research.development_fraction,
+        config.research.validation_fraction,
+        config.research.holdout_fraction,
+        config.research.minimum_bars_per_partition,
+    )
+    report = run_refresh_research(
+        list(split.development), list(split.validation), config
+    )
+    report["dataset"] = {
+        "total_bars": len(bars),
+        "development_bars": len(split.development),
+        "validation_bars": len(split.validation),
+        "holdout_bars_excluded": len(split.holdout),
+        "first_timestamp": bars[0].timestamp.isoformat(),
+        "last_timestamp": bars[-1].timestamp.isoformat(),
+        "config_fingerprint": config.fingerprint,
+    }
+    _write_json(args.output, report)
+    print(
+        json.dumps(
+            {
+                "output": args.output,
+                "development_events": report["protocol"]["development_events"],
+                "validation_events": report["protocol"]["validation_events"],
+                "holdout_opened": False,
+                "selected_strategy": "NONE",
+            },
+            indent=2,
+        )
+    )
+    return 0
+
+
 def command_dashboard(args: argparse.Namespace) -> int:
     serve_dashboard(
         host=args.host,
@@ -288,7 +331,7 @@ def command_dashboard(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="sphinx",
-        description="Evidence-labelled Scriv-inspired trading research (paper only)",
+        description="Evidence-labelled trading research platform (signals suspended)",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -379,6 +422,12 @@ def build_parser() -> argparse.ArgumentParser:
     deep.add_argument("--bootstrap-simulations", type=int, default=2000)
     deep.add_argument("--output", default="artifacts/deep_research.json")
     deep.set_defaults(function=command_deep_backtest)
+
+    refresh = subparsers.add_parser("refresh-research")
+    refresh.add_argument("--config", default="config/baseline.json")
+    refresh.add_argument("--data", required=True)
+    refresh.add_argument("--output", default="artifacts/full_refresh_research.json")
+    refresh.set_defaults(function=command_refresh_research)
 
     dashboard = subparsers.add_parser("dashboard")
     dashboard.add_argument("--host", default="0.0.0.0")

@@ -29,6 +29,15 @@ class ConfigAndDataTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "unknown keys"):
                 load_config(path)
 
+    def test_incompatible_higher_timeframe_is_rejected(self):
+        raw = json.loads((ROOT / "config/baseline.json").read_text())
+        raw["timeframes"]["intermediate_seconds"] = [300]
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "bad-timeframe.json"
+            path.write_text(json.dumps(raw))
+            with self.assertRaisesRegex(ValueError, "exact multiples"):
+                load_config(path)
+
     def test_bar_requires_aware_timestamp_and_valid_ohlc(self):
         with self.assertRaisesRegex(ValueError, "timezone-aware"):
             Bar(datetime(2024, 1, 1), 1, 2, 0, 1)  # noqa: DTZ001 — intentional

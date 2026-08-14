@@ -8,7 +8,16 @@ from unittest.mock import MagicMock
 
 from sphinx_bot.config import load_config
 from sphinx_bot.execution.simulator import PaperBroker
-from sphinx_bot.models import Bar, Direction, ExitReason, Regime, SetupPlan, StrategyState, Trade
+from sphinx_bot.models import (
+    Bar,
+    Direction,
+    ExitReason,
+    KillReason,
+    Regime,
+    SetupPlan,
+    StrategyState,
+    Trade,
+)
 from sphinx_bot.research.backtest import BacktestEngine
 from sphinx_bot.risk.manager import RiskManager
 
@@ -116,6 +125,18 @@ class ExecutionAndRiskTests(unittest.TestCase):
         self.assertTrue(risk.disabled)
         risk.reset_session((NOW + timedelta(days=1)).date(), NOW + timedelta(days=1))
         self.assertFalse(risk.disabled)
+
+    def test_weekly_loss_kill_persists_until_new_iso_week(self):
+        risk = RiskManager(self.config)
+        risk.reset_session(NOW.date(), NOW)
+        risk.mark_to_market(NOW, -2600)
+        self.assertIn(KillReason.WEEKLY_LOSS_LIMIT, risk.kills)
+        next_day = NOW + timedelta(days=1)
+        risk.reset_session(next_day.date(), next_day)
+        self.assertIn(KillReason.WEEKLY_LOSS_LIMIT, risk.kills)
+        next_week = NOW + timedelta(days=7)
+        risk.reset_session(next_week.date(), next_week)
+        self.assertNotIn(KillReason.WEEKLY_LOSS_LIMIT, risk.kills)
 
 
 if __name__ == "__main__":

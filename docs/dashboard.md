@@ -2,6 +2,8 @@
 
 The website is a dependency-free paper/research dashboard served by the same Python package.
 
+> **Current status: `RESEARCH_SUSPENDED_NO_VALIDATED_EDGE`.** The API and interface always return `WAIT`. Historical setup diagnostics remain visible for audit, but they are rejected research events and cannot route orders.
+
 ```bash
 sphinx dashboard --host 0.0.0.0 --port 8000
 ```

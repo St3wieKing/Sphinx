@@ -1,5 +1,9 @@
 # Deliverable 6 — Research Results and Claim Boundary
 
+## Full-system refresh status (2026-08-14)
+
+A ground-up audit and five-family liquidity/rejection event study found no robust strategy. The calibrated uncertainty-aware EV policy selected zero trades in both development calibration and validation. Automated dashboard and TradingView signals are suspended, and the holdout remains locked. See [`full_system_refresh_2026-08-14.md`](full_system_refresh_2026-08-14.md).
+
 ## Current evidence status
 
 | Required result | Status | Why |
@@ -13,7 +17,7 @@
 | Execution stress | Tool implemented; run on real validation partition | Optimistic/base/pessimistic scenarios in the deep report. |
 | Monte Carlo | Tool implemented; market run pending | 19 validation trades are too few for a stable equity simulation; bootstrap was used instead. |
 | Final selected profitable configuration | **None** | There is no empirical basis to select or claim one. |
-| Paper deployment | CSV-replay paper system implemented | This validates architecture, not expectancy. |
+| Paper deployment | **Signals suspended; CSV replay retained for engineering** | Dashboard returns WAIT; this validates architecture, not expectancy. |
 
 ## Bryan Futures rejection-block experiment (2026-08-14)
 

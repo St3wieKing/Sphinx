@@ -31,7 +31,7 @@ function updateSignal(payload) {
   const orb = $("signal-orb");
   orb.className = `signal-orb ${action === "LONG" ? "long" : action === "SHORT" ? "short" : "wait"}`;
   setText("action", action);
-  setText("action-copy", action === "WAIT" ? (plan ? `Last ${plan.direction.toLowerCase()} · ${payload.signal_age_bars} bars ago` : "No completed trigger") : "Fresh completed-bar trigger");
+  setText("action-copy", action === "WAIT" ? "Signals suspended · no validated edge" : "Fresh completed-bar trigger");
   setText("freshness", payload.fresh ? "FRESH" : "REPLAY");
   setText("score", plan ? `${number(plan.setup_score, 0)}/100` : "—");
   $("score-fill").style.width = plan ? `${Math.max(0, Math.min(100, plan.setup_score))}%` : "0";
@@ -126,9 +126,17 @@ function renderResearch(overview) {
   const root = $("research-content"); root.replaceChildren(); const report = overview.deep_report;
   if (!report) {
     setText("research-source", "No real-data deep report loaded");
-    const items = [["NQ mode", overview.instruments.NQ.data_mode], ["MNQ mode", overview.instruments.MNQ.data_mode], ["Holdout", overview.holdout_status], ["Profitability", "UNDETERMINED"]];
+    const items = [["NQ status", overview.instruments.NQ.strategy_status], ["MNQ status", overview.instruments.MNQ.strategy_status], ["Holdout", overview.holdout_status], ["Validated edge", "NONE — SIGNALS SUSPENDED"]];
     items.forEach(([label, value]) => { const box = document.createElement("div"), a = document.createElement("span"), b = document.createElement("strong"); a.textContent = label; b.textContent = value.replaceAll("_", " "); box.append(a, b); root.append(box); });
     const warning = document.createElement("p"); warning.textContent = "Attach licensed 2-minute NQ/MNQ data and run sphinx deep-backtest. Demo outcomes are intentionally excluded from research conclusions."; root.append(warning); return;
+  }
+  if (report.protocol && report.adaptive_policy) {
+    setText("research-source", "FULL REFRESH · HOLDOUT LOCKED");
+    const policy = report.adaptive_policy.validation_base_costs;
+    const skill = report.probability_model?.validation_calibration?.["4R"]?.brier_skill;
+    const items = [["Development events", report.protocol.development_events], ["Validation events", report.protocol.validation_events], ["Approved trades", policy.trades], ["Best Brier skill", skill == null ? "—" : percent(skill)]];
+    items.forEach(([label, value]) => { const box = document.createElement("div"), a = document.createElement("span"), b = document.createElement("strong"); a.textContent = label; b.textContent = value ?? "—"; box.append(a, b); root.append(box); });
+    const warning = document.createElement("p"); warning.textContent = "No strategy passed the uncertainty-aware EV gate. Signals remain suspended; holdout was not opened."; root.append(warning); return;
   }
   setText("research-source", `${report.instrument || "MULTI"} · ${report.status || "research"}`);
   const metrics = report.validation?.metrics || report.paired_summary?.instruments?.NQ || {};

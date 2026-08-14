@@ -1,35 +1,26 @@
 {
-  "version": "0.3.0",
-  "name": "mnq_modeled_economics_research_suspended",
+  "version": "0.2.0",
+  "name": "scriv_inspired_50pct_retest_baseline",
   "paper_only": true,
   "instrument": {
-    "symbol": "MNQ",
+    "symbol": "NQ",
     "tick_size": 0.25,
-    "point_value": 2.0,
+    "point_value": 20.0,
     "quantity_increment": 1,
-    "max_contracts": 20
+    "max_contracts": 2
   },
   "session": {
     "timezone": "America/New_York",
     "start": "00:00",
     "end": "04:00",
-    "weekdays": [
-      0,
-      1,
-      2,
-      3,
-      4
-    ],
+    "weekdays": [0, 1, 2, 3, 4],
     "force_flat_at_end": true,
     "warmup_bars": 30
   },
   "timeframes": {
     "execution_seconds": 120,
-    "intermediate_seconds": [],
-    "context_seconds": [
-      3600,
-      14400
-    ]
+    "intermediate_seconds": [300, 900],
+    "context_seconds": [3600, 14400]
   },
   "structure": {
     "method": "fixed",
@@ -95,19 +86,18 @@
     "initial_equity": 100000.0,
     "risk_per_trade_pct": 0.0025,
     "daily_loss_limit_pct": 0.01,
-    "weekly_loss_limit_pct": 0.025,
     "max_drawdown_pct": 0.05,
     "max_trades_per_session": 3,
     "max_consecutive_losses": 2,
     "loss_cooldown_minutes": 60,
-    "max_notional_exposure": 500000.0,
+    "max_notional_exposure": 1000000.0,
     "reject_after_count": 3,
     "flatten_on_critical_kill": true
   },
   "execution": {
     "spread_ticks": 1.0,
     "slippage_ticks": 1.0,
-    "commission_per_contract_per_side": 0.85,
+    "commission_per_contract_per_side": 2.5,
     "exchange_fee_per_contract_per_side": 0.35,
     "entry_delay_bars": 0,
     "same_bar_policy": "stop_first_no_favorable_exit",

@@ -10,7 +10,7 @@ from sphinx_bot.strategy.rejection_block import KeyOpenRejectionBlockMachine
 
 class KeyOpenRejectionBlockTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.config = load_config("config/bryan_rejection_block_exp.json")
+        self.config = load_config("config/baseline.json")
         self.machine = KeyOpenRejectionBlockMachine(self.config)
         self.start = datetime(2025, 1, 2, 5, 0, tzinfo=UTC)  # 00:00 New York
 

@@ -12,7 +12,8 @@ INITIALIZE:
     state = IDLE
     causal ATR and market-structure engines
     liquidity map
-    2m, 5m, 15m, 1h, 4h AOI engines
+    2m, 1h, 4h AOI engines
+    # 5m/15m source concepts require 1m source data; prohibited from 2m aggregation
     causal HTF resamplers
     optional synchronized NQ/ES SMT engine
     paper broker with no position

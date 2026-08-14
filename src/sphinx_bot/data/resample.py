@@ -38,6 +38,13 @@ class CausalResampler:
         return datetime.fromtimestamp(floored, tz=UTC)
 
     def update(self, bar: Bar) -> Bar | None:
+        if self.target_seconds <= bar.interval_seconds or (
+            self.target_seconds % bar.interval_seconds
+        ):
+            raise ValueError(
+                "target interval must exceed and be an exact multiple of source bars; "
+                f"cannot causally aggregate {bar.interval_seconds}s into {self.target_seconds}s"
+            )
         start = self._bucket_start(bar.timestamp)
         completed: Bar | None = None
         if self._bucket is None:

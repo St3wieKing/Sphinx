@@ -1,5 +1,7 @@
 # Deliverable 4 — Software Architecture
 
+> **Deployment state:** automated signals are suspended. Legacy strategies remain reproducible research modules; the dashboard is forced to `WAIT`. The refresh event/probability lab is offline-only and cannot route orders.
+
 ## Design principles
 
 1. **One strategy path:** backtest and paper replay use the same state machine, risk manager, and broker simulator.
