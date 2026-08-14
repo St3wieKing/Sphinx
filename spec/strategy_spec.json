@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "specification_version": "0.1.0",
+  "strategy_name": "Scriv-inspired 50% retracement research baseline",
+  "status": "RESEARCH_AND_PAPER_ONLY",
+  "replication_claim": false,
+  "profitability_claim": false,
+  "primary_source": {
+    "title": "How I Made 16.5k Trading NQ Futures at 1 AM | Inside My Brain (In-Depth)",
+    "url": "https://www.youtube.com/watch?v=8G-RuiS6_ug",
+    "published": "2025-10-01",
+    "source_type": "retrospective winning-trade walkthrough",
+    "limitations": [
+      "one selected winning example",
+      "no complete objective rulebook",
+      "no losing-trade sample",
+      "no verified performance series",
+      "timezone and exact contract/date are not established in narration"
+    ]
+  },
+  "market": {
+    "asset_class": "CME equity-index futures",
+    "instrument": "NQ",
+    "benchmark_for_optional_smt": "ES",
+    "contract_selection": "continuous input accepted only if the user documents rollover construction",
+    "runtime_reference": "instrument"
+  },
+  "session": {
+    "window": "00:00-04:00 America/New_York",
+    "evidence": "EXPLICIT time window; timezone is LIKELY INFERENCE",
+    "runtime_reference": "session",
+    "no_new_entries_outside_window": true,
+    "force_flat_at_end": true
+  },
+  "timeframes": {
+    "execution": "2m",
+    "intermediate": ["5m", "15m"],
+    "context": ["1h", "4h"],
+    "evidence": "EXPLICIT RULE",
+    "one_minute": "excluded from baseline because source both says it is never used and later mentions it for adding"
+  },
+  "concepts": [
+    {
+      "name": "short_term_directional_bias",
+      "source_status": "EXPLICIT need; UNCONFIRMED construction",
+      "mechanical_proxy": "direction of a displacement close beyond a prior consolidation",
+      "baseline_required": true
+    },
+    {
+      "name": "consolidation",
+      "source_status": "VISUAL EXAMPLE; threshold UNCONFIRMED",
+      "mechanical_proxy": "prior N bars have high-low width no greater than configured ATR multiple",
+      "baseline_required": true
+    },
+    {
+      "name": "displacement_breakout",
+      "source_status": "EXPLICIT sequence; threshold UNCONFIRMED",
+      "mechanical_proxy": "completed close beyond consolidation plus tick buffer and body at least ATR multiple",
+      "baseline_required": true
+    },
+    {
+      "name": "evolving_impulse_range",
+      "source_status": "EXPLICIT RULE",
+      "mechanical_proxy": "origin is opposite consolidation boundary; extreme updates after each completed extension bar",
+      "baseline_required": true
+    },
+    {
+      "name": "fifty_percent_retest",
+      "source_status": "EXPLICIT core rule",
+      "mechanical_proxy": "a later bar crosses the midpoint that was known before that bar began",
+      "baseline_required": true
+    },
+    {
+      "name": "rejection_or_engulfing",
+      "source_status": "LIKELY INFERENCE / optional visual confluence",
+      "mechanical_proxy": "optional close back through midpoint with directionally aligned candle; next-bar-open execution",
+      "baseline_required": false
+    },
+    {
+      "name": "fixed_or_pivotal_stop",
+      "source_status": "EXPLICIT alternatives; selection threshold UNCONFIRMED",
+      "mechanical_proxy": "use origin beyond one tick if within 40 ticks of entry, otherwise fixed 40-tick stop",
+      "baseline_required": true
+    },
+    {
+      "name": "first_target",
+      "source_status": "EXPLICIT RULE",
+      "mechanical_proxy": "prior impulse extreme/range high-low",
+      "baseline_required": true
+    },
+    {
+      "name": "runner_target",
+      "source_status": "EXPLICIT liquidity/equal-high concept; exact ranking UNCONFIRMED",
+      "mechanical_proxy": "nearest active same-side confirmed liquidity beyond target one, otherwise 1.66 range extension",
+      "baseline_required": true
+    },
+    {
+      "name": "smt_divergence",
+      "source_status": "EXPLICIT confluence; not stated as mandatory",
+      "mechanical_proxy": "synchronized rolling NQ/ES high-low divergence",
+      "baseline_required": false
+    },
+    {
+      "name": "fvg_ifvg",
+      "source_status": "EXPLICIT discretionary context / missed hypothetical entry",
+      "mechanical_proxy": "causal three-candle gap and close-through inversion",
+      "baseline_required": false
+    },
+    {
+      "name": "trendline",
+      "source_status": "EXPLICITLY NOT STRATEGY",
+      "mechanical_proxy": null,
+      "baseline_required": false
+    },
+    {
+      "name": "standard_deviation",
+      "source_status": "EXPLICITLY NOT USED IN PRIMARY EXAMPLE",
+      "mechanical_proxy": null,
+      "baseline_required": false
+    },
+    {
+      "name": "order_block",
+      "source_status": "UNCONFIRMED / absent from primary source",
+      "mechanical_proxy": null,
+      "baseline_required": false
+    },
+    {
+      "name": "scheduled_news_filter",
+      "source_status": "UNCONFIRMED / absent from primary source",
+      "mechanical_proxy": null,
+      "baseline_required": false
+    }
+  ],
+  "entry": {
+    "long": [
+      "approved session and no risk kill",
+      "prior-window consolidation",
+      "completed bullish displacement close",
+      "track higher extremes without using future bars",
+      "later touch of previously known 50% midpoint",
+      "minimum modeled reward/risk available",
+      "spread, exposure, trade count, loss, and drawdown checks pass"
+    ],
+    "short": "exact directional inverse",
+    "order_assumption": "trigger-market at chart midpoint with half-spread plus slippage",
+    "same_bar_assumption": "stop can occur; no favorable exit on entry bar"
+  },
+  "management": {
+    "partial": "configured fraction at impulse extreme when integer quantity permits",
+    "after_partial": "move stop on remainder to chart entry",
+    "runner": "target ranked liquidity or 1.66 extension",
+    "intrabar_ambiguity": "stop first; after partial, same-bar break-even stop is assumed if spanned"
+  },
+  "risk": {
+    "source_derived": ["40-tick stop alternative", "pivotal invalidation idea"],
+    "experimental_safety_constraints": [
+      "0.25% equity risk budget per trade",
+      "1% daily marked-equity loss limit",
+      "5% maximum marked-equity drawdown",
+      "three trades per session",
+      "one simultaneous position",
+      "two consecutive-loss cooldown",
+      "maximum notional exposure",
+      "latched operational kill switches"
+    ],
+    "sizing": "floor(equity risk budget / stop-and-cost loss per contract); never score-weighted"
+  },
+  "no_trade_conditions": [
+    "outside configured session",
+    "warmup incomplete or data invalid/stale",
+    "no objective consolidation and displacement",
+    "setup expired or closes through impulse origin",
+    "minimum reward/risk unavailable",
+    "required optional context missing when enabled",
+    "spread above limit",
+    "risk budget cannot support one contract",
+    "daily/session limits or cooldown active",
+    "any kill switch active",
+    "existing position"
+  ],
+  "data_and_testing": {
+    "required_columns": ["timestamp", "open", "high", "low", "close"],
+    "recommended_columns": ["volume", "symbol", "interval_seconds"],
+    "timestamps": "timezone-aware; UTC Z recommended",
+    "split": [0.6, 0.2, 0.2],
+    "holdout_policy": "locked unless strategy_frozen=true and explicit CLI consent",
+    "fill_scenarios": ["optimistic", "base", "pessimistic"],
+    "lookahead_controls": [
+      "right-window pivots emitted only at confirmation bar",
+      "HTF bars emitted only when next bucket begins",
+      "consolidation and midpoint predate trigger bar",
+      "conservative same-bar fills"
+    ]
+  },
+  "runtime_config": "../config/baseline.json"
+}

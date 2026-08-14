@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sphinx/strategy.schema.json",
+  "title": "Sphinx strategy runtime configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "name", "paper_only", "instrument", "session", "timeframes", "structure", "setup", "liquidity", "risk", "execution", "research", "logging"],
+  "properties": {
+    "version": {"type": "string"},
+    "name": {"type": "string", "minLength": 1},
+    "paper_only": {"const": true},
+    "instrument": {
+      "type": "object", "additionalProperties": false,
+      "required": ["symbol", "tick_size", "point_value", "quantity_increment", "max_contracts"],
+      "properties": {
+        "symbol": {"type": "string"}, "tick_size": {"type": "number", "exclusiveMinimum": 0},
+        "point_value": {"type": "number", "exclusiveMinimum": 0},
+        "quantity_increment": {"type": "integer", "minimum": 1}, "max_contracts": {"type": "integer", "minimum": 1}
+      }
+    },
+    "session": {
+      "type": "object", "additionalProperties": false,
+      "required": ["timezone", "start", "end", "weekdays", "force_flat_at_end", "warmup_bars"],
+      "properties": {
+        "timezone": {"type": "string"}, "start": {"type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$"},
+        "end": {"type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$"},
+        "weekdays": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 6}, "uniqueItems": true},
+        "force_flat_at_end": {"type": "boolean"}, "warmup_bars": {"type": "integer", "minimum": 1}
+      }
+    },
+    "timeframes": {
+      "type": "object", "additionalProperties": false,
+      "required": ["execution_seconds", "intermediate_seconds", "context_seconds"],
+      "properties": {
+        "execution_seconds": {"type": "integer", "minimum": 1},
+        "intermediate_seconds": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+        "context_seconds": {"type": "array", "items": {"type": "integer", "minimum": 1}}
+      }
+    },
+    "structure": {
+      "type": "object", "additionalProperties": false,
+      "required": ["method", "pivot_left_bars", "pivot_right_bars", "atr_period", "atr_reversal_multiplier", "percentage_reversal", "equal_tolerance_ticks", "regime_lookback", "trend_efficiency_threshold", "expansion_atr_ratio"],
+      "properties": {
+        "method": {"enum": ["fixed", "fractal", "atr", "percentage"]},
+        "pivot_left_bars": {"type": "integer", "minimum": 1}, "pivot_right_bars": {"type": "integer", "minimum": 1},
+        "atr_period": {"type": "integer", "minimum": 1}, "atr_reversal_multiplier": {"type": "number", "exclusiveMinimum": 0},
+        "percentage_reversal": {"type": "number", "exclusiveMinimum": 0}, "equal_tolerance_ticks": {"type": "number", "minimum": 0},
+        "regime_lookback": {"type": "integer", "minimum": 2}, "trend_efficiency_threshold": {"type": "number", "minimum": 0, "maximum": 1},
+        "expansion_atr_ratio": {"type": "number", "exclusiveMinimum": 1}
+      }
+    },
+    "setup": {
+      "type": "object", "additionalProperties": false,
+      "required": ["consolidation_lookback", "consolidation_max_atr", "displacement_min_atr", "breakout_buffer_ticks", "max_retrace_bars", "retest_tolerance_ticks", "entry_confirmation", "stop_mode", "fixed_stop_ticks", "pivotal_buffer_ticks", "extension_multiple", "first_target_fraction", "minimum_rr", "cooldown_bars", "require_context_aoi", "require_smt", "fvg_min_ticks", "max_aoi_age_bars", "score_weights", "aoi_score_weights"],
+      "properties": {
+        "consolidation_lookback": {"type": "integer", "minimum": 2}, "consolidation_max_atr": {"type": "number", "exclusiveMinimum": 0},
+        "displacement_min_atr": {"type": "number", "minimum": 0}, "breakout_buffer_ticks": {"type": "number", "minimum": 0},
+        "max_retrace_bars": {"type": "integer", "minimum": 1}, "retest_tolerance_ticks": {"type": "number", "minimum": 0},
+        "entry_confirmation": {"enum": ["touch", "close_rejection"]}, "stop_mode": {"enum": ["fixed", "pivotal", "fixed_or_pivotal"]},
+        "fixed_stop_ticks": {"type": "number", "exclusiveMinimum": 0}, "pivotal_buffer_ticks": {"type": "number", "minimum": 0},
+        "extension_multiple": {"type": "number", "exclusiveMinimum": 1}, "first_target_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "minimum_rr": {"type": "number", "minimum": 0}, "cooldown_bars": {"type": "integer", "minimum": 0},
+        "require_context_aoi": {"type": "boolean"}, "require_smt": {"type": "boolean"},
+        "fvg_min_ticks": {"type": "number", "minimum": 0}, "max_aoi_age_bars": {"type": "integer", "minimum": 1},
+        "score_weights": {"$ref": "#/$defs/numberMap"},
+        "aoi_score_weights": {"$ref": "#/$defs/numberMap"}
+      }
+    },
+    "liquidity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["max_levels", "equal_level_tolerance_ticks", "sweep_excursion_ticks", "sweep_reclaim_bars", "min_target_distance_ticks", "weights"],
+      "properties": {
+        "max_levels": {"type": "integer", "minimum": 1}, "equal_level_tolerance_ticks": {"type": "number", "minimum": 0},
+        "sweep_excursion_ticks": {"type": "number", "minimum": 0}, "sweep_reclaim_bars": {"type": "integer", "minimum": 1},
+        "min_target_distance_ticks": {"type": "number", "minimum": 0}, "weights": {"$ref": "#/$defs/numberMap"}
+      }
+    },
+    "risk": {
+      "type": "object", "additionalProperties": false,
+      "required": ["initial_equity", "risk_per_trade_pct", "daily_loss_limit_pct", "max_drawdown_pct", "max_trades_per_session", "max_consecutive_losses", "loss_cooldown_minutes", "max_notional_exposure", "reject_after_count", "flatten_on_critical_kill"],
+      "properties": {
+        "initial_equity": {"type": "number", "exclusiveMinimum": 0}, "risk_per_trade_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.01},
+        "daily_loss_limit_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 1}, "max_drawdown_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "max_trades_per_session": {"type": "integer", "minimum": 1}, "max_consecutive_losses": {"type": "integer", "minimum": 1},
+        "loss_cooldown_minutes": {"type": "integer", "minimum": 0}, "max_notional_exposure": {"type": "number", "exclusiveMinimum": 0},
+        "reject_after_count": {"type": "integer", "minimum": 1}, "flatten_on_critical_kill": {"type": "boolean"}
+      }
+    },
+    "execution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["spread_ticks", "slippage_ticks", "commission_per_contract_per_side", "exchange_fee_per_contract_per_side", "entry_delay_bars", "same_bar_policy", "fill_mode", "max_spread_ticks", "max_data_gap_seconds"],
+      "properties": {
+        "spread_ticks": {"type": "number", "minimum": 0}, "slippage_ticks": {"type": "number", "minimum": 0},
+        "commission_per_contract_per_side": {"type": "number", "minimum": 0}, "exchange_fee_per_contract_per_side": {"type": "number", "minimum": 0},
+        "entry_delay_bars": {"type": "integer", "minimum": 0}, "same_bar_policy": {"const": "stop_first_no_favorable_exit"},
+        "fill_mode": {"const": "trigger_market"}, "max_spread_ticks": {"type": "number", "minimum": 0},
+        "max_data_gap_seconds": {"type": "integer", "minimum": 1}
+      }
+    },
+    "research": {
+      "type": "object", "additionalProperties": false,
+      "required": ["development_fraction", "validation_fraction", "holdout_fraction", "minimum_bars_per_partition", "strategy_frozen", "random_seed"],
+      "properties": {
+        "development_fraction": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "validation_fraction": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "holdout_fraction": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "minimum_bars_per_partition": {"type": "integer", "minimum": 1}, "strategy_frozen": {"type": "boolean"},
+        "random_seed": {"type": "integer"}
+      }
+    },
+    "logging": {
+      "type": "object", "additionalProperties": false,
+      "required": ["output_directory", "decisions_filename", "trades_filename", "reports_directory"],
+      "properties": {
+        "output_directory": {"type": "string"}, "decisions_filename": {"type": "string"},
+        "trades_filename": {"type": "string"}, "reports_directory": {"type": "string"}
+      }
+    }
+  },
+  "$defs": {
+    "numberMap": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0}}
+  }
+}
