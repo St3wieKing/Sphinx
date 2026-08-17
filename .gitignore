@@ -1,0 +1,13 @@
+# Data & caches (large binaries stay out of git)
+data/cache.pkl
+data/raw/*
+!data/raw/.gitignore
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Runtime logs
+logs/

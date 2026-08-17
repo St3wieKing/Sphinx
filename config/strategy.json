@@ -1,0 +1,57 @@
+{
+  "strategy": {
+    "name": "SPHINX-LHM",
+    "version": "1.0.0",
+    "frozen_utc": "2026-08-17T00:00:00Z",
+    "description": "Volatility-gated late-day hedging-demand momentum on SPY. Frozen after TRAIN(2003-2014) selection, VAL(2015-2020) confirmation and 2008-2020 walk-forward. Final test 2021+ run exactly once after freeze.",
+    "instrument": "SPY",
+    "session": {
+      "timezone": "US/Eastern",
+      "rth_open": "09:30",
+      "rth_close": "16:00",
+      "skip_half_days": true
+    },
+    "signal": {
+      "predictor": "both",
+      "early_mark_time": 600,
+      "signal_time": 930,
+      "min_move_frac_atr": 0.10,
+      "rv20_min": 0.15
+    },
+    "entry": {
+      "order_type": "marketable_limit",
+      "entry_time": 930,
+      "entry_timeout_seconds": 60,
+      "max_entry_slippage_bps": 5
+    },
+    "exit": {
+      "profit_target": null,
+      "time_exit": "MOC",
+      "disaster_stop_atr_mult": 2.0
+    },
+    "sizing": {
+      "risk_budget_frac": 0.005,
+      "risk_proxy_atr_mult": 0.30,
+      "leverage_cap": 2.0
+    },
+    "risk_limits": {
+      "max_daily_loss_frac": 0.015,
+      "max_20trade_loss_frac": 0.06,
+      "max_position_notional_frac": 2.0,
+      "max_consecutive_data_failures": 3
+    },
+    "costs_model": {
+      "commission_per_share": 0.0035,
+      "half_spread": 0.005,
+      "slippage": 0.005,
+      "stop_gap_extra": 0.01
+    },
+    "data_requirements": {
+      "bars": "1-minute OHLCV, RTH, bar-start timestamps, US/Eastern",
+      "history_needed_sessions": 200,
+      "min_bars_full_session": 370,
+      "max_bar_staleness_seconds": 120,
+      "max_abs_gap": 0.20
+    }
+  }
+}
